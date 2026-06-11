@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كيتو — دليلي الشامل</title>
+<meta name="description" content="دليل كيتو عربي شامل: رحلة المراحل الثلاث، وصفات التجميد للعمل، الطبخ المباشر، مكمّلات الوجبات، وسناكات البروتين.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F0D0A; --bg2:#171410; --card:#1C1813; --card2:#242019; --line:#2E2820; --line2:#3A332A;
+  --txt:#EDE6DA; --txt2:#B5AA98; --txt3:#7E7565;
+  --strict:#C85A4A; --strict-glow:rgba(200,90,74,.16);
+  --normal:#E8A33D; --normal-glow:rgba(232,163,61,.16);
+  --lifestyle:#7FA86B; --lifestyle-glow:rgba(127,168,107,.16);
+  --acc:#E8A33D; --acc-glow:rgba(232,163,61,.16);
+  --ok:#7FA86B; --warn:#E8A33D; --bad:#C85A4A;
+  --r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Cairo',sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(1100px 500px at 85% -10%,var(--acc-glow),transparent 60%);pointer-events:none;z-index:0;transition:background .5s}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1}
+h1,h2,h3,h4{font-family:'Reem Kufi',sans-serif;line-height:1.5}
+.mono{font-family:'JetBrains Mono',monospace}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit}
+::placeholder{color:var(--txt3)}
+
+/* ===== Header ===== */
+header{padding:34px 0 10px;text-align:center}
+.logo{font-family:'Reem Kufi',sans-serif;font-size:30px;font-weight:700;letter-spacing:.5px}
+.logo .k{color:var(--acc);transition:color .4s}
+.tagline{color:var(--txt2);font-size:13.5px;margin-top:2px}
+.phase-switch{display:flex;justify-content:center;gap:8px;margin:18px 0 4px;flex-wrap:wrap}
+.phase-switch .lbl{width:100%;font-size:12px;color:var(--txt3);margin-bottom:-2px}
+.pbtn{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--txt2);font-size:13.5px;font-weight:600;transition:.25s}
+.pbtn:hover{border-color:var(--line2);color:var(--txt)}
+.pbtn.on{color:var(--txt);border-color:var(--pc);background:linear-gradient(0deg,var(--pg),var(--pg)),var(--card);box-shadow:0 0 18px var(--pg)}
+.pbtn .dot{width:9px;height:9px;border-radius:50%;background:var(--pc)}
+.pbtn.on .dot{animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--pg)}50%{box-shadow:0 0 0 6px transparent}}
+.phase-note{max-width:640px;margin:10px auto 0;font-size:13px;color:var(--txt2);background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:10px 16px}
+
+/* ===== Nav ===== */
+.navbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--bg) 75%,transparent);padding:10px 0 12px;margin-top:14px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:9px 15px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt2);font-size:13.5px;font-weight:600;transition:.2s;white-space:nowrap}
+.tab:hover{color:var(--txt);border-color:var(--line2)}
+.tab.on{color:var(--txt);border-color:var(--acc);background:linear-gradient(0deg,var(--acc-glow),var(--acc-glow)),var(--card)}
+.tab .n{font-size:11px;color:var(--txt3);background:var(--bg);padding:0 7px;border-radius:8px}
+.searchrow{display:flex;gap:8px;margin-top:9px}
+.search{flex:1;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px}
+.search input{flex:1;background:none;border:none;outline:none;color:var(--txt);font-size:14px}
+.favtoggle{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt2);font-size:13px;font-weight:600;transition:.2s}
+.favtoggle.on{color:#F4C95D;border-color:#F4C95D55;background:#F4C95D11}
+
+/* ===== Sections ===== */
+.pane{display:none;animation:fadein .25s}
+.pane.on{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sec-title{display:flex;align-items:center;gap:10px;font-size:20px;margin:30px 0 6px}
+.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(270deg,transparent,var(--line2))}
+.sec-sub{color:var(--txt2);font-size:13.5px;margin-bottom:14px;max-width:760px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.fchip{padding:6px 13px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--txt2);font-size:12.5px;font-weight:600;transition:.2s}
+.fchip:hover{color:var(--txt)}
+.fchip.on{color:var(--txt);border-color:var(--acc);background:linear-gradient(0deg,var(--acc-glow),var(--acc-glow)),var(--card)}
+.empty{text-align:center;color:var(--txt3);padding:40px 0;font-size:14px}
+
+/* ===== Cards grid ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
+.card:hover{border-color:var(--line2)}
+.card.open{border-color:var(--acc)}
+.chead{display:flex;align-items:flex-start;gap:11px;padding:14px 15px 4px;cursor:pointer}
+.cemoji{font-size:26px;line-height:1.2;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+.cname{font-weight:700;font-size:15px;line-height:1.45}
+.cdesc{font-size:12.5px;color:var(--txt2);line-height:1.55;margin-top:2px}
+.cfav{margin-inline-start:auto;font-size:17px;opacity:.35;transition:.2s;padding:2px 4px}
+.cfav:hover{opacity:.8;transform:scale(1.12)}
+.cfav.on{opacity:1}
+.cbadges{display:flex;flex-wrap:wrap;gap:5px;padding:9px 15px 0;cursor:pointer}
+.chip{font-size:11px;font-weight:600;padding:2.5px 9px;border-radius:99px;border:1px solid var(--line2);color:var(--txt2);background:var(--bg2)}
+.chip.acc{color:var(--acc);border-color:var(--acc)}
+.chip.ok{color:var(--ok);border-color:#7FA86B55;background:rgba(127,168,107,.08)}
+.chip.warn{color:var(--warn);border-color:#E8A33D55;background:rgba(232,163,61,.08)}
+.chip.bad{color:var(--bad);border-color:#C85A4A55;background:rgba(200,90,74,.08)}
+.chip.whey{color:#8FB7D9;border-color:#8FB7D955;background:#8FB7D911}
+.chip.beef{color:#C98FD9;border-color:#C98FD955;background:#C98FD911}
+.macros{display:flex;gap:6px;padding:10px 15px 13px;cursor:pointer}
+.mx{flex:1;text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:5px 2px}
+.mx b{display:block;font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--txt)}
+.mx span{font-size:10px;color:var(--txt3)}
+.mx.kc b{color:var(--acc)}
+.cbody{display:none;border-top:1px dashed var(--line2);padding:13px 15px 15px;font-size:13px}
+.card.open .cbody{display:block}
+.cbody h4{font-size:12.5px;color:var(--acc);margin:10px 0 5px;display:flex;align-items:center;gap:6px}
+.cbody h4:first-child{margin-top:0}
+.cbody ul,.cbody ol{padding-inline-start:20px;display:grid;gap:3px;color:var(--txt2)}
+.cbody ol li::marker{color:var(--acc);font-weight:700}
+.cbody ul li::marker{color:var(--txt3)}
+.alts{font-size:11.5px;color:var(--txt3)}
+.notebox{margin-top:11px;background:var(--bg2);border:1px solid var(--line);border-inline-start:3px solid var(--acc);border-radius:10px;padding:8px 12px;font-size:12.5px;color:var(--txt2)}
+.pairrow{margin-top:11px;font-size:12.5px;color:var(--txt2)}
+.pairrow b{color:var(--txt)}
+
+/* ===== Journey ===== */
+.jgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.jcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;position:relative;overflow:hidden;transition:.25s}
+.jcard::before{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:var(--jc)}
+.jcard.cur{border-color:var(--jc);box-shadow:0 0 24px var(--jg)}
+.jcard .jph{display:flex;align-items:center;gap:9px;font-family:'Reem Kufi',sans-serif;font-size:17px;font-weight:700}
+.jcard .jgoal{display:inline-block;margin:8px 0;font-size:11.5px;font-weight:700;color:var(--jc);border:1px solid var(--jc);border-radius:99px;padding:2px 11px}
+.jcard p{font-size:13px;color:var(--txt2)}
+.jcard .jdur{margin-top:10px;font-size:12px;color:var(--txt3)}
+.jcard .jdur b{color:var(--txt2)}
+.jcard .youare{position:absolute;top:12px;inset-inline-end:14px;font-size:10.5px;font-weight:700;color:var(--jc);background:var(--jg);padding:2px 10px;border-radius:99px}
+.signs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.sign{display:flex;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px}
+.sign .se{font-size:20px}
+.sign b{display:block;font-size:13px}
+.sign span{color:var(--txt2);font-size:12px;line-height:1.55}
+.gitem{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.gitem .gn{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;flex-wrap:wrap}
+.gpills{display:flex;gap:5px;margin-inline-start:auto;flex-wrap:wrap}
+.gpill{font-size:10.5px;padding:2px 8px;border-radius:99px;border:1px solid var(--line2);background:var(--bg2);display:flex;gap:4px;align-items:center}
+.gpill .pl{color:var(--txt3)}
+.gpill.focus{border-color:var(--acc)}
+.gpill.dim{opacity:.55}
+.pv-yes{color:var(--ok);font-weight:700}.pv-cond{color:var(--warn);font-weight:700}.pv-no{color:var(--bad);font-weight:700}
+.gcond{font-size:12px;color:var(--txt2);margin-top:5px}
+.gcond .ck{color:var(--warn);font-weight:700}
+.gphase{font-size:12px;margin-top:5px;color:var(--txt2);background:var(--bg2);border-radius:8px;padding:5px 10px;border-inline-start:3px solid var(--acc)}
+.gcat-title{display:flex;align-items:center;gap:8px;font-size:15px;margin:20px 0 8px;color:var(--txt)}
+.glist{display:grid;gap:8px}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.swap .sfrom,.swap .sto{text-align:center;font-size:13px;font-weight:700}
+.swap .sfrom{color:var(--bad)}
+.swap .sto{color:var(--ok)}
+.swap .sarrow{color:var(--txt3);font-size:18px}
+.swap .show-{grid-column:1/-1;font-size:12.5px;color:var(--txt2);border-top:1px dashed var(--line);padding-top:9px}
+.swap .sk{color:var(--acc);font-weight:700}
+.swapcat{font-size:13.5px;color:var(--txt2);margin:18px 0 8px;font-weight:700}
+
+/* ===== Sides ===== */
+.sgroup-title{display:flex;align-items:center;gap:9px;font-size:16px;margin:24px 0 10px}
+.scard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.scard .sn{font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center}
+.scard .sd{font-size:12.5px;color:var(--txt2);margin-top:3px}
+.scard .show{font-size:12px;color:var(--txt2);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+.scard .show b{color:var(--acc)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;align-items:start}
+
+/* ===== Shopping ===== */
+.shopwrap{margin-top:26px}
+details.shop{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+details.shop summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:9px;list-style:none}
+details.shop summary::-webkit-details-marker{display:none}
+details.shop summary::after{content:'⌄';margin-inline-start:auto;color:var(--txt3);transition:.2s}
+details.shop[open] summary::after{transform:rotate(180deg)}
+.shopitem{border-top:1px solid var(--line);padding:11px 16px}
+.shopitem .in{font-weight:700;font-size:13.5px}
+.shopitem .iq{color:var(--txt3);font-size:12px;font-weight:400}
+.shopitem .ia{font-size:12px;color:var(--txt2);margin-top:2px}
+.shopitem .iw{font-size:12px;color:var(--txt2);margin-top:2px}
+.shopitem .iw .bad{color:var(--bad);font-weight:600}
+.tools{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.tool{font-size:12px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 13px;color:var(--txt2)}
+
+/* ===== Misc ===== */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--acc);color:var(--txt);padding:10px 22px;border-radius:99px;font-size:13.5px;z-index:99;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+footer{margin-top:60px;text-align:center;color:var(--txt3);font-size:12.5px;border-top:1px solid var(--line);padding-top:22px}
+footer a{color:var(--txt2)}
+.topbtn{position:fixed;bottom:22px;inset-inline-end:18px;width:42px;height:42px;border-radius:50%;background:var(--card2);border:1px solid var(--line2);color:var(--txt2);font-size:18px;z-index:60;opacity:0;transition:.3s;pointer-events:none}
+.topbtn.show{opacity:1;pointer-events:auto}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .card.open{grid-row:auto}
+  .swap{grid-template-columns:1fr;gap:4px}
+  .swap .sarrow{transform:rotate(90deg)}
+  header{padding-top:24px}
+  .logo{font-size:25px}
+}
+@media print{
+  body::before,.navbar,.topbtn,.toast,.cfav{display:none!important}
+  body{background:#fff;color:#000}
+  .pane{display:block!important}
+  .card,.cbody{display:block!important;border-color:#ccc}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">🥑 كيتو <span class="k">—</span> دليلي الشامل</div>
+  <div class="tagline">رحلتي من الكيتو الصارم إلى نمط الحياة — وصفات، تجميد، سناكات، وكل ما أحتاجه في مكان واحد</div>
+  <div class="phase-switch" id="phaseSwitch">
+    <div class="lbl">مرحلتي الحالية:</div>
+  </div>
+  <div class="phase-note" id="phaseNote"></div>
+</header>
+
+<nav class="navbar">
+  <div class="tabs" id="tabs"></div>
+  <div class="searchrow">
+    <div class="search">🔍 <input id="q" type="search" placeholder="ابحث في القسم الحالي… (وصفة، مكوّن، كلمة)"></div>
+    <button class="favtoggle" id="favOnly">⭐ المفضلة</button>
+  </div>
+</nav>
+
+<main>
+  <section class="pane" id="pane-journey"></section>
+  <section class="pane" id="pane-freezer"></section>
+  <section class="pane" id="pane-fresh"></section>
+  <section class="pane" id="pane-sides"></section>
+  <section class="pane" id="pane-protein"></section>
+  <section class="pane" id="pane-snacks"></section>
+</main>
+
+<footer>
+  صُمم لرحلة موسى مع الكيتو · ٢٠٢٦ · يعمل بدون إنترنت ويحفظ تفضيلاتك في متصفحك<br>
+  المحتوى إرشادي ولا يغني عن استشارة مختص التغذية
+</footer>
+
+</div>
+<button class="topbtn" id="topbtn" title="للأعلى">↑</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const ING = {
+  chicken_breast:  { name: 'صدر دجاج',            cat: 'بروتين',  unit: 'جم' },
+  chicken_ground:  { name: 'دجاج مفروم',          cat: 'بروتين',  unit: 'جم' },
+  beef_ground:     { name: 'لحم بقري مفروم',      cat: 'بروتين',  unit: 'جم' },
+  white_fish:      { name: 'فيليه سمك أبيض مجمّد', cat: 'بروتين', unit: 'جم' },
+  eggs:            { name: 'بيض',                 cat: 'بروتين',  unit: 'حبة' },
+
+  cheddar:         { name: 'جبن شيدر',            cat: 'ألبان وأجبان', unit: 'جم' },
+  mozzarella:      { name: 'جبن موزاريلا',        cat: 'ألبان وأجبان', unit: 'جم' },
+  parmesan:        { name: 'جبن بارميزان',        cat: 'ألبان وأجبان', unit: 'جم' },
+  feta:            { name: 'جبن فيتا',            cat: 'ألبان وأجبان', unit: 'جم' },
+  cream_cheese:    { name: 'جبن كريمي (Cream Cheese)', cat: 'ألبان وأجبان', unit: 'جم' },
+  cream_cooking:   { name: 'كريمة طبخ كاملة الدسم', cat: 'ألبان وأجبان', unit: 'مل' },
+  labneh:          { name: 'لبنة كاملة الدسم',    cat: 'ألبان وأجبان', unit: 'جم' },
+
+  butter:          { name: 'زبدة',                cat: 'دهون',    unit: 'جم' },
+  ghee:            { name: 'سمن بلدي',            cat: 'دهون',    unit: 'جم' },
+  olive_oil:       { name: 'زيت زيتون بكر',       cat: 'دهون',    unit: 'مل' },
+  coconut_oil:     { name: 'زيت جوز الهند',       cat: 'دهون',    unit: 'مل' },
+  mayo:            { name: 'مايونيز كامل الدسم',   cat: 'دهون',    unit: 'جم' },
+  tahini:          { name: 'طحينة',               cat: 'دهون',    unit: 'جم' },
+
+  spinach:         { name: 'سبانخ طازجة',         cat: 'خضار',    unit: 'جم' },
+  frozen_spinach:  { name: 'سبانخ مجمّدة',         cat: 'خضار',    unit: 'جم' },
+  zucchini:        { name: 'كوسا',                cat: 'خضار',    unit: 'جم' },
+  cauliflower:     { name: 'قرنبيط (زهرة)',       cat: 'خضار',    unit: 'جم' },
+  broccoli:        { name: 'بروكلي',              cat: 'خضار',    unit: 'جم' },
+  mushroom:        { name: 'مشروم طازج',          cat: 'خضار',    unit: 'جم' },
+  mushroom_can:    { name: 'مشروم معلب',          cat: 'خضار',    unit: 'جم' },
+  bell_pepper:     { name: 'فلفل رومي ملوّن',     cat: 'خضار',    unit: 'جم' },
+  green_beans:     { name: 'فاصوليا خضراء',       cat: 'خضار',    unit: 'جم' },
+  cucumber:        { name: 'خيار',                cat: 'خضار',    unit: 'جم' },
+  lettuce:         { name: 'خس',                  cat: 'خضار',    unit: 'جم' },
+  avocado:         { name: 'أفوكادو',             cat: 'خضار',    unit: 'حبة' },
+  olives_green:    { name: 'زيتون أخضر',          cat: 'خضار',    unit: 'جم' },
+  onion:           { name: 'بصل',                 cat: 'خضار',    unit: 'جم' },
+  green_onion:     { name: 'بصل أخضر',            cat: 'خضار',    unit: 'جم' },
+  garlic:          { name: 'ثوم',                 cat: 'خضار',    unit: 'فص' },
+  lemon:           { name: 'ليمون',               cat: 'خضار',    unit: 'حبة' },
+  ginger:          { name: 'زنجبيل طازج',         cat: 'خضار',    unit: 'جم' },
+  parsley:         { name: 'بقدونس',              cat: 'خضار',    unit: 'حزمة' },
+  cilantro:        { name: 'كزبرة خضراء',         cat: 'خضار',    unit: 'حزمة' },
+  dill:            { name: 'شبت (Dill)',          cat: 'خضار',    unit: 'حزمة' },
+
+  almonds:         { name: 'لوز',                 cat: 'مكسرات',  unit: 'جم' },
+  walnuts:         { name: 'جوز (عين الجمل)',     cat: 'مكسرات',  unit: 'جم' },
+  almond_flour:    { name: 'دقيق لوز',            cat: 'مكسرات',  unit: 'جم' },
+  coconut_flour:   { name: 'دقيق جوز الهند',      cat: 'مكسرات',  unit: 'جم' },
+  psyllium:        { name: 'قشور السيليوم',       cat: 'مكسرات',  unit: 'جم' },
+
+  salt:            { name: 'ملح',                 cat: 'بهارات وصلصات', unit: 'جم' },
+  black_pepper:    { name: 'فلفل أسود',           cat: 'بهارات وصلصات', unit: 'جم' },
+  cumin:           { name: 'كمون',                cat: 'بهارات وصلصات', unit: 'جم' },
+  paprika:         { name: 'بابريكا',             cat: 'بهارات وصلصات', unit: 'جم' },
+  baharat:         { name: 'بهارات مشكّلة',        cat: 'بهارات وصلصات', unit: 'جم' },
+  curry_powder:    { name: 'بهارات كاري',         cat: 'بهارات وصلصات', unit: 'جم' },
+  oregano:         { name: 'أوريغانو',            cat: 'بهارات وصلصات', unit: 'جم' },
+  italian_herbs:   { name: 'أعشاب إيطالية مشكّلة', cat: 'بهارات وصلصات', unit: 'جم' },
+  thyme:           { name: 'زعتر بري (Thyme)',    cat: 'بهارات وصلصات', unit: 'جم' },
+  soy_sauce:       { name: 'صلصة صويا',           cat: 'بهارات وصلصات', unit: 'مل' },
+  mustard_dijon:   { name: 'خردل ديجون',          cat: 'بهارات وصلصات', unit: 'جم' },
+  tomato_paste:    { name: 'صلصة طماطم مركّزة',    cat: 'بهارات وصلصات', unit: 'جم' },
+  cocoa:           { name: 'كاكاو خام بدون سكر',  cat: 'بهارات وصلصات', unit: 'جم' }
+};
+
+// ============================================================
+// PHASES (auto-progression)
+// ============================================================
+const PHASES = {
+  strict: {
+    key: 'strict', name: 'الكيتو الصارم', short: 'صارم', emoji: '🔴',
+    color: 'var(--strict)', glow: 'var(--strict-glow)',
+    goal: 'دخول الحالة الكيتونية',
+    note: 'الهدف الوحيد الآن: دخول الكيتوزس بأسرع وقت. كارب صافٍ ≤ 20جم/يوم. ركّز على البروتين الدهني والخضار الورقي، وابتعد عن صلصة الطماطم المركّزة والأفوكادو الكثير والتوت. بمجرد ما تظهر علامات الكيتوزس، فعّل المفتاح بالأعلى للانتقال للعادي.'
+  },
+  normal: {
+    key: 'normal', name: 'الكيتو العادي', short: 'عادي', emoji: '🟡',
+    color: 'var(--normal)', glow: 'var(--normal-glow)',
+    goal: 'خسارة الوزن',
+    note: 'أنت الآن في الكيتوزس — هدفنا خسارة الوزن بثبات. كارب صافٍ ≤ 30جم/يوم. يُسمح بصلصة الطماطم المركّزة بكميات بسيطة وبعض الخضار الإضافي. استمر حتى تصل لوزنك المستهدف فينتقل التطبيق تلقائياً للايف ستايل.'
+  },
+  lifestyle: {
+    key: 'lifestyle', name: 'الكيتو لايف ستايل', short: 'لايف ستايل', emoji: '🟢',
+    color: 'var(--lifestyle)', glow: 'var(--lifestyle-glow)',
+    goal: 'الحفاظ على الوزن',
+    note: 'وصلت لهدفك 🎉 — الآن نمط حياة مستدام. كارب صافٍ ≤ 50جم/يوم. توسّع قليلاً: أفوكادو، لبنة، مكسرات، وكرات الدهون. المهم تستمر بدون حرمان وتحافظ على وزنك.'
+  }
+};
+
+// ============================================================
+// PROTEIN BASES
+// ============================================================
+const BASES = {
+  chicken_breast: { name: 'صدر دجاج', emoji: '🍗' },
+  chicken_ground: { name: 'دجاج مفروم', emoji: '🍢' },
+  beef_ground:    { name: 'لحم بقري مفروم', emoji: '🥩' },
+  white_fish:     { name: 'فيليه سمك أبيض', emoji: '🐟' },
+  eggs:           { name: 'بيض', emoji: '🥚' }
+};
+
+// ============================================================
+// EQUIPMENT (what the recipe needs) + availability filter
+// ============================================================
+const EQUIP = {
+  oven:  { label: 'يحتاج فرن',           short: 'فرن',  emoji: '🔥' },
+  stove: { label: 'بدون فرن (موقد/مقلاة)', short: 'موقد', emoji: '🍳' },
+  both:  { label: 'فرن أو موقد (مرن)',    short: 'مرن',  emoji: '🔁' }
+};
+// availability the user has right now → which recipes to show
+const AVAIL = {
+  both:  { label: '🍳🔥 لدي فرن وموقد', allows: ['oven','stove','both'] },
+  stove: { label: '🍳 موقد فقط (بدون فرن)', allows: ['stove','both'] },
+  oven:  { label: '🔥 فرن فقط', allows: ['oven','both'] }
+};
+function equipChip(eq){
+  const e = EQUIP[eq] || EQUIP.both;
+  return `<span class="chip equip-${eq}">${e.emoji} ${e.label}</span>`;
+}
+
+// ============================================================
+// SNACKS (paired with meals)
+// ============================================================
+const SNACKS = {
+  s01: { id:'s01', emoji:'🥚', name:'بيض مسلوق', desc:'سهل التحضير ويُحفظ مقشّراً 3 أيام بالثلاجة', diets:['strict','normal','lifestyle'],
+         kcal:140, p:12, f:10, c:1, ingredients:[{key:'eggs',amt:2}] },
+  s02: { id:'s02', emoji:'🧀', name:'مكعبات جبن شيدر', desc:'دهن وبروتين سريع', diets:['strict','normal','lifestyle'],
+         kcal:160, p:10, f:13, c:1, ingredients:[{key:'cheddar',amt:40,alts:['mozzarella','feta']}] },
+  s03: { id:'s03', emoji:'🌰', name:'حفنة لوز', desc:'25–30 حبة', diets:['strict','normal','lifestyle'],
+         kcal:180, p:6, f:16, c:2, ingredients:[{key:'almonds',amt:30,alts:['walnuts']}] },
+  s04: { id:'s04', emoji:'🫒', name:'زيتون بزيت الزيتون', desc:'مالح ومشبع', diets:['strict','normal','lifestyle'],
+         kcal:100, p:1, f:10, c:1, ingredients:[{key:'olives_green',amt:50},{key:'olive_oil',amt:5}] },
+  s05: { id:'s05', emoji:'🥒', name:'خيار بالجبن الكريمي', desc:'منعش وخفيف', diets:['strict','normal','lifestyle'],
+         kcal:170, p:4, f:15, c:3, ingredients:[{key:'cucumber',amt:100},{key:'cream_cheese',amt:40,alts:['labneh']}] },
+  s06: { id:'s06', emoji:'🥑', name:'نصف أفوكادو بالليمون', desc:'دهون صحية', diets:['normal','lifestyle'],
+         kcal:160, p:2, f:15, c:3, ingredients:[{key:'avocado',amt:0.5},{key:'lemon',amt:0.25},{key:'salt',amt:1}] },
+  s07: { id:'s07', emoji:'🥣', name:'لبنة بزيت الزيتون والزعتر', desc:'دسمة ومشبعة', diets:['normal','lifestyle'],
+         kcal:150, p:5, f:13, c:3, ingredients:[{key:'labneh',amt:60},{key:'olive_oil',amt:8},{key:'thyme',amt:1}] },
+  s08: { id:'s08', emoji:'🍫', name:'كرات الكاكاو وجوز الهند', desc:'حلى كيتو (Fat Bomb)', diets:['lifestyle'],
+         kcal:180, p:2, f:18, c:2, ingredients:[{key:'cream_cheese',amt:30},{key:'cocoa',amt:5},{key:'coconut_oil',amt:10}] }
+};
+
+// ============================================================
+// RECIPES — freezer-friendly, batch, low odor preferred
+//   base: protein, odor: low|med, freeze: text, reheat: text,
+//   store: text, snacks: [ids], per-serving macros + ingredients
+// ============================================================
+const RECIPES = [
+  // ===== EGGS =====
+  {
+    id:'m01', emoji:'🧁', name:'مافن البيض بالجبن والسبانخ', equip:'both',
+    altMethod:'بدون فرن: صبّ الخليط في مقلاة غير لاصقة مدهونة على نار هادئة جداً مع غطاء 8–10 دقائق حتى يتماسك (عجة سميكة)، ثم قطّعها مربعات.',
+    desc:'كؤوس بيض مخبوزة بالفرن — أفضل خيار للعمل: رائحة خفيفة وتسخين 40 ثانية.',
+    base:'eggs', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف 40–60 ثانية، أو تؤكل باردة', store:'علب فردية أو كيس مفرّغ',
+    prepMin:12, cookMin:22, difficulty:'سهل جداً', kcal:330, p:21, f:26, c:3,
+    snacks:['s02','s03'],
+    ingredients:[
+      {key:'eggs',amt:3},
+      {key:'cheddar',amt:30,alts:['mozzarella','feta']},
+      {key:'spinach',amt:40,alts:['frozen_spinach']},
+      {key:'cream_cooking',amt:20,alts:['labneh']},
+      {key:'butter',amt:5,alts:['olive_oil']},
+      {key:'salt',amt:2},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'سخّن الفرن على 180°م ودهّن قالب المافن بالزبدة.',
+      'اخفق البيض مع الكريمة والملح والفلفل.',
+      'ذبّل السبانخ بقليل من الزبدة دقيقة (أو اعصر السبانخ المجمّدة من الماء).',
+      'وزّع السبانخ والجبن في فتحات القالب ثم صبّ خليط البيض.',
+      'اخبز 20–22 دقيقة حتى يتماسك ويذهب الوجه.',
+      'برّدها تماماً ثم جمّدها في علب فردية. للأسبوع: سخّن بالمايكروويف 40–60 ثانية.'
+    ]
+  },
+  {
+    id:'m02', emoji:'🍳', name:'فريتاتا الدجاج المفروم والكوسا', equip:'both',
+    altMethod:'بدون فرن: بعد صبّ البيض، غطِّ المقلاة على نار هادئة 8 دقائق حتى يتماسك الوجه بدل الفرن.',
+    desc:'عجة سميكة بالفرن تُقطّع مربعات وتُجمّد — مشبعة وغنية بالبروتين.',
+    base:'eggs', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف دقيقة واحدة', store:'مربعات مغلّفة فردياً',
+    prepMin:12, cookMin:25, difficulty:'سهل', kcal:420, p:35, f:28, c:4,
+    snacks:['s05','s02'],
+    ingredients:[
+      {key:'eggs',amt:3},
+      {key:'chicken_ground',amt:80,alts:['beef_ground']},
+      {key:'zucchini',amt:60,alts:['mushroom','spinach']},
+      {key:'mozzarella',amt:25,alts:['cheddar']},
+      {key:'onion',amt:20},
+      {key:'olive_oil',amt:8,alts:['butter']},
+      {key:'salt',amt:2},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'سخّن الفرن 180°م.',
+      'في مقلاة، حمّر البصل ثم الدجاج المفروم حتى ينضج، وأضف الكوسا المبشورة دقيقتين.',
+      'اخفق البيض مع الملح والفلفل، أضف الجبن.',
+      'افرد خليط الدجاج في صينية صغيرة وصبّ البيض فوقه.',
+      'اخبز 22–25 دقيقة حتى يتماسك. برّد وقطّع مربعات.',
+      'غلّف كل قطعة وجمّدها. سخّن دقيقة بالمايكروويف.'
+    ]
+  },
+  {
+    id:'m03', emoji:'🥧', name:'كيش القرنبيط والجبن (بدون قشرة)', equip:'oven',
+    desc:'كيش كريمي بدون عجين — يُقطّع شرائح ويُجمّد. رائحة خفيفة.',
+    base:'eggs', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'جيد جداً', reheat:'مايكروويف دقيقة، أو فرن 150°م 8 دقائق', store:'شرائح مغلّفة',
+    prepMin:15, cookMin:30, difficulty:'سهل', kcal:400, p:20, f:32, c:6,
+    snacks:['s03','s04'],
+    ingredients:[
+      {key:'eggs',amt:3},
+      {key:'cream_cooking',amt:40},
+      {key:'cheddar',amt:30,alts:['parmesan','mozzarella']},
+      {key:'cauliflower',amt:80,alts:['broccoli','zucchini']},
+      {key:'mushroom',amt:40,alts:['mushroom_can']},
+      {key:'butter',amt:8},
+      {key:'salt',amt:2},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'سخّن الفرن 175°م.',
+      'سلق/بخّر القرنبيط 4 دقائق حتى يطرى، وصفّيه جيداً من الماء.',
+      'شوّح المشروم بالزبدة حتى يجف ماؤه.',
+      'اخفق البيض مع الكريمة والملح والفلفل ونصف الجبن.',
+      'وزّع القرنبيط والمشروم في قالب، صبّ الخليط، رشّ باقي الجبن.',
+      'اخبز 28–30 دقيقة. برّد، قطّع، وجمّد.'
+    ]
+  },
+
+  // ===== CHICKEN BREAST =====
+  {
+    id:'m04', emoji:'🍅', name:'دجاج مفتفت بصلصة الطماطم والكريمة', equip:'stove',
+    desc:'صدر مسلوق ومفتفت في صلصة كريمية — يتجمّد ممتاز ويسخّن بدون أن يجف.',
+    base:'chicken_breast', diets:['normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف 1.5 دقيقة مع التحريك', store:'علب بحصص',
+    prepMin:10, cookMin:25, difficulty:'سهل', kcal:520, p:50, f:32, c:7,
+    snacks:['s06','s02'],
+    ingredients:[
+      {key:'chicken_breast',amt:180},
+      {key:'cream_cooking',amt:60},
+      {key:'tomato_paste',amt:25},
+      {key:'butter',amt:15,alts:['ghee']},
+      {key:'garlic',amt:3},
+      {key:'paprika',amt:2},
+      {key:'italian_herbs',amt:2,alts:['oregano']},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'اسلق صدر الدجاج في ماء مملّح 15 دقيقة ثم فتفته بشوكتين.',
+      'في مقلاة، ذوّب الزبدة وحمّر الثوم والبابريكا.',
+      'أضف صلصة الطماطم المركّزة وقلّب دقيقة.',
+      'أضف الكريمة والأعشاب واتركها تغلي خفيفاً 3 دقائق.',
+      'أضف الدجاج المفتفت وقلّب حتى يتغطّى بالصلصة.',
+      'برّد تماماً وقسّمه حصصاً وجمّده. أضف رشة ماء عند التسخين.'
+    ]
+  },
+  {
+    id:'m05', emoji:'🍛', name:'دجاج بالكاري الكريمي وجوز الهند', equip:'stove',
+    desc:'مكعبات دجاج في صلصة كاري ناعمة — رائحة متوسطة، نكهة غنية.',
+    base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'med',
+    freeze:'ممتاز', reheat:'مايكروويف 1.5 دقيقة مع التحريك', store:'علب بحصص',
+    prepMin:10, cookMin:20, difficulty:'سهل', kcal:540, p:48, f:36, c:6,
+    snacks:['s03','s05'],
+    ingredients:[
+      {key:'chicken_breast',amt:180},
+      {key:'cream_cooking',amt:50,alts:['coconut_oil']},
+      {key:'coconut_oil',amt:10,alts:['ghee']},
+      {key:'curry_powder',amt:5},
+      {key:'garlic',amt:3},
+      {key:'ginger',amt:5},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'قطّع الدجاج مكعبات وتبّله بالملح.',
+      'سخّن زيت جوز الهند وحمّر الدجاج حتى يذهب.',
+      'أضف الثوم والزنجبيل المبشور وبهارات الكاري، قلّب 30 ثانية.',
+      'أضف الكريمة وقليل من الماء، اتركها تغلي خفيفاً 5 دقائق حتى تتكاثف.',
+      'برّد، قسّم حصصاً، وجمّد. نكهته تزيد بعد التجميد.'
+    ]
+  },
+  {
+    id:'m06', emoji:'🧈', name:'شرائح دجاج بزبدة الأعشاب', equip:'both',
+    altMethod:'بالفرن: اخبز الصدر المتبّل على 200°م لمدة 18–20 دقيقة، ثم اسقِه بزبدة الثوم الذائبة.',
+    desc:'صدر مقطّع شرائح بزبدة الثوم — بسيط، رائحة خفيفة جداً، بروتين عالٍ.',
+    base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'جيد', reheat:'مايكروويف دقيقة، أو مقلاة دقيقتين', store:'شرائح في علبة مع صلصتها',
+    prepMin:8, cookMin:16, difficulty:'سهل', kcal:500, p:58, f:30, c:2,
+    snacks:['s01','s04'],
+    ingredients:[
+      {key:'chicken_breast',amt:200},
+      {key:'butter',amt:20,alts:['ghee']},
+      {key:'olive_oil',amt:8},
+      {key:'garlic',amt:3},
+      {key:'thyme',amt:2,alts:['italian_herbs','oregano']},
+      {key:'lemon',amt:0.25},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'افتح الصدر فراشة وتبّله بالملح والفلفل والزعتر.',
+      'سخّن المقلاة مع زيت الزيتون، اطبخ الدجاج 5 دقائق لكل جهة.',
+      'أضف الزبدة والثوم واسقِ الدجاج بها دقيقتين.',
+      'اعصر الليمون، اتركه يرتاح ثم قطّعه شرائح.',
+      'برّد مع صلصة الزبدة في العلبة وجمّد.'
+    ]
+  },
+
+  // ===== GROUND CHICKEN =====
+  {
+    id:'m07', emoji:'🍢', name:'كفتة الدجاج بالأعشاب', equip:'both',
+    altMethod:'بدون فرن: اقلِ أصابع الكفتة في مقلاة بزيت الزيتون 4 دقائق لكل جهة حتى تذهب وتنضج.',
+    desc:'أصابع كفتة مشوية بالفرن — تتجمّد ممتاز ورائحتها خفيفة.',
+    base:'chicken_ground', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف دقيقة، أو فرن 160°م 8 دقائق', store:'أصابع مفصولة بورق زبدة',
+    prepMin:15, cookMin:20, difficulty:'سهل', kcal:430, p:38, f:28, c:4,
+    snacks:['s05','s02'],
+    ingredients:[
+      {key:'chicken_ground',amt:180},
+      {key:'onion',amt:30},
+      {key:'parsley',amt:0.25,alts:['cilantro']},
+      {key:'garlic',amt:3},
+      {key:'eggs',amt:0.5},
+      {key:'cumin',amt:2},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'سخّن الفرن 200°م وبطّن صينية بورق الخبز.',
+      'اعجن الدجاج المفروم مع البصل والبقدونس والثوم المفروم ناعماً والبيض والبهارات.',
+      'شكّل أصابع كفتة وادهنها بزيت الزيتون.',
+      'اشوِ 18–20 دقيقة حتى تذهب.',
+      'برّد، افصل بين الأصابع بورق الزبدة، وجمّد.'
+    ]
+  },
+  {
+    id:'m08', emoji:'🍔', name:'برغر الدجاج بالجبن', equip:'both',
+    altMethod:'بالفرن: اخبز الأقراص على 200°م لمدة 18 دقيقة مع قلبها مرة في المنتصف.',
+    desc:'أقراص برغر دجاج بالموزاريلا — تُطهى وتُجمّد، مثالية بدون خبز.',
+    base:'chicken_ground', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مقلاة دقيقتين لكل جهة، أو مايكروويف دقيقة', store:'أقراص مفصولة بورق',
+    prepMin:12, cookMin:14, difficulty:'سهل', kcal:470, p:40, f:30, c:4,
+    snacks:['s02','s06'],
+    ingredients:[
+      {key:'chicken_ground',amt:180},
+      {key:'mozzarella',amt:30,alts:['cheddar']},
+      {key:'almond_flour',amt:15,alts:['psyllium']},
+      {key:'eggs',amt:0.5},
+      {key:'garlic',amt:2},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'اخلط الدجاج المفروم مع الجبن المبشور ودقيق اللوز والبيض والثوم والبهارات.',
+      'شكّل أقراصاً متوسطة السماكة.',
+      'اقلِها في زيت الزيتون 3–4 دقائق لكل جهة حتى تذهب وتنضج.',
+      'برّد، افصل بورق الزبدة، وجمّد.'
+    ]
+  },
+  {
+    id:'m09', emoji:'🧆', name:'كرات الدجاج بصلصة الطماطم', equip:'stove',
+    desc:'كرات دجاج في صلصة مارينارا كيتو — تتجمّد ممتاز مع صلصتها.',
+    base:'chicken_ground', diets:['normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف 1.5 دقيقة', store:'كرات مع الصلصة في علبة',
+    prepMin:15, cookMin:22, difficulty:'متوسط', kcal:480, p:40, f:30, c:7,
+    snacks:['s05','s03'],
+    ingredients:[
+      {key:'chicken_ground',amt:170},
+      {key:'tomato_paste',amt:20},
+      {key:'cream_cooking',amt:30},
+      {key:'parmesan',amt:15,alts:['mozzarella']},
+      {key:'onion',amt:20},
+      {key:'garlic',amt:3},
+      {key:'italian_herbs',amt:3,alts:['oregano']},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'اعجن الدجاج مع البارميزان والثوم والبهارات وشكّل كرات.',
+      'حمّرها في زيت الزيتون من كل الجهات وارفعها.',
+      'في نفس المقلاة حمّر البصل، أضف صلصة الطماطم وكوب ماء صغير والأعشاب.',
+      'أعد الكرات واتركها تطبخ 10 دقائق، أضف الكريمة في الآخر.',
+      'برّد وجمّد الكرات مع صلصتها.'
+    ]
+  },
+
+  // ===== GROUND BEEF =====
+  {
+    id:'m10', emoji:'🍝', name:'كرات اللحم بصلصة الطماطم', equip:'stove',
+    desc:'كرات لحم بقري بالموزاريلا في مارينارا — كلاسيكية تتجمّد ممتاز.',
+    base:'beef_ground', diets:['normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف 1.5–2 دقيقة', store:'كرات مع الصلصة',
+    prepMin:15, cookMin:25, difficulty:'متوسط', kcal:540, p:36, f:40, c:7,
+    snacks:['s06','s02'],
+    ingredients:[
+      {key:'beef_ground',amt:170},
+      {key:'tomato_paste',amt:25},
+      {key:'mozzarella',amt:25},
+      {key:'onion',amt:20},
+      {key:'garlic',amt:3},
+      {key:'italian_herbs',amt:3,alts:['oregano']},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'اخلط اللحم مع نصف البصل المبشور والثوم والبهارات وشكّل كرات.',
+      'حمّرها في زيت الزيتون من كل جهة.',
+      'حمّر باقي البصل، أضف صلصة الطماطم والماء والأعشاب.',
+      'أعد الكرات واطبخها 12 دقيقة على نار هادئة.',
+      'برّد وجمّد. عند التقديم رشّ الموزاريلا وسخّن.'
+    ]
+  },
+  {
+    id:'m11', emoji:'🌶️', name:'تشيلي اللحم الكيتو (بدون فاصوليا)', equip:'stove',
+    desc:'يخنة لحم مفروم حارّة بالفلفل — تتجمّد ممتاز، رائحة متوسطة.',
+    base:'beef_ground', diets:['normal','lifestyle'], odor:'med',
+    freeze:'ممتاز', reheat:'مايكروويف دقيقتين مع التحريك', store:'علب بحصص',
+    prepMin:12, cookMin:25, difficulty:'سهل', kcal:520, p:35, f:38, c:8,
+    snacks:['s02','s04'],
+    ingredients:[
+      {key:'beef_ground',amt:180},
+      {key:'tomato_paste',amt:25},
+      {key:'bell_pepper',amt:50},
+      {key:'onion',amt:30},
+      {key:'garlic',amt:3},
+      {key:'cumin',amt:3},
+      {key:'paprika',amt:3},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'حمّر البصل والفلفل المقطّع في زيت الزيتون.',
+      'أضف اللحم المفروم وفتّته حتى يذهب.',
+      'أضف الثوم والكمون والبابريكا وقلّب دقيقة.',
+      'أضف صلصة الطماطم وكوب ماء، اتركها على نار هادئة 15 دقيقة حتى تكثف.',
+      'برّد، قسّم حصصاً، وجمّد.'
+    ]
+  },
+  {
+    id:'m12', emoji:'🥘', name:'لحم مفروم بالقرنبيط (سكيليت)', equip:'stove',
+    desc:'لحم مع أرز القرنبيط بالبهارات — رائحة خفيفة ووجبة كاملة.',
+    base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف دقيقتين', store:'علب بحصص',
+    prepMin:10, cookMin:18, difficulty:'سهل', kcal:540, p:35, f:40, c:8,
+    snacks:['s02','s06'],
+    ingredients:[
+      {key:'beef_ground',amt:180},
+      {key:'cauliflower',amt:120,alts:['broccoli']},
+      {key:'butter',amt:15,alts:['ghee']},
+      {key:'onion',amt:25},
+      {key:'garlic',amt:3},
+      {key:'baharat',amt:3,alts:['cumin']},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'افرم القرنبيط ناعماً بالمبشرة حتى يصير كالأرز.',
+      'حمّر البصل بالزبدة، أضف اللحم وفتّته حتى يذهب.',
+      'أضف الثوم والبهارات.',
+      'أضف أرز القرنبيط وقلّب 5–6 دقائق حتى ينضج.',
+      'برّد، قسّم حصصاً، وجمّد.'
+    ]
+  },
+  {
+    id:'m13', emoji:'🫑', name:'كوسا محشية باللحم والجبن', equip:'oven',
+    desc:'قوارب كوسا محشوة لحم بقري — تُخبز وتُجمّد، رائحة خفيفة.',
+    base:'beef_ground', diets:['normal','lifestyle'], odor:'low',
+    freeze:'جيد جداً', reheat:'فرن 170°م 10 دقائق، أو مايكروويف 1.5 دقيقة', store:'قوارب مغلّفة فردياً',
+    prepMin:18, cookMin:25, difficulty:'متوسط', kcal:500, p:35, f:36, c:8,
+    snacks:['s02','s04'],
+    ingredients:[
+      {key:'beef_ground',amt:150},
+      {key:'zucchini',amt:200},
+      {key:'mozzarella',amt:30,alts:['cheddar']},
+      {key:'tomato_paste',amt:15},
+      {key:'onion',amt:20},
+      {key:'garlic',amt:3},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'اشطر الكوسا طولياً وأفرغ اللب لتصير قوارب.',
+      'حمّر البصل واللحم، أضف الثوم وصلصة الطماطم وقليل من لب الكوسا.',
+      'احشُ القوارب بالخليط ورشّ الموزاريلا.',
+      'اخبز على 190°م لمدة 22 دقيقة.',
+      'برّد، غلّف كل قارب، وجمّد.'
+    ]
+  },
+
+  // ===== WHITE FISH =====
+  {
+    id:'m14', emoji:'🐟', name:'أقراص السمك الأبيض بالأعشاب', equip:'both',
+    altMethod:'بالفرن: رتّب الأقراص في صينية مدهونة واخبز على 200°م لمدة 18 دقيقة مع قلبها مرة.',
+    desc:'فيش كيك بالشبت والليمون — رائحة متوسطة، يُفضّل تسخين خفيف أو أكلها باردة.',
+    base:'white_fish', diets:['strict','normal','lifestyle'], odor:'med',
+    freeze:'جيد', reheat:'مقلاة دقيقتين لكل جهة (تسخين خفيف لتقليل الرائحة)', store:'أقراص مفصولة بورق',
+    prepMin:15, cookMin:12, difficulty:'متوسط', kcal:360, p:40, f:20, c:3,
+    snacks:['s05','s04'],
+    ingredients:[
+      {key:'white_fish',amt:180},
+      {key:'eggs',amt:0.5},
+      {key:'almond_flour',amt:15,alts:['psyllium']},
+      {key:'dill',amt:0.25,alts:['parsley']},
+      {key:'lemon',amt:0.25},
+      {key:'garlic',amt:2},
+      {key:'olive_oil',amt:12},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'سيّح السمك المجمّد وصفّيه جيداً وافرمه ناعماً.',
+      'اخلطه مع البيض ودقيق اللوز والشبت والثوم وقشر الليمون والبهارات.',
+      'شكّل أقراصاً واتركها بالثلاجة 10 دقائق لتتماسك.',
+      'اقلِها في زيت الزيتون 3 دقائق لكل جهة.',
+      'برّد، افصل بورق الزبدة، وجمّد. للعمل: تُؤكل باردة أو تُسخّن خفيفاً.'
+    ]
+  },
+  {
+    id:'m15', emoji:'🍋', name:'سمك أبيض بزبدة الليمون (بالفرن)', equip:'both',
+    altMethod:'بدون فرن: اطبخ الفيليه في مقلاة بالزبدة على نار متوسطة 3–4 دقائق لكل جهة واسقِه بصلصة الزبدة والليمون.',
+    desc:'فيليه مخبوز بزبدة الثوم والليمون — رائحة متوسطة، خفيف وسريع.',
+    base:'white_fish', diets:['strict','normal','lifestyle'], odor:'med',
+    freeze:'جيد', reheat:'فرن 150°م 8 دقائق (تسخين لطيف)', store:'فيليه مع صلصته في علبة',
+    prepMin:8, cookMin:15, difficulty:'سهل', kcal:380, p:42, f:22, c:2,
+    snacks:['s04','s05'],
+    ingredients:[
+      {key:'white_fish',amt:200},
+      {key:'butter',amt:20,alts:['ghee']},
+      {key:'lemon',amt:0.5},
+      {key:'garlic',amt:3},
+      {key:'dill',amt:0.25,alts:['parsley']},
+      {key:'olive_oil',amt:8},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'سيّح الفيليه وجفّفه جيداً بمنديل.',
+      'تبّله بالملح والفلفل ورتّبه في صينية.',
+      'اخلط الزبدة الذائبة مع الثوم وعصير الليمون والشبت وادهن السمك.',
+      'اخبز على 190°م لمدة 12–15 دقيقة.',
+      'برّد مع صلصته وجمّد. سخّن بلطف بالفرن.'
+    ]
+  },
+  {
+  id:'m16', emoji:'🧀', name:'دجاج محشي بالبروكلي والشيدر (بالفرن)', equip:'oven',
+  desc:'صدر دجاج محشي بخليط البروكلي والشيدر والجبن الكريمي — دسم ومشبع ويتجمّد ممتاز.',
+  base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'فرن 170°م 10 دقائق، أو مايكروويف دقيقتين', store:'صدور ملفوفة كلٌّ على حدة',
+  prepMin:15, cookMin:25, difficulty:'متوسط', kcal:520, p:55, f:32, c:5,
+  snacks:['s02','s04'],
+  ingredients:[
+    {key:'chicken_breast',amt:200},
+    {key:'broccoli',amt:80,alts:['cauliflower']},
+    {key:'cheddar',amt:35,alts:['mozzarella']},
+    {key:'cream_cheese',amt:25},
+    {key:'butter',amt:10,alts:['olive_oil']},
+    {key:'garlic',amt:3},
+    {key:'paprika',amt:2},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن 200°م. اسلق البروكلي دقيقتين ثم افرمه ناعماً.',
+    'اخلط البروكلي مع الشيدر المبشور والجبن الكريمي والثوم والملح والفلفل.',
+    'اشقّ الصدر جيباً جانبياً واحشِه بالخليط ثم ثبّته بعود أسنان.',
+    'ادهن الصدر بالزبدة والبابريكا واخبزه 22–25 دقيقة حتى ينضج.',
+    'برّد تماماً، لُفّ كل صدر على حدة، وجمّد.'
+  ]
+},
+{
+  id:'m17', emoji:'🍗', name:'دجاج مقرمش بقشرة اللوز والبارميزان', equip:'both',
+  altMethod:'بدون فرن: اقلِ الشرائح في مقلاة بزيت الزيتون 3–4 دقائق لكل جهة حتى تذهب القشرة وتنضج.',
+  desc:'شرائح صدر بقشرة دقيق اللوز والبارميزان — مقرمشة بكربوهيدرات منخفض جداً وتتجمّد جيداً.',
+  base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'جيد جداً', reheat:'فرن 180°م 8 دقائق ليرجع القرمشة، أو مايكروويف دقيقة', store:'شرائح مفصولة بورق زبدة',
+  prepMin:15, cookMin:20, difficulty:'متوسط', kcal:540, p:56, f:34, c:3,
+  snacks:['s05','s01'],
+  ingredients:[
+    {key:'chicken_breast',amt:200},
+    {key:'almond_flour',amt:30},
+    {key:'parmesan',amt:20,alts:['cheddar']},
+    {key:'eggs',amt:0.5},
+    {key:'olive_oil',amt:12},
+    {key:'garlic',amt:2},
+    {key:'italian_herbs',amt:2,alts:['oregano']},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن 200°م وبطّن صينية بورق الخبز.',
+    'قطّع الصدر شرائح وتبّله بالملح والفلفل والثوم.',
+    'اخلط دقيق اللوز مع البارميزان والأعشاب في طبق، واخفق البيض في طبق آخر.',
+    'اغمس الشرائح بالبيض ثم بخليط اللوز، ورشّها بزيت الزيتون.',
+    'اخبزها 18–20 دقيقة حتى تذهب القشرة وتنضج.',
+    'برّد، افصل الشرائح بورق الزبدة، وجمّد.'
+  ]
+},
+{
+  id:'m18', emoji:'🌶️', name:'دجاج فاهيتا بالفلفل (سكيليت)', equip:'stove',
+  desc:'شرائح دجاج بالفلفل الملوّن والبصل وبهارات الفاهيتا — وجبة كاملة ملوّنة تتجمّد ممتاز.',
+  base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'ممتاز', reheat:'مقلاة 3 دقائق، أو مايكروويف دقيقتين', store:'علب بحصص',
+  prepMin:12, cookMin:16, difficulty:'سهل', kcal:470, p:50, f:26, c:8,
+  snacks:['s06','s02'],
+  ingredients:[
+    {key:'chicken_breast',amt:200},
+    {key:'bell_pepper',amt:90},
+    {key:'onion',amt:30},
+    {key:'olive_oil',amt:14},
+    {key:'garlic',amt:3},
+    {key:'paprika',amt:3},
+    {key:'cumin',amt:2},
+    {key:'lemon',amt:0.25},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'قطّع الصدر شرائح رفيعة وتبّله بالبابريكا والكمون والثوم والملح والفلفل.',
+    'سخّن نصف زيت الزيتون واطبخ الدجاج 5–6 دقائق حتى يذهب، ثم ارفعه.',
+    'في باقي الزيت قلّب الفلفل والبصل 3–4 دقائق حتى يلينا قليلاً مع بقاء قرمشتهما.',
+    'أعد الدجاج، اعصر الليمون، وقلّب دقيقة.',
+    'برّد، قسّم حصصاً، وجمّد.'
+  ]
+},
+{
+  id:'m19', emoji:'🥙', name:'شاورما دجاج كيتو (سكيليت)', equip:'both',
+  altMethod:'بالفرن: افرد الدجاج المتبّل في صينية واخبزه على 200°م لمدة 20 دقيقة، ثم قطّعه شرائح.',
+  desc:'شرائح دجاج بتتبيلة الشاورما الدافئة — رائحة شهية ومذاق أصيل ويتجمّد ممتاز.',
+  base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'ممتاز', reheat:'مقلاة 3 دقائق، أو مايكروويف دقيقتين', store:'علب بحصص مع تتبيلتها',
+  prepMin:15, cookMin:16, difficulty:'سهل', kcal:490, p:52, f:28, c:5,
+  snacks:['s04','s02'],
+  ingredients:[
+    {key:'chicken_breast',amt:200},
+    {key:'olive_oil',amt:14},
+    {key:'garlic',amt:4},
+    {key:'baharat',amt:3,alts:['cumin']},
+    {key:'paprika',amt:2},
+    {key:'cumin',amt:2},
+    {key:'lemon',amt:0.25},
+    {key:'mayo',amt:15},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'قطّع الصدر شرائح رفيعة وتبّله بالبهارات والبابريكا والكمون والثوم وعصير الليمون ونصف الزيت. اتركه يتبّل 15 دقيقة إن أمكن.',
+    'سخّن باقي زيت الزيتون في مقلاة واطبخ الدجاج 6–7 دقائق حتى يذهب ويكتسب لوناً ذهبياً.',
+    'حرّك المايونيز مع رشة ثوم لعمل صلصة جانبية.',
+    'برّد الدجاج، قسّمه حصصاً مع الصلصة في علبة منفصلة، وجمّد.'
+  ]
+},
+{
+  id:'m20', emoji:'🥦', name:'دجاج مفروم بالبروكلي والشيدر (جراتان)', equip:'oven',
+  desc:'جراتان دجاج مفروم مع البروكلي والكريمة وطبقة شيدر ذائبة — وجبة كاملة دسمة تتجمّد ممتاز.',
+  base:'chicken_ground', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'مايكروويف دقيقتين، أو فرن 170°م 10 دقائق', store:'علب بحصص',
+  prepMin:15, cookMin:25, difficulty:'متوسط', kcal:530, p:42, f:36, c:6,
+  snacks:['s02','s05'],
+  ingredients:[
+    {key:'chicken_ground',amt:180},
+    {key:'broccoli',amt:100,alts:['cauliflower']},
+    {key:'cheddar',amt:40,alts:['mozzarella']},
+    {key:'cream_cooking',amt:40},
+    {key:'butter',amt:12,alts:['ghee']},
+    {key:'onion',amt:25},
+    {key:'garlic',amt:3},
+    {key:'paprika',amt:2},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن 200°م. اسلق البروكلي 3 دقائق ثم قطّعه قطعاً صغيرة.',
+    'حمّر البصل بالزبدة، أضف الدجاج المفروم وفتّته حتى يذهب، ثم أضف الثوم والبهارات.',
+    'أضف الكريمة والبروكلي ونصف الشيدر وقلّب حتى يمتزج.',
+    'انقل الخليط إلى طبق فرن، وزّع باقي الشيدر فوقه واخبزه 12–15 دقيقة حتى يذوب ويتحمّر.',
+    'برّد تماماً، قسّم حصصاً في علب، وجمّد.'
+  ]
+},
+{
+  id:'m21', emoji:'🍔', name:'صينية تشيزبرغر بالشيدر (كاسرول)', equip:'oven',
+  desc:'لحم مفروم بالشيدر والجبن الكريمي مخبوز كصينية برغر — دسم ومشبع بدون خبز.',
+  base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'فرن 175°م 10 دقائق، أو مايكروويف دقيقتين', store:'مربعات مغلّفة فردياً',
+  prepMin:12, cookMin:25, difficulty:'سهل', kcal:560, p:36, f:44, c:6,
+  snacks:['s02','s04'],
+  ingredients:[
+    {key:'beef_ground',amt:180},
+    {key:'cheddar',amt:40,alts:['mozzarella']},
+    {key:'cream_cheese',amt:25},
+    {key:'eggs',amt:1},
+    {key:'onion',amt:25},
+    {key:'garlic',amt:3},
+    {key:'mustard_dijon',amt:5},
+    {key:'butter',amt:10,alts:['ghee']},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'حمّر البصل بالزبدة، أضف اللحم وفتّته حتى يذهب لونه ثم صفِّ الدهن الزائد.',
+    'أضف الثوم والمسطردة والجبن الكريمي وقلّب حتى يذوب.',
+    'انقل الخليط لقالب صغير، اخلط البيضة فوقه وغطِّ بالشيدر.',
+    'اخبز على 190°م لمدة 18 دقيقة حتى يتحمّر الوجه.',
+    'برّد، قطّع مربعات، غلّفها فردياً، وجمّد.'
+  ]
+},
+{
+  id:'m22', emoji:'🫑', name:'فيلي ستيك باللحم والفلفل (سكيليت)', equip:'both',
+  altMethod:'بالفرن: وزّع الخليط في صينية، غطِّه بالموزاريلا واخبز على 190°م لمدة 12 دقيقة حتى يذوب الجبن.',
+  desc:'لحم مفروم مع فلفل وبصل مكرمل وموزاريلا ذائبة — نكهة فيلي ستيك كاملة.',
+  base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'مايكروويف دقيقتين مع التحريك', store:'علب بحصص',
+  prepMin:12, cookMin:18, difficulty:'سهل', kcal:530, p:35, f:40, c:8,
+  snacks:['s02','s06'],
+  ingredients:[
+    {key:'beef_ground',amt:180},
+    {key:'bell_pepper',amt:60},
+    {key:'onion',amt:35},
+    {key:'mushroom',amt:40,alts:['mushroom_can']},
+    {key:'mozzarella',amt:35,alts:['cheddar']},
+    {key:'garlic',amt:3},
+    {key:'mustard_dijon',amt:5},
+    {key:'olive_oil',amt:10,alts:['butter']},
+    {key:'salt',amt:3},{key:'black_pepper',amt:2}
+  ],
+  steps:[
+    'حمّر الفلفل والبصل والفطر بزيت الزيتون حتى يلين البصل ويكرمل.',
+    'أضف اللحم وفتّته حتى يذهب لونه ثم صفِّ الدهن الزائد.',
+    'أضف الثوم والمسطردة والملح والفلفل وقلّب دقيقتين.',
+    'وزّع الموزاريلا فوق الخليط وغطِّ حتى تذوب.',
+    'برّد، قسّم حصصاً، وجمّد.'
+  ]
+},
+{
+  id:'m23', emoji:'🍝', name:'كرات لحم بصلصة كريمية بيضاء', equip:'stove',
+  desc:'كرات لحم بقري طرية في صلصة كريمة وبارميزان بالثوم — بديل أبيض عن الطماطم.',
+  base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'مايكروويف دقيقتين مع التحريك', store:'كرات مع الصلصة بعلب',
+  prepMin:15, cookMin:22, difficulty:'متوسط', kcal:570, p:36, f:45, c:5,
+  snacks:['s02','s05'],
+  ingredients:[
+    {key:'beef_ground',amt:170},
+    {key:'cream_cooking',amt:60},
+    {key:'parmesan',amt:20,alts:['mozzarella']},
+    {key:'almond_flour',amt:15},
+    {key:'eggs',amt:1},
+    {key:'onion',amt:20},
+    {key:'garlic',amt:4},
+    {key:'butter',amt:15,alts:['ghee']},
+    {key:'parsley',amt:1},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'اخلط اللحم مع البصل المبشور وفص ثوم مفروم ودقيق اللوز والبيضة وشكّل كرات.',
+    'حمّر الكرات بالزبدة من كل جهة حتى تتحمّر ثم ارفعها.',
+    'في نفس المقلاة أضف باقي الثوم والكريمة والبارميزان وقلّب حتى تكثف الصلصة.',
+    'أعد الكرات وغطِّها بالصلصة واطبخ 8 دقائق على نار هادئة، ورشّ البقدونس.',
+    'برّد، وزّع الكرات مع الصلصة في علب، وجمّد.'
+  ]
+},
+{
+  id:'m24', emoji:'🥦', name:'صينية لحم وبروكلي بالشيدر (غراتان)', equip:'oven',
+  desc:'لحم مفروم وبروكلي بصلصة كريمية مغطّى بالشيدر ومخبوز حتى الذهبي.',
+  base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'فرن 175°م 12 دقيقة، أو مايكروويف دقيقتين', store:'مربعات مغلّفة فردياً',
+  prepMin:15, cookMin:25, difficulty:'متوسط', kcal:550, p:36, f:42, c:7,
+  snacks:['s02','s04'],
+  ingredients:[
+    {key:'beef_ground',amt:170},
+    {key:'broccoli',amt:130,alts:['cauliflower']},
+    {key:'cheddar',amt:40,alts:['mozzarella']},
+    {key:'cream_cooking',amt:50},
+    {key:'cream_cheese',amt:20},
+    {key:'onion',amt:25},
+    {key:'garlic',amt:3},
+    {key:'butter',amt:10,alts:['ghee']},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'اسلق البروكلي دقيقتين حتى يطرى قليلاً وصفِّه جيداً.',
+    'حمّر البصل بالزبدة، أضف اللحم وفتّته حتى يذهب لونه ثم صفِّ الدهن.',
+    'أضف الثوم والكريمة والجبن الكريمي وقلّب حتى يصير قواماً كريمياً.',
+    'وزّع اللحم والبروكلي في قالب، غطِّ بالشيدر واخبز على 190°م لمدة 18 دقيقة حتى يتحمّر.',
+    'برّد، قطّع مربعات، غلّفها فردياً، وجمّد.'
+  ]
+},
+{
+  id:'m25', emoji:'🍢', name:'كفتة لحم مشوية بالأعشاب', equip:'both',
+  altMethod:'بالفرن: رتّب أصابع الكفتة في صينية واخبز على 200°م لمدة 18–20 دقيقة مع قلبها مرة.',
+  desc:'أصابع كفتة بقري بالبقدونس والبهارات تُشوى — رائحة خفيفة وكربوهيدرات منخفضة جداً.',
+  base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'ممتاز', reheat:'مقلاة أو شواية دقيقتين لكل جهة، أو مايكروويف 1.5 دقيقة', store:'أصابع مفصولة بورق',
+  prepMin:15, cookMin:14, difficulty:'سهل', kcal:500, p:37, f:38, c:4,
+  snacks:['s01','s04'],
+  ingredients:[
+    {key:'beef_ground',amt:190},
+    {key:'onion',amt:30},
+    {key:'parsley',amt:1},
+    {key:'garlic',amt:3},
+    {key:'baharat',amt:3,alts:['cumin']},
+    {key:'cumin',amt:2},
+    {key:'paprika',amt:2},
+    {key:'olive_oil',amt:10},
+    {key:'salt',amt:3},{key:'black_pepper',amt:2}
+  ],
+  steps:[
+    'اعجن اللحم مع البصل المبشور والبقدونس المفروم والثوم والبهارات جيداً حتى يتماسك.',
+    'بلّل يديك وشكّل العجينة أصابع مفلطحة حول أسياخ أو بدونها.',
+    'ادهنها بقليل من زيت الزيتون واشوِها على شواية ساخنة 4–5 دقائق لكل جهة حتى تنضج.',
+    'اتركها ترتاح دقيقتين لتحافظ على العصارة.',
+    'برّد، افصل الأصابع بورق زبدة، غلّف، وجمّد.'
+  ]
+},
+{
+  id:'m26', emoji:'🍕', name:'مافن البيض بالبيتزا والموزاريلا', equip:'oven',
+  desc:'كؤوس بيض بنكهة البيتزا — موزاريلا ذائبة ولمسة معجون طماطم، خفيفة الرائحة ومثالية للعمل.',
+  base:'eggs', diets:['normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'مايكروويف 45–60 ثانية، أو تؤكل باردة', store:'علب فردية أو لفّها فرديّاً في كيس مفرّغ',
+  prepMin:12, cookMin:20, difficulty:'سهل جداً', kcal:310, p:22, f:23, c:4,
+  snacks:['s02','s03'],
+  ingredients:[
+    {key:'eggs',amt:3},
+    {key:'mozzarella',amt:45,alts:['cheddar']},
+    {key:'tomato_paste',amt:15},
+    {key:'bell_pepper',amt:30,alts:['mushroom']},
+    {key:'cream_cooking',amt:20,alts:['labneh']},
+    {key:'olive_oil',amt:5,alts:['butter']},
+    {key:'oregano',amt:1,alts:['italian_herbs']},
+    {key:'salt',amt:2},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن على 180°م ودهّن قالب المافن بالزيت.',
+    'اخفق البيض مع الكريمة ومعجون الطماطم والملح والفلفل والأوريغانو.',
+    'قطّع الفلفل الرومي مكعّبات صغيرة ووزّعه مع نصف الموزاريلا في فتحات القالب.',
+    'صبّ خليط البيض فوقها ثم رشّ باقي الموزاريلا على الوجه.',
+    'اخبز 18–20 دقيقة حتى يتماسك ويذهب الوجه ويذوب الجبن.',
+    'برّدها تماماً ثم جمّدها في علب فردية.'
+  ]
+},
+{
+  id:'m27', emoji:'🍳', name:'عجة البيض باللحم المفروم والشيدر', equip:'both',
+  altMethod:'بدون فرن: اطبخ اللحم في المقلاة كما هو، اسكب خليط البيض فوقه على نار هادئة جداً مع غطاء 8–10 دقائق حتى يتماسك، ثم اقلب نصفه أو قطّعه مربعات.',
+  desc:'عجة سميكة مشبعة باللحم المفروم والشيدر — بروتين عالٍ ورائحة خفيفة، تصلح وجبة كاملة.',
+  base:'eggs', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'مايكروويف 60–75 ثانية، أو في مقلاة مغطاة دقيقتين', store:'قطّعها مربعات في علب فردية',
+  prepMin:12, cookMin:25, difficulty:'سهل', kcal:380, p:27, f:28, c:3,
+  snacks:['s02','s03'],
+  ingredients:[
+    {key:'eggs',amt:3},
+    {key:'beef_ground',amt:60,alts:['chicken_ground']},
+    {key:'cheddar',amt:35,alts:['mozzarella']},
+    {key:'onion',amt:20,alts:['green_onion']},
+    {key:'cream_cooking',amt:20,alts:['labneh']},
+    {key:'butter',amt:5,alts:['olive_oil']},
+    {key:'baharat',amt:1,alts:['cumin']},
+    {key:'salt',amt:2},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن على 180°م ودهّن قالباً صغيراً بالزبدة.',
+    'حمّر البصل المفروم ثم اللحم المفروم مع البهارات والملح والفلفل حتى ينضج وتتبخّر السوائل.',
+    'اخفق البيض مع الكريمة ورشّة ملح.',
+    'وزّع اللحم ونصف الشيدر في القالب ثم صبّ خليط البيض ورشّ باقي الجبن.',
+    'اخبز 20–22 دقيقة حتى يتماسك ويذهب الوجه.',
+    'برّدها تماماً، قطّعها مربعات وجمّدها في علب فردية.'
+  ]
+},
+{
+  id:'m28', emoji:'🥦', name:'كيش البروكلي والشيدر (بدون قشرة)', equip:'oven',
+  desc:'كيش غنيّ بالبروكلي والشيدر بلا قشرة — متماسك يتقطّع شرائح أنيقة للعمل ورائحته لطيفة.',
+  base:'eggs', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'مايكروويف 60–75 ثانية، أو فرن 160°م لـ8 دقائق', store:'شرائح فردية في علب أو كيس مفرّغ',
+  prepMin:15, cookMin:30, difficulty:'سهل', kcal:340, p:20, f:27, c:4,
+  snacks:['s02','s03'],
+  ingredients:[
+    {key:'eggs',amt:3},
+    {key:'broccoli',amt:80,alts:['cauliflower']},
+    {key:'cheddar',amt:40,alts:['mozzarella']},
+    {key:'cream_cooking',amt:40,alts:['cream_cheese']},
+    {key:'parmesan',amt:10,alts:['mozzarella']},
+    {key:'butter',amt:5,alts:['olive_oil']},
+    {key:'garlic',amt:1},
+    {key:'salt',amt:2},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن على 180°م ودهّن قالب كيش بالزبدة.',
+    'قطّع البروكلي زهيرات صغيرة وسلقه أو بخّره 3 دقائق حتى يطرى قليلاً وصفّه جيداً.',
+    'اخفق البيض مع الكريمة والثوم المهروس والملح والفلفل.',
+    'وزّع البروكلي والشيدر في القالب ثم صبّ خليط البيض ورشّ البارميزان على الوجه.',
+    'اخبز 26–30 دقيقة حتى يتماسك المركز ويصبح الوجه ذهبياً.',
+    'برّده تماماً، قطّعه شرائح وجمّدها فرديّاً.'
+  ]
+},
+{
+  id:'m29', emoji:'🧀', name:'جراتان السمك الأبيض بالقرنبيط والجبن', equip:'oven',
+  desc:'صينية سمك أبيض مع قرنبيط وصلصة جبن كريمية مخبوزة — مشبعة ودسمة، تتجمّد وتُسخّن بسهولة.',
+  base:'white_fish', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'ممتاز', reheat:'فرن 170°م لـ12 دقيقة مغطّى لتسخين لطيف يقلّل الرائحة، أو مايكروويف بقدرة متوسطة 90 ثانية', store:'علب فردية محكمة الغلق',
+  prepMin:18, cookMin:28, difficulty:'متوسط', kcal:360, p:30, f:24, c:5,
+  snacks:['s02','s03'],
+  ingredients:[
+    {key:'white_fish',amt:130,alts:['chicken_breast']},
+    {key:'cauliflower',amt:100,alts:['broccoli']},
+    {key:'cheddar',amt:35,alts:['mozzarella']},
+    {key:'cream_cooking',amt:50,alts:['cream_cheese']},
+    {key:'butter',amt:8,alts:['olive_oil']},
+    {key:'dill',amt:1,alts:['parsley']},
+    {key:'lemon',amt:0.25},
+    {key:'garlic',amt:1},
+    {key:'salt',amt:2},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن على 190°م ودهّن صينية صغيرة بالزبدة.',
+    'قطّع القرنبيط زهيرات وبخّره أو اسلقه 5 دقائق حتى يطرى وصفّه جيداً.',
+    'قطّع السمك مكعّبات، تبّله بالملح والفلفل وعصير الليمون.',
+    'سخّن الكريمة مع الزبدة والثوم المهروس ونصف الشيدر والشبت حتى تصبح صلصة ناعمة.',
+    'وزّع السمك والقرنبيط في الصينية، اغمرها بصلصة الجبن ورشّ باقي الشيدر.',
+    'اخبز 22–28 دقيقة حتى ينضج السمك ويتذهّب الوجه.',
+    'برّده تماماً ثم جمّده في علب فردية محكمة.'
+  ]
+},
+{
+  id:'m30', emoji:'🐟', name:'كرات السمك الأبيض بالموزاريلا', equip:'both',
+  altMethod:'بدون فرن: اقلِ الكرات في مقلاة بقليل من الزيت على نار متوسطة 3–4 دقائق لكل جهة حتى تتذهّب وتنضج من الداخل.',
+  desc:'كرات سمك طريّة محشوة بالموزاريلا الذائبة — مربوطة بدقيق اللوز بلا حشوات نشوية، عملية للتجميد فرديّاً.',
+  base:'white_fish', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'ممتاز', reheat:'فرن 170°م لـ10 دقائق لتسخين لطيف يخفّف الرائحة، أو مايكروويف بقدرة متوسطة 70 ثانية، أو تؤكل باردة', store:'جمّدها فرديّاً على صينية ثم انقلها لكيس مفرّغ',
+  prepMin:20, cookMin:18, difficulty:'متوسط', kcal:330, p:29, f:21, c:4,
+  snacks:['s02','s03'],
+  ingredients:[
+    {key:'white_fish',amt:140,alts:['chicken_breast']},
+    {key:'mozzarella',amt:40,alts:['cheddar']},
+    {key:'eggs',amt:1},
+    {key:'almond_flour',amt:20,alts:['coconut_flour']},
+    {key:'parsley',amt:1,alts:['dill']},
+    {key:'mayo',amt:10,alts:['olive_oil']},
+    {key:'lemon',amt:0.25},
+    {key:'garlic',amt:1},
+    {key:'cumin',amt:1,alts:['paprika']},
+    {key:'salt',amt:2},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن على 200°م وبطّن صينية بورق الخبز.',
+    'افرم السمك ناعماً واخلطه مع البيض ودقيق اللوز والمايونيز والبقدونس والثوم والكمون والملح والفلفل وعصير الليمون.',
+    'برّد الخليط في الثلاجة 15 دقيقة ليتماسك.',
+    'شكّل كرات، احشُ كل واحدة بمكعّب موزاريلا وأغلقها جيداً.',
+    'رتّبها على الصينية واخبزها 16–18 دقيقة حتى تتذهّب وتنضج.',
+    'برّدها تماماً، جمّدها فرديّاً على صينية ثم انقلها إلى كيس مفرّغ.'
+  ]
+},
+{
+  id:'m31', emoji:'🥙', name:'كفتة اللحم بصلصة الطحينة', equip:'both',
+  altMethod:'بدون فرن: اقلِ أصابع الكفتة في مقلاة بزيت الزيتون 4 دقائق لكل جهة حتى تذهب، ثم اسكب صلصة الطحينة فوقها.',
+  desc:'كفتة لحم بقري بالبقدونس مع صلصة طحينة بالليمون والثوم — نكهة عربية أصيلة تتجمّد ممتاز.',
+  base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'ممتاز', reheat:'مايكروويف دقيقتين مع التحريك، أو فرن 170°م 10 دقائق', store:'كفتة في علبة وصلصة الطحينة منفصلة (حرّكها عند التسخين)',
+  prepMin:15, cookMin:18, difficulty:'متوسط', kcal:580, p:38, f:44, c:6,
+  snacks:['s04','s02'],
+  ingredients:[
+    {key:'beef_ground',amt:180},
+    {key:'onion',amt:30},
+    {key:'parsley',amt:1,alts:['cilantro']},
+    {key:'tahini',amt:25},
+    {key:'garlic',amt:3},
+    {key:'lemon',amt:0.5},
+    {key:'baharat',amt:3,alts:['cumin']},
+    {key:'olive_oil',amt:8},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن 200°م. اعجن اللحم مع البصل المبشور والبقدونس المفروم والبهارات والملح والفلفل حتى يتماسك.',
+    'شكّل العجينة أصابع كفتة ورتّبها في صينية، ادهنها بزيت الزيتون.',
+    'اخبزها 16–18 دقيقة حتى تنضج وتتحمّر.',
+    'حضّر صلصة الطحينة: اخفق الطحينة مع عصير الليمون والثوم المهروس ورشة ملح، وأضف ماءً بارداً تدريجياً حتى قوام كريمي ناعم.',
+    'برّد الكفتة تماماً، وخزّنها مع صلصة الطحينة في علبة منفصلة، وجمّد. حرّك الصلصة عند التسخين.'
+  ]
+},
+{
+  id:'m32', emoji:'🍗', name:'دجاج بصلصة الطحينة والثوم (سكيليت)', equip:'stove',
+  desc:'مكعبات صدر دجاج مغموسة في صلصة طحينة كريمية بالثوم والليمون — دسمة ومشبعة بدون فرن.',
+  base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'low',
+  freeze:'ممتاز', reheat:'مايكروويف دقيقتين مع التحريك ورشة ماء', store:'علب بحصص (الصلصة تغطّي الدجاج)',
+  prepMin:12, cookMin:16, difficulty:'سهل', kcal:560, p:52, f:34, c:5,
+  snacks:['s05','s02'],
+  ingredients:[
+    {key:'chicken_breast',amt:200},
+    {key:'tahini',amt:25},
+    {key:'garlic',amt:4},
+    {key:'lemon',amt:0.5},
+    {key:'olive_oil',amt:12},
+    {key:'cumin',amt:2},
+    {key:'parsley',amt:0.25,alts:['cilantro']},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'قطّع الصدر مكعبات وتبّله بالملح والفلفل والكمون.',
+    'سخّن زيت الزيتون واقلِ الدجاج 6–7 دقائق حتى يذهب وينضج، ثم أضف الثوم المهروس وقلّب 30 ثانية.',
+    'اخفق الطحينة مع عصير الليمون ونصف كوب ماء حتى تصير صلصة ناعمة.',
+    'اسكب صلصة الطحينة على الدجاج واتركها تغلي خفيفاً 2–3 دقائق حتى تتكاثف (لا تغلِها كثيراً حتى لا تتفصّل).',
+    'رشّ البقدونس، برّد، قسّم حصصاً، وجمّد. أضف رشة ماء عند التسخين.'
+  ]
+},
+{
+  id:'m33', emoji:'🐟', name:'سمك أبيض بصلصة الطحينة (بالفرن)', equip:'both',
+  altMethod:'بدون فرن: اطبخ الفيليه في مقلاة بزيت الزيتون 3–4 دقائق لكل جهة، ثم اسكب صلصة الطحينة فوقه ودعها تسخن دقيقة.',
+  desc:'فيليه سمك أبيض مغطّى بصلصة الطحينة بالليمون والبصل — على طريقة «صيادية» كيتو، دسم ولذيذ.',
+  base:'white_fish', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'جيد', reheat:'فرن 160°م 10 دقائق (تسخين لطيف يقلّل الرائحة)، أو مايكروويف بقدرة متوسطة 90 ثانية', store:'علب فردية محكمة الغلق',
+  prepMin:14, cookMin:20, difficulty:'متوسط', kcal:480, p:46, f:28, c:6,
+  snacks:['s04','s05'],
+  ingredients:[
+    {key:'white_fish',amt:200},
+    {key:'tahini',amt:30},
+    {key:'onion',amt:40},
+    {key:'garlic',amt:3},
+    {key:'lemon',amt:0.5},
+    {key:'olive_oil',amt:10},
+    {key:'cumin',amt:2},
+    {key:'parsley',amt:0.25,alts:['cilantro']},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'سخّن الفرن 190°م. سيّح الفيليه وجفّفه جيداً وتبّله بالملح والفلفل والكمون.',
+    'قلّب البصل الشرائح في زيت الزيتون حتى يذبل ويتحمّر قليلاً.',
+    'اخفق الطحينة مع عصير الليمون والثوم المهروس ونصف كوب ماء حتى قوام كريمي.',
+    'رتّب الفيليه في صينية، وزّع البصل فوقه ثم اسكب صلصة الطحينة لتغطّيه.',
+    'اخبز 16–20 دقيقة حتى ينضج السمك وتتماسك الصلصة وتتحمّر أطرافها.',
+    'رشّ البقدونس، برّد تماماً، وجمّد في علب فردية. سخّن بلطف لتقليل الرائحة.'
+  ]
+}
+];
+const GUIDE_PHASES = {
+  strict:    { emoji:'🔴', name:'الكيتو الصارم',  goal:'دخول الكيتوزس',  color:'var(--strict)',    glow:'var(--strict-glow)',
+    note:'الهدف دخول الحالة الكيتونية بأسرع وقت. صافي الكارب ≈ <b>20جم/يوم</b>. حتى المسموح «المشروط» يُؤخذ بأقل كمية.' },
+  normal:    { emoji:'🟠', name:'الكيتو العادي',  goal:'إنقاص الوزن',     color:'var(--normal)',    glow:'var(--normal-glow)',
+    note:'بعد ثبات الكيتوزس. صافي الكارب ≈ <b>20–40جم/يوم</b>. مرونة أكبر مع التوت والزبادي والخضار مع مراقبة الكمية.' },
+  lifestyle: { emoji:'🟢', name:'كيتو لايف ستايل', goal:'المحافظة',       color:'var(--lifestyle)', glow:'var(--lifestyle-glow)',
+    note:'مرحلة المحافظة بعد بلوغ الوزن المستهدف. صافي الكارب ≈ <b>40–70جم/يوم</b>. أوسع مرونة مع الكارب النظيف.' }
+};
+const GUIDE_CATS = {
+  sw:{e:'🍬',n:'المحليات والسكر'}, dr:{e:'☕',n:'المشروبات'}, da:{e:'🧀',n:'الألبان والأجبان'},
+  pr:{e:'🍗',n:'البروتينات'}, ft:{e:'🥑',n:'الدهون والزيوت'}, vg:{e:'🥦',n:'الخضار'},
+  fr:{e:'🫐',n:'الفواكه'}, nu:{e:'🌰',n:'المكسرات والبذور'}, fl:{e:'🍞',n:'الدقيق والمخبوزات'}, co:{e:'🧂',n:'التوابل والصلصات'}
+};
+const GSMAP = { y:{cls:'yes',lbl:'مسموح',sym:'✓'}, c:{cls:'cond',lbl:'مشروط',sym:'⚠'}, n:{cls:'no',lbl:'ممنوع',sym:'✕'} };
+const GUIDE_DATA = [
+ {cat:'sw',e:'🌿',n:'ستيفيا (نقية)',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> نقية بدون سكر/مالتوديكسترين مضاف. صفر تأثير على سكر الدم.',pc:{strict:'القهوة + ستيفيا نقية = ✅ مسموح حتى في الصارم.'}},
+ {cat:'sw',e:'🧊',n:'إريثريتول',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> نقي. لا يُحتسب في الكارب عملياً. الأفضل للخبز.'},
+ {cat:'sw',e:'🍈',n:'مونك فروت',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> نقي أو مخلوط بإريثريتول فقط.'},
+ {cat:'sw',e:'💧',n:'سكرالوز',s:{strict:'c',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> السائل النقي أفضل؛ مسحوق «سبليندا» فيه مالتوديكسترين يرفع السكر.',pc:{strict:'بالصارم: قطرات سائلة فقط، تجنّب المسحوق المعبأ.'}},
+ {cat:'sw',e:'🌳',n:'إكسيليتول',s:{strict:'c',normal:'c',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> باعتدال — يُحتسب نصف كاربه. (⚠ سام للكلاب).'},
+ {cat:'sw',e:'🍬',n:'مالتيتول',s:{strict:'n',normal:'n',lifestyle:'c'},cond:'يرفع السكر بوضوح رغم أنه «كحول سكري». موجود في منتجات «الكيتو» التجارية — احذره.',pc:{lifestyle:'بكمية ضئيلة جداً مع احتساب أثره.'}},
+ {cat:'sw',e:'🍯',n:'العسل / القيقب / الأغاف',s:{strict:'n',normal:'n',lifestyle:'n'},cond:'سكر صافٍ يكسر الكيتوزس فوراً. لا فرق بين الطبيعي والمصنّع.'},
+ {cat:'sw',e:'🟤',n:'سكر القصب/الأبيض/البني/جوز الهند',s:{strict:'n',normal:'n',lifestyle:'n'},cond:'ممنوع في كل المراحل. سكر جوز الهند ليس استثناءً.'},
+ {cat:'sw',e:'🌴',n:'التمر / الفواكه المجففة',s:{strict:'n',normal:'n',lifestyle:'n'},cond:'كثافة سكرية عالية (تمرة ≈ 16–18جم كارب).'},
+ {cat:'dr',e:'💦',n:'الماء (وغازي سادة)',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'أساس النظام. الماء الغازي السادة بدون نكهات سكرية مسموح.'},
+ {cat:'dr',e:'☕',n:'قهوة سوداء',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'مسموحة تماماً بدون سكر. أضف ستيفيا/إريثريتول، وقشطة ثقيلة للدهون.'},
+ {cat:'dr',e:'🍵',n:'شاي (أخضر/أسود/أعشاب)',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'بدون سكر. الأعشاب خيار ممتاز.'},
+ {cat:'dr',e:'🥛',n:'قهوة/مشروب بالحليب البقري',s:{strict:'c',normal:'c',lifestyle:'c'},cond:'<span class="ck">الشرط:</span> الحليب فيه لاكتوز ≈12جم/كوب. رشّة بسيطة مقبولة؛ الكوب الكامل لا.',pc:{strict:'استبدله بكريمة ثقيلة أو حليب لوز/جوز هند غير محلّى.',normal:'كمية محدودة محسوبة.',lifestyle:'كوب صغير أحياناً مع الاحتساب.'}},
+ {cat:'dr',e:'🥤',n:'مشروبات دايت غازية',s:{strict:'c',normal:'c',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> خالية سكر، لكن قد تثير الرغبة في الحلويات.',pc:{strict:'يُفضّل تجنّبها حتى لا تبطئ الكيتوزس.',lifestyle:'باعتدال لا بأس.'}},
+ {cat:'dr',e:'🧃',n:'عصائر الفواكه (حتى الطبيعية)',s:{strict:'n',normal:'n',lifestyle:'n'},cond:'سكر مركّز سريع الامتصاص. حتى «الطازج 100%» ممنوع.'},
+ {cat:'dr',e:'🍺',n:'الكحول (نبيذ جاف/سبيرت)',s:{strict:'n',normal:'c',lifestyle:'c'},cond:'<span class="ck">الشرط:</span> الجاف فقط وبكمية قليلة؛ يوقف حرق الدهون مؤقتاً.',pc:{strict:'ممنوع بالصارم (يعطّل الكيتوزس).'}},
+ {cat:'da',e:'🧀',n:'الأجبان الصلبة (شيدر/موزاريلا/بارميزان)',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'لاكتوزها منخفض جداً بعد التعتيق. أساس في وصفاتك.'},
+ {cat:'da',e:'🧈',n:'الجبن الكريمي / القشطة الثقيلة',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'دهون عالية وكارب منخفض. ممتازة للصلصات.'},
+ {cat:'da',e:'🥣',n:'زبادي يوناني كامل الدسم (سادة)',s:{strict:'c',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> كامل الدسم + سادة + بدون سكر. ≈4–6جم كارب/100جم.',pc:{strict:'كمية صغيرة محسوبة (≤100جم). والأفضل تصفيته لبنة لتقليل اللاكتوز.',normal:'باعتدال مع احتساب الكارب.',lifestyle:'مسموح بحرية أكبر.'}},
+ {cat:'da',e:'🥛',n:'اللبنة / الزبادي المصفّى',s:{strict:'c',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> سادة كاملة الدسم. التصفية تُخرج اللاكتوز مع الويّ فتقل الكاربات. → انظر تبويب التحويلات.'},
+ {cat:'da',e:'🐄',n:'الحليب البقري العادي',s:{strict:'n',normal:'c',lifestyle:'c'},cond:'لاكتوز مرتفع (≈12جم/كوب). بدّله بحليب لوز/جوز هند غير محلّى.',pc:{normal:'رشّات صغيرة فقط.',lifestyle:'كميات صغيرة محسوبة.'}},
+ {cat:'da',e:'🥥',n:'حليب اللوز/جوز الهند غير المحلّى',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> «غير محلّى». بديل ممتاز للحليب.'},
+ {cat:'pr',e:'🍗',n:'الدجاج واللحوم والأسماك',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'أساس النظام: صدر الدجاج، المفروم، فيليه السمك. بلا كارب تقريباً.'},
+ {cat:'pr',e:'🥚',n:'البيض',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'مثالي للكيتو في كل المراحل.'},
+ {cat:'pr',e:'🌭',n:'اللحوم المصنّعة (نقانق/مرتديلا)',s:{strict:'c',normal:'c',lifestyle:'c'},cond:'<span class="ck">الشرط:</span> اقرأ الملصق — كثير منها فيه سكر/نشا/دقيق. اختر ما كاربه ≤1–2جم.'},
+ {cat:'ft',e:'🧈',n:'الزبدة والسمن',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'دهون نقية بلا كارب. مصدر طاقة أساسي.'},
+ {cat:'ft',e:'🫒',n:'زيت الزيتون/جوز الهند/الأفوكادو',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'دهون ممتازة. زيت جوز الهند يرفع الكيتونات (MCT).'},
+ {cat:'ft',e:'🥑',n:'الأفوكادو',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'منخفض الكارب الصافي (≈2جم/نصف حبة). سناك ممتاز.'},
+ {cat:'ft',e:'🥚',n:'المايونيز',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> كامل الدسم بدون سكر (تجنّب «اللايت»).'},
+ {cat:'ft',e:'🚫',n:'المارجرين والزيوت المهدرجة',s:{strict:'n',normal:'n',lifestyle:'c'},cond:'دهون متحولة وزيوت بذور مكررة. يُفضّل تجنّبها.'},
+ {cat:'vg',e:'🥬',n:'الورقيات (سبانخ/خس/جرجير)',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'الأقل كارباً والأعلى أليافاً — كُل بحرية.'},
+ {cat:'vg',e:'🥦',n:'خضار فوق الأرض (بروكلي/قرنبيط/كوسا)',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'منخفضة الكارب. القرنبيط بديل الأرز والبطاطس.'},
+ {cat:'vg',e:'🍅',n:'الطماطم والبصل',s:{strict:'c',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> كمية محدودة — كاربها أعلى من الورقيات.',pc:{strict:'كميات صغيرة محسوبة (لذلك معجون الطماطم يُؤجَّل للعادي).'}},
+ {cat:'vg',e:'🥕',n:'الجزر / الشمندر',s:{strict:'c',normal:'c',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> نشوية نسبياً — كميات قليلة محسوبة.'},
+ {cat:'vg',e:'🥔',n:'البطاطس/الذرة/البازلاء',s:{strict:'n',normal:'n',lifestyle:'c'},cond:'نشويات عالية تكسر الكيتوزس.',pc:{lifestyle:'ملعقة عرضية ضمن سقف الكارب.'}},
+ {cat:'fr',e:'🍋',n:'الليمون والحامض (قليل)',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'كمية قليلة للنكهة — أثرها ضئيل.'},
+ {cat:'fr',e:'🫐',n:'التوت (فراولة/توت أزرق)',s:{strict:'c',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> أقل الفواكه كارباً، بكمية صغيرة.',pc:{strict:'حفنة صغيرة جداً (≈30جم) نادراً.',normal:'≈½ كوب باعتدال.',lifestyle:'بكمية أوسع.'}},
+ {cat:'fr',e:'🍌',n:'الموز/التفاح/العنب/المانجو',s:{strict:'n',normal:'n',lifestyle:'c'},cond:'سكر فواكه مرتفع يكسر الكيتوزس.',pc:{lifestyle:'قطعة صغيرة نادرة مع احتساب الكارب.'}},
+ {cat:'nu',e:'🌰',n:'اللوز/عين الجمل/البقان/المكاداميا',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> باعتدال (حفنة ≈30جم). المكاداميا والبقان الأقل كارباً.'},
+ {cat:'nu',e:'🥜',n:'الكاجو / الفستق',s:{strict:'c',normal:'c',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> أعلى كارباً — كميات صغيرة فقط.'},
+ {cat:'nu',e:'🟤',n:'الطحينة / السمسم',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> الحصة المعتدلة (≈25–30جم ≈ 2–3جم كارب صافٍ) مناسبة حتى للصارم.'},
+ {cat:'nu',e:'🌱',n:'بذور الشيا والكتان والسيلليوم',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'غنية بالألياف (كاربها الصافي منخفض). السيلليوم مثبّت ممتاز للخبز.'},
+ {cat:'fl',e:'🌰',n:'دقيق اللوز / جوز الهند',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'البديل الأساسي للدقيق الأبيض في المخبوزات.'},
+ {cat:'fl',e:'🍞',n:'دقيق القمح/الذرة/الأرز',s:{strict:'n',normal:'n',lifestyle:'n'},cond:'نشويات صرفة. ممنوعة في كل المراحل.'},
+ {cat:'fl',e:'🥖',n:'الخبز/الأرز/المكرونة/المعجنات',s:{strict:'n',normal:'n',lifestyle:'n'},cond:'أساس ممنوع. استخدم بدائل القرنبيط ودقيق اللوز. → انظر التحويلات.'},
+ {cat:'co',e:'🧂',n:'الملح والبهارات والأعشاب',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'بلا كارب تقريباً. الملح مهم لتعويض الأملاح.'},
+ {cat:'co',e:'🫙',n:'الخل / الخردل / الصويا صوص',s:{strict:'y',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> الخردل والخل ممتازان؛ الصويا صوص بكمية قليلة بلا سكر.'},
+ {cat:'co',e:'🍅',n:'معجون الطماطم',s:{strict:'c',normal:'y',lifestyle:'y'},cond:'<span class="ck">الشرط:</span> مركّز سكر الطماطم. لذلك وصفاتك بالطماطم «عادي/لايف ستايل».',pc:{strict:'تُؤجَّل وصفاته أو كمية ضئيلة محسوبة.'}},
+ {cat:'co',e:'🍯',n:'الكاتشب/الصلصات المحلّاة/الباربكيو',s:{strict:'n',normal:'n',lifestyle:'c'},cond:'محمّلة بالسكر. ابحث عن «بدون سكر مضاف». → انظر التحويلات.',pc:{lifestyle:'النسخ الخالية من السكر فقط.'}}
+];
+
+// ============================================================
+// SWAPS DATA (forbidden → allowed transformations)
+// ============================================================
+const SWAPS = [
+ {cat:'الألبان — مبدأ التصفية',from:{e:'🥛',n:'حليب كامل الدسم'},to:{e:'🧀',n:'جبنة منزلية طازجة'},
+  how:'<span class="sk">طريقتك صحيحة:</span> سخّن الحليب حتى يكاد يغلي، أطفئه وأضف عصير الليمون فيتخثّر، اتركه يبرد ساعتين ثم صفّه. <b>اللاكتوز (سكر الحليب) يخرج مع الماء/الويّ</b>، والمتبقي بروتين ودهون — كلما صفّيت أكثر قلّ الكارب. مناسبة للكيتو باعتدال.'},
+ {cat:'الألبان — مبدأ التصفية',from:{e:'🥣',n:'زبادي عادي'},to:{e:'🧈',n:'لبنة مصفّاة (24 ساعة)'},
+  how:'<span class="sk">طريقتك ممتازة:</span> زبادي كامل الدسم في صفاية مع كبسٍ خفيف 24 ساعة. <b>يخرج الويّ المحمّل باللاكتوز فيثقل القوام وتقلّ الكاربات</b> ويزداد تركيز البروتين والدهون — وهذا هو مبدأ اللبنة/الزبادي اليوناني تماماً. مناسبة (كاملة الدسم وسادة).'},
+ {cat:'الألبان — مبدأ التصفية',from:{e:'🐄',n:'قشدة سائلة'},to:{e:'🧀',n:'جبن كريمي / ماسكاربوني منزلي'},
+  how:'<span class="sk">نفس المبدأ:</span> قشطة ثقيلة + قليل ليمون، تسخين خفيف ثم تصفية — جبن دسم منخفض الكارب للصلصات والحلى الكيتوني.'},
+ {cat:'النشويات',from:{e:'🍚',n:'الأرز'},to:{e:'🥦',n:'أرز القرنبيط'},
+  how:'<span class="sk">ابشر</span> القرنبيط بالمبشرة أو الخلاط حتى يشبه حبات الأرز، ثم قلّبه بالزبدة 3–4 دقائق. ≈3جم كارب صافٍ بدل ≈45جم.'},
+ {cat:'النشويات',from:{e:'🍝',n:'المكرونة/السباغيتي'},to:{e:'🥒',n:'نودلز الكوسا (زودلز)'},
+  how:'<span class="sk">قطّع</span> الكوسا بمبشرة لولبية، اسلقها دقيقة أو قلّبها سريعاً. أو استخدم القرع الإسباجيتي، أو شعيرية الشيراتاكي (≈0 كارب).'},
+ {cat:'النشويات',from:{e:'🥔',n:'البطاطس المهروسة'},to:{e:'🥦',n:'قرنبيط مهروس'},
+  how:'<span class="sk">اسلق</span> القرنبيط ثم اهرسه مع زبدة وقشطة وثوم وملح — قوام كريمي قريب جداً من البطاطس بكارب أقل بكثير.'},
+ {cat:'النشويات',from:{e:'🍟',n:'البطاطس المقلية'},to:{e:'🥒',n:'أصابع اللفت/الكوسا بالفرن'},
+  how:'<span class="sk">قطّع</span> اللفت أو الكوسا أصابع، زيت زيتون وملح وبابريكا، واشوِها بالفرن حتى تتحمّر.'},
+ {cat:'الخبز والمخبوزات',from:{e:'🍞',n:'الخبز'},to:{e:'🥖',n:'خبز دقيق اللوز / خبز السحابة'},
+  how:'<span class="sk">دقيق اللوز</span> + بيض + بيكنج بودر + سيلليوم. أو «خبز السحابة»: بياض بيض مخفوق + جبن كريمي بالفرن. بديل للسندويتش.'},
+ {cat:'الخبز والمخبوزات',from:{e:'🍕',n:'عجينة البيتزا'},to:{e:'🧀',n:'عجينة فات-هيد / قاعدة الدجاج'},
+  how:'<span class="sk">فات-هيد:</span> موزاريلا مذابة + دقيق لوز + بيض كقاعدة مقرمشة. أو افرد دجاجاً مفروماً متبّلاً كقاعدة بروتين خالصة.'},
+ {cat:'الخبز والمخبوزات',from:{e:'🥣',n:'بقسماط التغطية (للتكوير)'},to:{e:'🌰',n:'دقيق اللوز + بارميزان'},
+  how:'<span class="sk">اخلط</span> دقيق اللوز مع بارميزان مبشور وبهارات لتغطية الدجاج/السمك قبل القلي أو الفرن — قرمشة بلا نشا.'},
+ {cat:'السكر والحلويات',from:{e:'🍬',n:'السكر'},to:{e:'🌿',n:'إريثريتول / ستيفيا'},
+  how:'<span class="sk">استبدل</span> بنسبة مكافئة (انظر الملصق). الإريثريتول الأفضل للخبز، والستيفيا للمشروبات.'},
+ {cat:'السكر والحلويات',from:{e:'🍨',n:'الآيس كريم'},to:{e:'🍦',n:'آيس كريم كيتو'},
+  how:'<span class="sk">اخفق</span> قشطة ثقيلة + إريثريتول + فانيلا (+ صفار بيض)، جمّدها مع تقليب. أو موز/أفوكادو مهروس مجمّد للايف ستايل.'},
+ {cat:'السكر والحلويات',from:{e:'🍫',n:'الشوكولاتة بالسكر'},to:{e:'🍫',n:'كاكاو خام + محلٍّ كيتو'},
+  how:'<span class="sk">اخلط</span> كاكاو خام + زيت جوز هند + إريثريتول، صبّه وجمّده. أو شوكولاتة داكنة ≥85% باعتدال.'},
+ {cat:'المقرمشات',from:{e:'🥔',n:'رقائق البطاطس (شيبس)'},to:{e:'🧀',n:'رقائق جبن مقرمشة'},
+  how:'<span class="sk">ضع</span> أكوام موزاريلا/بارميزان صغيرة بالفرن حتى تتحمّر وتتصلّب. أو رقائق الكوسا/الكرنب المشوية.'},
+ {cat:'الصلصات',from:{e:'🍅',n:'كاتشب بالسكر'},to:{e:'🥫',n:'كاتشب كيتو منزلي'},
+  how:'<span class="sk">اطبخ</span> معجون طماطم قليل + خل + ماء + ملح + ستيفيا حتى يتماسك. (لمراحل العادي/لايف ستايل لاحتواء الطماطم).'},
+ {cat:'المشروبات',from:{e:'🧃',n:'العصير/المشروبات السكرية'},to:{e:'🍋',n:'ماء بالنكهة'},
+  how:'<span class="sk">امزج</span> ماء (أو ماء غازي) + شرائح ليمون/خيار/نعناع + قطرات ستيفيا. منعش وصفر سكر.'}
+];
+const SECTIONS = [
+ { e:'🥚', title:'البيض', recipes:[
+   { name:'عجة الجبن', meta:['١٠ دقائق','مقلاة'],
+     ing:['٣ بيضات','حفنة جبن شيدر أو موزاريلا مبشور','م.ك زبدة','ملح وفلفل أسود'],
+     steps:['اخفق البيض مع الملح والفلفل.','ذوّب الزبدة في مقلاة على نار هادئة.','اسكب البيض، وعند بداية تماسكه ضع الجبن في المنتصف.','اطوِ العجة نصفين وقدّمها.'],
+     tip:'يمكن إضافة بقدونس مفروم أو فطر مقلي.' },
+   { name:'بيض مخفوق بالقشطة', meta:['٨ دقائق','مقلاة'],
+     ing:['٣ بيضات','٢ م.ك كريمة طبخ (دايري)','م.ك زبدة','ملح وفلفل'],
+     steps:['اخفق البيض مع القشطة والملح.','ذوّب الزبدة على نار هادئة جدًّا.','اسكب البيض وحرّكه ببطء حتى يتكتّل بقوام كريمي.','ارفعه وهو طريّ دون تجفيفه.'],
+     tip:'النار الهادئة سرّ القوام الكريمي.' },
+   { name:'بيض مقلي بالسبانخ', meta:['١٠ دقائق','مقلاة'],
+     ing:['٢ بيضة','حفنة سبانخ طازجة','م.ك زبدة','فص ثوم مفروم','ملح وفلفل'],
+     steps:['قلّب الثوم والسبانخ بالزبدة دقيقتين حتى تذبل.','اكسر البيض فوقها مباشرة.','غطِّ المقلاة دقيقتين حتى ينضج البياض.','رشّ الملح والفلفل وقدّم.'],
+     tip:'تُقدّم مع قطع جبن فوقها.' },
+   { name:'فريتاتا الكوسا والجبن (بالفرن)', meta:['٢٥ دقيقة','فرن'],
+     ing:['٥ بيضات','١ كوسا مبشورة','½ كوب جبن مبشور','٣ م.ك كريمة (دايري)','م.ك زيت زيتون','ملح وبهارات'],
+     steps:['يُسخّن الفرن على ١٨٠ درجة.','اعصر ماء الكوسا، ثم اخلطها مع البيض والقشطة والجبن والبهارات.','ادهن قالبًا بالزيت واسكب الخليط.','اخبزها ٢٠–٢٥ دقيقة حتى تتماسك وتتحمّر.'],
+     tip:'تصلح باردة لليوم التالي.' },
+   { name:'سلطة البيض بالمايونيز', meta:['١٥ دقيقة','سلق'],
+     ing:['٤ بيضات مسلوقة','٢ م.ك مايونيز','م.ص خردل (اختياري)','بصل أخضر مفروم','ملح وفلفل'],
+     steps:['اسلق البيض ١٠ دقائق ثم قشّره واهرسه.','أضف المايونيز والخردل والبصل الأخضر.','اخلط وتبّل بالملح والفلفل.','تُقدّم على ورق الخس.'],
+     tip:'وجبة باردة سريعة التحضير.' },
+ ]},
+
+ { e:'🍗', title:'الدجاج', recipes:[
+   { name:'صدور دجاج بالزبدة والثوم', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٢ صدر دجاج','٢ م.ك زبدة','٣ فصوص ثوم مفروم','ملح، فلفل، بابريكا','عصير ليمونة'],
+     steps:['تبّل الدجاج بالملح والفلفل والبابريكا.','حمّره بالزبدة على نار متوسطة حتى يحمرّ الوجهان.','أضف الثوم في آخر دقيقتين.','اسكب عصير الليمون وقدّم مع المرق.'],
+     tip:'يُترك دون تحريك حتى يتحمّر جيدًا.' },
+   { name:'دجاج بالكريمة والفطر', meta:['٢٥ دقيقة','مقلاة'],
+     ing:['٢ صدر دجاج مقطّع','١ علبة فطر شرائح','١ كوب كريمة طبخ (دايري)','٢ فص ثوم','م.ك زبدة','ملح وفلفل'],
+     steps:['حمّر الدجاج بالزبدة حتى ينضج ثم ارفعه.','قلّب الفطر والثوم في المقلاة نفسها.','أضف القشطة واتركها تغلي قليلًا.','أعد الدجاج وقلّب دقيقتين حتى تتماسك الصلصة.'],
+     tip:'صلصة غنية تُغني عن النشويات.' },
+   { name:'دجاج بالفرن بالبهارات', meta:['٤٠ دقيقة','فرن'],
+     ing:['٤ قطع دجاج (أوراك أو صدر)','٣ م.ك زيت زيتون','ثوم مهروس','بابريكا، كركم، ملح، فلفل','عصير ليمون'],
+     steps:['يُسخّن الفرن على ٢٠٠ درجة.','اخلط الزيت والثوم والبهارات والليمون ودلّك بها الدجاج.','رتّبه في صينية.','اخبزه ٣٥–٤٠ دقيقة حتى يحمرّ.'],
+     tip:'وجبة كاملة مع سلطة خضراء.' },
+   { name:'دجاج مقرمش بدقيق اللوز', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٢ صدر دجاج (شرائح)','٤ م.ك دقيق لوز','٣ م.ك جبن بارميزان مبشور','١ بيضة','ملح وبهارات','زيت للقلي'],
+     steps:['اخلط دقيق اللوز مع البارميزان والبهارات.','اغمس الدجاج بالبيض ثم بخليط الدقيق.','اقله بزيت متوسط الحرارة حتى يذهّب الوجهان.','ضعه على ورق ماصّ ليتصفّى.'],
+     tip:'بديل صحي للدجاج المقلي بالبقسماط.' },
+   { name:'دجاج بالليمون والأعشاب', meta:['٢٥ دقيقة','مقلاة / فرن'],
+     ing:['٢ صدر دجاج','عصير ليمونتين','٣ م.ك زيت زيتون','بقدونس وزعتر','ثوم','ملح وفلفل'],
+     steps:['اخلط الليمون والزيت والثوم والأعشاب.','تبّل الدجاج واتركه ١٥ دقيقة.','حمّره في المقلاة أو الفرن حتى ينضج.','اسكب باقي الصلصة فوقه.'],
+     tip:'طبق منعش خفيف الرائحة.' },
+ ]},
+
+ { e:'🥩', title:'اللحم', recipes:[
+   { name:'ستيك اللحم بالزبدة', meta:['١٥ دقيقة','مقلاة'],
+     ing:['٢ شريحة لحم (ستيك)','٢ م.ك زبدة','ثوم','إكليل الجبل (اختياري)','ملح وفلفل خشن'],
+     steps:['جفّف اللحم وتبّله بالملح والفلفل.','سخّن المقلاة جيدًا ثم ضع اللحم.','اتركه ٣–٤ دقائق لكل وجه حسب درجة النضج.','أضف الزبدة والثوم في النهاية واسكبها فوقه.'],
+     tip:'يُترك ٥ دقائق ليرتاح قبل التقطيع.' },
+   { name:'لحم مكعّبات بالبهارات', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم لحم مكعّبات','٢ م.ك زيت','بصلة صغيرة (اختياري)','كمون، فلفل أسود، ملح','ثوم'],
+     steps:['حمّر اللحم بالزيت على نار عالية حتى يحمرّ.','أضف الثوم والبصل والبهارات.','اخفض النار وغطِّه حتى يستوي اللحم ويطرى.','يُقدّم مع سلطة أو خضار سوتيه.'],
+     tip:'إن كان اللحم قاسيًا يُضاف قليل ماء ويُغطّى مدة أطول.' },
+   { name:'لحم بالكريمة والفلفل (ستروجانوف كيتو)', meta:['٣٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم لحم شرائح رفيعة','١ كوب كريمة طبخ (دايري)','فطر شرائح','بصل قليل','م.ك زبدة','ملح وفلفل'],
+     steps:['حمّر اللحم بالزبدة سريعًا ثم ارفعه.','قلّب الفطر والبصل.','أضف القشطة واتركها تغلي خفيفًا.','أعد اللحم وقلّب حتى تتماسك الصلصة.'],
+     tip:'يُقدّم فوق القرنبيط المبشور بدل الأرز.' },
+   { name:'لحم سوتيه بالخضار', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم لحم شرائح','١ فلفل رومي','١ كوسا','ثوم','٢ م.ك زيت زيتون','صويا صوص قليل، ملح وفلفل'],
+     steps:['حمّر اللحم بالزيت على نار عالية.','أضف الخضار المقطّعة والثوم.','قلّب ٤–٥ دقائق حتى تطرى الخضار مع بقاء قرمشتها.','تبّل بالصويا والفلفل.'],
+     tip:'سريع التحضير ومتنوّع.' },
+   { name:'لحم بالفرن (روست)', meta:['ساعتان','فرن'],
+     ing:['قطعة لحم ٧٠٠جم','٣ م.ك زيت زيتون','ثوم','إكليل جبل','ملح وفلفل خشن'],
+     steps:['يُسخّن الفرن على ١٦٠ درجة.','دلّك اللحم بالزيت والثوم والبهارات.','ضعه في صينية مغطّاة بورق قصدير.','اخبزه ساعة ونصف إلى ساعتين حتى يطرى.'],
+     tip:'يكفي لأكثر من وجبة ويُعاد تسخينه بسهولة.' },
+ ]},
+
+ { e:'🍖', title:'الدجاج المفروم', recipes:[
+   { name:'كرات الدجاج بالجبن (بالفرن)', meta:['٣٠ دقيقة','فرن'],
+     ing:['٤٠٠جم دجاج مفروم','½ كوب جبن موزاريلا مبشور','١ بيضة','ثوم وبقدونس','ملح وبهارات'],
+     steps:['يُسخّن الفرن على ١٩٠ درجة.','اخلط جميع المكوّنات جيدًا.','كوّر كرات متوسطة ورتّبها في صينية.','اخبزها ٢٠–٢٥ دقيقة حتى تحمرّ.'],
+     tip:'تصلح باردة كوجبة خفيفة.' },
+   { name:'برجر الدجاج', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم دجاج مفروم','١ بيضة','٢ م.ك دقيق لوز','بصل وثوم مبشور','ملح وبهارات'],
+     steps:['اخلط المكوّنات واعجنها قليلًا.','شكّل أقراصًا متوسطة السماكة.','حمّرها بالزيت ٤ دقائق لكل وجه.','تُقدّم مع شريحة جبن وخس.'],
+     tip:'تُقدّم بدون خبز مع الخضار.' },
+   { name:'كفتة الدجاج المشوية', meta:['٢٥ دقيقة','فرن / شواية'],
+     ing:['٤٠٠جم دجاج مفروم','بصل وبقدونس مفروم ناعم','ثوم','كمون وملح وفلفل','م.ك زيت'],
+     steps:['اخلط الكل حتى يتماسك.','شكّله أصابع حول أسياخ أو على صينية.','اشوِه في الفرن على ٢٠٠ درجة ١٥–٢٠ دقيقة.','قلّبه حتى يذهّب من الجهتين.'],
+     tip:'يُقدّم مع سلطة الخيار بالزبادي.' },
+   { name:'دجاج مفروم سوتيه بالخضار', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم دجاج مفروم','١ كوسا مكعّبات','فلفل رومي','ثوم','٢ م.ك زيت زيتون','بهارات'],
+     steps:['حمّر الدجاج المفروم بالزيت حتى يتفتّت وينضج.','أضف الثوم والخضار المقطّعة.','قلّب حتى تطرى الخضار.','تبّل بالملح والبهارات.'],
+     tip:'وجبة كاملة في طبق واحد.' },
+   { name:'عجة الدجاج المفروم (فطائر البيض)', meta:['٣٠ دقيقة','فرن'],
+     ing:['٢٥٠جم دجاج مفروم مطبوخ','٦ بيضات','½ كوب جبن مبشور','بقدونس','ملح وفلفل'],
+     steps:['يُسخّن الفرن على ١٨٠ درجة.','اخلط البيض مع الجبن والبهارات.','وزّع الدجاج المطبوخ في قوالب كب كيك ثم اسكب البيض.','اخبزها ١٨–٢٠ دقيقة حتى تنتفخ وتتماسك.'],
+     tip:'تصلح وجبة جاهزة لعدة أيام.' },
+ ]},
+
+ { e:'🧆', title:'اللحم المفروم', recipes:[
+   { name:'كفتة اللحم المشوية', meta:['٢٥ دقيقة','فرن / شواية'],
+     ing:['٤٠٠جم لحم مفروم','بصلة مبشورة معصورة','بقدونس مفروم','بهارات، ملح، فلفل','م.ك زيت'],
+     steps:['اعجن اللحم مع البصل والبقدونس والبهارات جيدًا.','شكّله أصابع على صينية أو أسياخ.','اشوِه على ٢٠٠ درجة ١٥–٢٠ دقيقة.','قلّبه ليتحمّر من الجهتين.'],
+     tip:'العجن الجيد يجعلها متماسكة.' },
+   { name:'برجر اللحم بالجبن', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم لحم مفروم','ملح وفلفل أسود','شرائح جبن شيدر','بصل وثوم بودرة','م.ك زبدة'],
+     steps:['تبّل اللحم وشكّل أقراصًا.','حمّرها بالزبدة ٣–٤ دقائق لكل وجه.','ضع شريحة جبن فوق كل قرص حتى يذوب.','تُقدّم مع خس وخيار بدون خبز.'],
+     tip:'يُتجنّب الضغط على القرص ليبقى طريًّا.' },
+   { name:'كرات اللحم بالكريمة', meta:['٣٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم لحم مفروم','١ بيضة','بصل وثوم، بهارات','١ كوب كريمة طبخ (دايري)','م.ك زبدة'],
+     steps:['اخلط اللحم مع البيض والبصل والبهارات وكوّر كرات.','حمّرها بالزبدة حتى تحمرّ.','أضف القشطة واخفض النار.','اتركها تغلي خفيفًا ٧ دقائق حتى تتماسك الصلصة.'],
+     tip:'تُقدّم مع القرنبيط المهروس.' },
+   { name:'لحم مفروم بالكوسا (سكيليت)', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم لحم مفروم','٢ كوسا مكعّبات','بصل وثوم','٢ م.ك زيت','كمون وملح وفلفل'],
+     steps:['حمّر اللحم المفروم حتى يتفتّت.','أضف البصل والثوم ثم الكوسا.','قلّب حتى تطرى الكوسا.','تبّل بالكمون والملح والفلفل.'],
+     tip:'وجبة سريعة في قدر واحد.' },
+   { name:'القرنبيط باللحم المفروم', meta:['٢٥ دقيقة','مقلاة'],
+     ing:['٤٠٠جم لحم مفروم','½ رأس قرنبيط مبشور','بصل وثوم','بهارات','٢ م.ك زيت أو سمن'],
+     steps:['حمّر اللحم بالزيت حتى ينضج.','أضف البصل والثوم ثم القرنبيط المبشور.','قلّب ٧–١٠ دقائق حتى يطرى القرنبيط.','تبّل وقدّم ساخنًا.'],
+     tip:'بديل يشبه الكبسة بدون أرز.' },
+ ]},
+
+ { e:'🐟', title:'السمك', recipes:[
+   { name:'سمك فيليه بالزبدة والليمون', meta:['١٥ دقيقة','مقلاة'],
+     ing:['٢ فيليه سمك أبيض (هامور / بلطي)','٢ م.ك زبدة','عصير ليمونة','ثوم','ملح وفلفل'],
+     steps:['جفّف السمك وتبّله بالملح والفلفل.','حمّره بالزبدة ٣ دقائق لكل وجه.','أضف الثوم وعصير الليمون.','اسكب الصلصة فوقه وقدّم.'],
+     tip:'يُتجنّب كثرة التقليب حتى لا يتفتّت.' },
+   { name:'سمك بالفرن بالأعشاب', meta:['٢٥ دقيقة','فرن'],
+     ing:['٢ فيليه سمك','٣ م.ك زيت زيتون','ثوم وبقدونس','بابريكا وملح وفلفل','شرائح ليمون'],
+     steps:['يُسخّن الفرن على ١٩٠ درجة.','ضع السمك في صينية ودلّكه بالزيت والبهارات.','وزّع شرائح الليمون فوقه.','اخبزه ١٥–٢٠ دقيقة حتى ينضج.'],
+     tip:'طبق صحي خفيف الرائحة.' },
+   { name:'أقراص السمك (كباب سمك)', meta:['٢٥ دقيقة','مقلاة'],
+     ing:['٤٠٠جم سمك مفروم / مهروس','١ بيضة','٢ م.ك دقيق لوز','بصل أخضر وكزبرة','بهارات وملح'],
+     steps:['اخلط السمك مع البيض والدقيق والأعشاب.','شكّل أقراصًا صغيرة.','حمّرها بالزيت حتى تذهّب الجهتان.','تُقدّم مع شرائح الليمون.'],
+     tip:'لذيذة باردة في اليوم التالي.' },
+   { name:'سمك مقرمش بدقيق اللوز', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٢ فيليه سمك','٤ م.ك دقيق لوز','١ بيضة','بهارات وملح','زيت للقلي'],
+     steps:['اغمس السمك بالبيض ثم بدقيق اللوز المتبّل.','اقله بزيت متوسط الحرارة.','قلّبه مرة واحدة حتى يذهّب.','ضعه على ورق ماصّ ليتصفّى.'],
+     tip:'بديل صحي للسمك المقلي بالطحين.' },
+   { name:'سمك بالكريمة بالفرن', meta:['٣٠ دقيقة','فرن'],
+     ing:['٢ فيليه سمك','١ كوب كريمة طبخ (دايري)','ثوم','½ كوب جبن مبشور','ملح وفلفل وبقدونس'],
+     steps:['يُسخّن الفرن على ١٩٠ درجة.','ضع السمك في صينية ووزّع الثوم والملح.','اسكب القشطة ورشّ الجبن فوقها.','اخبزه ٢٠ دقيقة حتى يتحمّر الوجه.'],
+     tip:'طبق راقٍ وسهل في آنٍ واحد.' },
+ ]},
+];
+
+const SALADS = [
+ { n:'سلطة خضراء بسيطة', d:'خس + خيار + جرجير، مع زيت زيتون وعصير ليمون وملح. ترافق أي وجبة.' },
+ { n:'سلطة الجرجير بالبارميزان', d:'جرجير + شرائح بارميزان (أو شيدر) + زيت زيتون وليمون.' },
+ { n:'سلطة الخيار بالزبادي', d:'خيار مقطّع + زبادي كامل الدسم + نعناع وثوم وملح.' },
+ { n:'سلطة الأفوكادو', d:'أفوكادو + خيار + بقدونس، مع زيت زيتون وليمون. دسمة ومشبعة.' },
+ { n:'كول سلو', d:'كرنب مبشور + مايونيز + قليل خل وملح. تدوم في الثلاجة عدة أيام.' },
+ { n:'سلطة الجبن والخضار', d:'خس + خيار + فلفل رومي + مكعّبات جبن، مع زيت زيتون.' },
+];
+const TYPES = {
+  jelly:'🟣 جيلي وعلكة', mousse:'🍮 موس وكريمات', drink:'🥤 مشروبات وشيك',
+  frozen:'🧊 مثلجات', baked:'🧁 مخبوزات وساخن', balls:'🌰 كرات ودهون', parfait:'🥣 طبقات وبودنغ'
+};
+const PH = { strict:'🔴 صارم', normal:'🟠 عادي', lifestyle:'🟢 لايف ستايل' };
+
+// base: whey | beef | both
+const PSNACKS = [
+ // ===== جيلي وعلكة =====
+ {id:1,e:'🟣',n:'جيلي البيف بروتين',base:'beef',type:'jelly',ph:'strict',
+  desc:'فكرتك الأساسية — منعش وعالي البروتين شبه صفر كارب.',
+  P:34,F:1,C:1,kcal:140,
+  ing:['1 مكيال BEEF-XP (بلاك كرنت)','1.5 ملعقة جيلاتين بقري بودر','250مل ماء'],
+  steps:['زهّر الجيلاتين في ¼ كوب ماء بارد 5 دقائق','سخّنه برفق حتى يذوب','اخلطه مع باقي الماء البارد والبروتين','صبّه بقوالب → الثلاجة 3 ساعات'],
+  store:'يحفظ <b>4–5 أيام</b> بالثلاجة.'},
+ {id:2,e:'🍮',n:'كريم جيلي دسم',base:'beef',type:'jelly',ph:'strict',
+  desc:'نسخة بانا كوتا كريمية أكثر إشباعًا بإضافة القشطة.',
+  P:30,F:14,C:2,kcal:230,
+  ing:['1 مكيال BEEF-XP','1.5 ملعقة جيلاتين بودر','3 ملاعق قشطة ثقيلة','120مل ماء'],
+  steps:['زهّر الجيلاتين بماء بارد ثم أذِبه','اخلط القشطة + البروتين + الماء الفاتر','أضِف الجيلاتين وحرّك','كوب → الثلاجة 3 ساعات'],
+  store:'يحفظ <b>4 أيام</b> بالثلاجة.'},
+ {id:3,e:'🐻',n:'علكة البروتين (Gummies)',base:'both',type:'jelly',ph:'strict',
+  desc:'قطع مطاطية تُحمل في الجيب، صفر رائحة، للسيارة والعمل.',
+  P:35,F:1,C:1,kcal:150,
+  ing:['1 مكيال بروتين (أي نكهة)','3 ملاعق جيلاتين بودر','250مل ماء'],
+  steps:['زهّر الجيلاتين بماء بارد 5 دقائق','سخّن حتى يذوب تمامًا','اخلط مع البروتين','صبّ بقوالب سيليكون صغيرة → الثلاجة ساعة'],
+  store:'يحفظ <b>أسبوعًا</b> بالثلاجة، أو بالفريزر.'},
+ {id:4,e:'🎨',n:'جيلي طبقتين',base:'both',type:'jelly',ph:'strict',
+  desc:'طبقة فانيلا كريمية فوق طبقة بلاك كرنت — شكل أنيق.',
+  P:32,F:8,C:2,kcal:210,
+  ing:['½ مكيال ISOTOPE فانيلا + قشطة (طبقة بيضاء)','½ مكيال BEEF-XP (طبقة بنفسجية)','2 ملعقة جيلاتين بودر','ماء'],
+  steps:['حضّر الطبقة البنفسجية، صبّها واتركها تتماسك 30 دقيقة','حضّر الطبقة البيضاء فاترة وصبّها فوقها','الثلاجة ساعتين'],
+  store:'يحفظ <b>4 أيام</b> بالثلاجة.'},
+ {id:5,e:'☕',n:'جيلي القهوة بالبروتين',base:'whey',type:'jelly',ph:'strict',
+  desc:'كوب قهوة متماسك بقوام بودنغ — منبّه وحلى في آنٍ.',
+  P:28,F:5,C:2,kcal:175,
+  ing:['1 مكيال ISOTOPE فانيلا','1 كوب قهوة سادة','1 ملعقة جيلاتين بودر','2 ملعقة قشطة','ستيفيا'],
+  steps:['زهّر الجيلاتين بماء بارد','اخلطه بالقهوة الدافئة','أضِف البروتين والقشطة والستيفيا','الثلاجة 3 ساعات'],
+  store:'يحفظ <b>3 أيام</b> بالثلاجة.'},
+
+ // ===== موس وكريمات =====
+ {id:6,e:'🍦',n:'موس الفانيلا الهوائي',base:'whey',type:'mousse',ph:'strict',
+  desc:'قوام موس خفيف بخفق القشطة — حلى دسم سريع.',
+  P:28,F:20,C:2,kcal:280,
+  ing:['1 مكيال ISOTOPE فانيلا','100جم قشطة ثقيلة','½ ملعقة جيلاتين مذاب (اختياري للثبات)'],
+  steps:['اخفق القشطة حتى تتكتّل','أضِف البروتين والجيلاتين برفق بالتقليب','كوب → الثلاجة ساعة'],
+  store:'يحفظ <b>2 يوم</b> بالثلاجة.'},
+ {id:7,e:'🍫',n:'موس الشوكولاتة',base:'whey',type:'mousse',ph:'strict',
+  desc:'كاكاو خام + قشطة + واي = موس شوكولاتة غني.',
+  P:28,F:21,C:3,kcal:300,
+  ing:['1 مكيال ISOTOPE فانيلا','100جم قشطة ثقيلة','1 ملعقة كاكاو خام','إريثريتول'],
+  steps:['اخفق القشطة','أضِف الكاكاو والبروتين والمحلّي','قلّب حتى يتجانس → الثلاجة'],
+  store:'يحفظ <b>2 يوم</b> بالثلاجة.'},
+ {id:8,e:'🧀',n:'تشيز كيك بارد بالكوب',base:'whey',type:'mousse',ph:'strict',
+  desc:'بدون فرن — كريمة جبن بنكهة الفانيلا بقوام تشيز كيك.',
+  P:30,F:22,C:3,kcal:320,
+  ing:['1 مكيال ISOTOPE فانيلا','60جم جبن كريمي','2 ملعقة قشطة','إريثريتول','رشة ليمون'],
+  steps:['اخفق الجبن الكريمي حتى ينعم','أضِف القشطة والبروتين والمحلّي والليمون','كوب → الثلاجة ساعتين'],
+  store:'يحفظ <b>3 أيام</b> بالثلاجة.'},
+ {id:9,e:'☕',n:'كريمة القهوة (Proffee Mousse)',base:'whey',type:'mousse',ph:'strict',
+  desc:'موس قهوة بارد — كافيين + بروتين بعد الظهر.',
+  P:27,F:14,C:2,kcal:230,
+  ing:['1 مكيال ISOTOPE فانيلا','½ كوب قهوة مركّزة باردة','60جم قشطة مخفوقة'],
+  steps:['اخفق القشطة','أضِف البروتين والقهوة الباردة','قلّب → كوب مثلّج'],
+  store:'يُؤكل <b>طازجًا</b> أو يحفظ يومًا.'},
+
+ // ===== مشروبات وشيك =====
+ {id:10,e:'🥛',n:'ميلك شيك الفانيلا',base:'whey',type:'drink',ph:'strict',
+  desc:'كلاسيكي منعش — البروتين الأساسي بأبسط صورة.',
+  P:26,F:4,C:2,kcal:170,
+  ing:['1 مكيال ISOTOPE فانيلا','250مل حليب لوز غير محلّى','ثلج','رشة قرفة'],
+  steps:['اخلط الكل بالخلاط حتى يرغو','قدّمه فورًا مع الثلج'],
+  store:'يُشرب <b>طازجًا</b>.'},
+ {id:11,e:'🧋',n:'بروفي (قهوة مثلجة بالبروتين)',base:'whey',type:'drink',ph:'strict',
+  desc:'آيس لاتيه بروتيني — يجمع الإفطار المنبّه والسناك.',
+  P:26,F:4,C:2,kcal:165,
+  ing:['1 مكيال ISOTOPE فانيلا','1 كوب قهوة مثلجة','رشة حليب لوز','ستيفيا'],
+  steps:['اخلط البروتين بقليل ماء حتى يذوب','أضِفه للقهوة المثلجة وحرّك','ثلج + ستيفيا'],
+  store:'يُشرب <b>طازجًا</b>.'},
+ {id:12,e:'🥤',n:'بيف بروتين غازي (Clear)',base:'beef',type:'drink',ph:'strict',
+  desc:'البيف بروتين رائق — مع ماء غازي يصير مشروب فوّار منعش.',
+  P:28,F:1,C:1,kcal:120,
+  ing:['1 مكيال BEEF-XP (بلاك كرنت)','300مل ماء غازي سادة','ثلج','شريحة ليمون'],
+  steps:['أذِب البروتين بقليل ماء عادي أولًا','أضِف الماء الغازي برفق','ثلج وليمون'],
+  store:'يُشرب <b>طازجًا</b> (الغازي يفقد فقاعاته).'},
+ {id:13,e:'🍫',n:'هوت شوكليت بروتين',base:'whey',type:'drink',ph:'strict',
+  desc:'مشروب ساخن دافئ لليالي — كاكاو + واي.',
+  P:27,F:6,C:3,kcal:210,
+  ing:['1 مكيال ISOTOPE فانيلا','250مل حليب لوز ساخن','1 ملعقة كاكاو','إريثريتول'],
+  steps:['سخّن الحليب','أذِب الكاكاو والمحلّي','أضِف البروتين بعيدًا عن الغليان وحرّك'],
+  store:'يُشرب <b>دافئًا فورًا</b>.'},
+ {id:14,e:'🫐',n:'سموذي التوت المنعش',base:'beef',type:'drink',ph:'strict',
+  desc:'بلاك كرنت + خيار ونعناع = منعش جدًا بكارب ضئيل.',
+  P:28,F:1,C:2,kcal:135,
+  ing:['1 مكيال BEEF-XP','½ خيار','أوراق نعناع','ماء بارد','ثلج'],
+  steps:['اخلط الكل بالخلاط','صفّه إن رغبت → ثلج'],
+  store:'يُشرب <b>طازجًا</b>.'},
+
+ // ===== مثلجات =====
+ {id:15,e:'🍨',n:'آيس كريم البروتين',base:'whey',type:'frozen',ph:'strict',
+  desc:'قشطة + واي + تقليب = آيس كريم كريمي بلا ماكينة.',
+  P:28,F:24,C:3,kcal:330,
+  ing:['1 مكيال ISOTOPE فانيلا','150جم قشطة ثقيلة','إريثريتول','رشة فانيلا'],
+  steps:['اخلط الكل','الفريزر مع تقليب كل 30 دقيقة (مرتين)','اتركه يلين 5 دقائق قبل الأكل'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+ {id:16,e:'🧊',n:'مصاصات البيف المثلجة',base:'beef',type:'frozen',ph:'strict',
+  desc:'بوبسيكل فاكهي منعش لأيام الحر — يخرج ويؤكل مباشرة.',
+  P:28,F:1,C:1,kcal:125,
+  ing:['1 مكيال BEEF-XP','200مل حليب جوز هند غير محلّى','100مل ماء'],
+  steps:['اخلط الكل','صبّ بقوالب مصاصات','الفريزر 4 ساعات'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+ {id:17,e:'🍧',n:'زبادي مجمّد بروتيني',base:'whey',type:'frozen',ph:'normal',
+  desc:'فرو-يو بروتيني — يحتوي زبادي فمرحلته عادي/لايف ستايل.',
+  P:30,F:8,C:6,kcal:230,
+  ing:['1 مكيال ISOTOPE فانيلا','150جم زبادي يوناني كامل الدسم','إريثريتول'],
+  steps:['اخلط البروتين بالزبادي والمحلّي','الفريزر مع تقليب كل 30 دقيقة'],
+  store:'يحفظ <b>أسبوعًا</b> بالفريزر.'},
+ {id:18,e:'🍫',n:'بليت بروتين مثلج (Bark)',base:'whey',type:'frozen',ph:'strict',
+  desc:'فرشة كريمة على ورق وفرّزها → ألواح مقرمشة.',
+  P:24,F:20,C:3,kcal:280,
+  ing:['1 مكيال ISOTOPE فانيلا','120جم قشطة/جبن كريمي','مكسرات مفرومة','رشة كاكاو'],
+  steps:['اخلط البروتين بالكريمة','افردها طبقة رقيقة على ورق زبدة','رشّ المكسرات → الفريزر ساعتين','كسّرها قطعًا'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+
+ // ===== مخبوزات وساخن =====
+ {id:19,e:'🧁',n:'كب كيك المايكروويف (90 ثانية)',base:'whey',type:'baked',ph:'strict',
+  desc:'كيك بالكوب جاهز خلال دقيقة ونصف — حلى ساخن فوري.',
+  P:30,F:18,C:4,kcal:300,
+  ing:['1 مكيال ISOTOPE فانيلا','1 بيضة','2 ملعقة دقيق لوز','½ ملعقة بيكنج بودر','رشة زبدة ذائبة','إريثريتول'],
+  steps:['اخلط الكل في كوب','مايكروويف 80–90 ثانية','اقلبه واتركه يبرد قليلًا'],
+  store:'يُؤكل <b>طازجًا</b> أو يحفظ يومًا.'},
+ {id:20,e:'🍫',n:'براوني البروتين',base:'whey',type:'baked',ph:'strict',
+  desc:'براوني غني بالشوكولاتة — دفعة تكفي عدة أيام.',
+  P:26,F:16,C:4,kcal:270,
+  ing:['1 مكيال ISOTOPE فانيلا','3 ملاعق كاكاو','3 ملاعق دقيق لوز','1 بيضة','3 ملاعق زبدة','إريثريتول'],
+  steps:['اخلط الكل','اسكبه بقالب صغير','فرن 175° لمدة 15–18 دقيقة','قطّعه مربعات'],
+  store:'يحفظ <b>5 أيام</b> بالثلاجة، أو بالفريزر.'},
+ {id:21,e:'🍪',n:'كوكيز البروتين',base:'whey',type:'baked',ph:'strict',
+  desc:'كوكيز هشّ بدقيق اللوز — سناك جاهز للأيام.',
+  P:22,F:17,C:3,kcal:250,
+  ing:['1 مكيال ISOTOPE فانيلا','4 ملاعق دقيق لوز','3 ملاعق زبدة','1 صفار بيض','إريثريتول'],
+  steps:['اعجن الكل','شكّل أقراصًا على صينية','فرن 170° لمدة 10–12 دقيقة'],
+  store:'يحفظ <b>أسبوعًا</b> بعلبة محكمة.'},
+ {id:22,e:'🥞',n:'بان كيك البروتين',base:'whey',type:'baked',ph:'strict',
+  desc:'فطائر سميكة على المقلاة — سناك أو فطور خفيف.',
+  P:30,F:14,C:4,kcal:280,
+  ing:['1 مكيال ISOTOPE فانيلا','1 بيضة','2 ملعقة دقيق لوز','رشة بيكنج بودر','حليب لوز للقوام'],
+  steps:['اخلط حتى يصير عجينًا سائلًا','اسكب أقراصًا صغيرة على مقلاة بزبدة','اقلب عند الفقاعات'],
+  store:'يحفظ <b>3 أيام</b> بالثلاجة، يُسخّن سريعًا.'},
+ {id:23,e:'🍩',n:'دونات البروتين بالفرن',base:'whey',type:'baked',ph:'strict',
+  desc:'حلقات دونات بقالب سيليكون — شكل ممتع وماكروز نظيفة.',
+  P:24,F:15,C:4,kcal:250,
+  ing:['1 مكيال ISOTOPE فانيلا','3 ملاعق دقيق لوز','1 بيضة','رشة بيكنج بودر','2 ملعقة زبدة','إريثريتول'],
+  steps:['اخلط الكل','املأ قالب الدونات','فرن 175° لمدة 12 دقيقة'],
+  store:'يحفظ <b>4 أيام</b> بالثلاجة.'},
+
+ // ===== كرات ودهون =====
+ {id:24,e:'🌰',n:'كرات البروتين بالطحينة',base:'whey',type:'balls',ph:'strict',
+  desc:'بروتين + طحينة = كرات مشبعة تجمع البروتين والدهون.',
+  P:24,F:18,C:3,kcal:270,
+  ing:['1 مكيال ISOTOPE فانيلا','2 ملعقة دقيق لوز','2 ملعقة طحينة','1 ملعقة زيت جوز هند','إريثريتول'],
+  steps:['اعجن الكل حتى يتماسك','كوّر كرات صغيرة','الفريزر 20 دقيقة'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+ {id:25,e:'🥥',n:'كرات جوز الهند بالفانيلا',base:'whey',type:'balls',ph:'strict',
+  desc:'كرات بيضاء بنكهة الكوكونت — مغلّفة بجوز هند مبشور.',
+  P:23,F:16,C:3,kcal:250,
+  ing:['1 مكيال ISOTOPE فانيلا','3 ملاعق جوز هند مبشور','2 ملعقة زيت جوز هند','2 ملعقة قشطة','إريثريتول'],
+  steps:['اخلط حتى يتماسك','كوّر ولفّها بجوز الهند','الثلاجة 30 دقيقة'],
+  store:'يحفظ <b>أسبوعًا</b> بالثلاجة.'},
+ {id:26,e:'🍫',n:'كرات الشوكولاتة الداكنة',base:'whey',type:'balls',ph:'strict',
+  desc:'لقمات شوكولاتة كثيفة — قطعة واحدة تكفي.',
+  P:23,F:17,C:4,kcal:260,
+  ing:['1 مكيال ISOTOPE فانيلا','2 ملعقة كاكاو خام','2 ملعقة زيت جوز هند','2 ملعقة دقيق لوز','إريثريتول'],
+  steps:['اخلط الكل','كوّر كرات','الفريزر 20 دقيقة حتى تتماسك'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+
+ // ===== طبقات وبودنغ =====
+ {id:27,e:'🥣',n:'بارفيه اللبنة والبروتين',base:'whey',type:'parfait',ph:'normal',
+  desc:'طبقات لبنة وكريمة بروتين — يحتوي لبنة فمرحلته عادي/لايف.',
+  P:30,F:16,C:6,kcal:300,
+  ing:['1 مكيال ISOTOPE فانيلا','150جم لبنة كاملة الدسم','حفنة توت (اختياري)','مكسرات'],
+  steps:['اخلط نصف اللبنة بالبروتين','طبّق: لبنة سادة / كريمة بروتين / توت ومكسرات','الثلاجة'],
+  store:'يحفظ <b>3 أيام</b> بالثلاجة.'},
+ {id:28,e:'🍮',n:'شيا بودنغ بالبروتين',base:'whey',type:'parfait',ph:'strict',
+  desc:'بذور شيا تنتفخ في حليب لوز بروتيني → بودنغ متماسك.',
+  P:26,F:12,C:4,kcal:240,
+  ing:['1 مكيال ISOTOPE فانيلا','3 ملاعق بذور شيا','250مل حليب لوز غير محلّى','إريثريتول'],
+  steps:['اخلط الكل جيدًا','اتركه بالثلاجة ليلة كاملة','حرّكه قبل الأكل'],
+  store:'يحفظ <b>4 أيام</b> بالثلاجة.'},
+ {id:29,e:'🫐',n:'بودنغ البيف بالشيا',base:'beef',type:'parfait',ph:'strict',
+  desc:'نكهة البلاك كرنت مع الشيا — بودنغ فاكهي بلا ألبان.',
+  P:30,F:11,C:4,kcal:240,
+  ing:['1 مكيال BEEF-XP','3 ملاعق بذور شيا','250مل حليب جوز هند غير محلّى'],
+  steps:['اخلط الكل','الثلاجة ليلة كاملة','حرّك وقدّم'],
+  store:'يحفظ <b>4 أيام</b> بالثلاجة.'},
+
+ // ===== إضافات بزبدة المكسرات/البذور وحليب اللوز بالفانيليا =====
+ {id:30,e:'🌰',n:'كرات زبدة اللوز بالبروتين',base:'whey',type:'balls',ph:'strict',
+  desc:'كرات غنية بزبدة اللوز النقية — دهون وبروتين في لقمة.',
+  P:26,F:18,C:3,kcal:270,
+  ing:['1 مكيال ISOTOPE فانيلا','2 ملعقة زبدة لوز (بدون إضافات)','1 ملعقة جوز هند مبشور','إريثريتول'],
+  steps:['اخلط الكل حتى يتماسك العجين','كوّر كرات صغيرة','الفريزر 20 دقيقة حتى تثبت'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+ {id:31,e:'🎃',n:'كرات زبدة حب القرع',base:'whey',type:'balls',ph:'strict',
+  desc:'زبدة حب القرع غنية بالمعادن (مغنيسيوم وزنك) — مثالية للكيتو.',
+  P:28,F:17,C:3,kcal:270,
+  ing:['1 مكيال ISOTOPE فانيلا','2 ملعقة زبدة حب القرع (بدون إضافات)','1 ملعقة زيت جوز هند','إريثريتول'],
+  steps:['اخلط الكل حتى يتماسك','كوّر كرات','الفريزر 20 دقيقة'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+ {id:32,e:'🥜',n:'موس زبدة اللوز',base:'whey',type:'mousse',ph:'strict',
+  desc:'موس كريمي بنكهة زبدة اللوز — حلى دسم ومشبع.',
+  P:27,F:24,C:3,kcal:320,
+  ing:['1 مكيال ISOTOPE فانيلا','2 ملعقة زبدة لوز','80جم قشطة ثقيلة (دايري)','إريثريتول'],
+  steps:['اخفق القشطة حتى تتكتّل','أضف زبدة اللوز والبروتين والمحلّي','قلّب برفق → كوب → الثلاجة ساعة'],
+  store:'يحفظ <b>2 يوم</b> بالثلاجة.'},
+ {id:33,e:'🍫',n:'شوكولاتة حب القرع (Fat Bomb)',base:'whey',type:'balls',ph:'strict',
+  desc:'لقمات شوكولاتة بزبدة حب القرع وزيت جوز الهند.',
+  P:24,F:22,C:4,kcal:290,
+  ing:['1 مكيال ISOTOPE فانيلا','2 ملعقة زبدة حب القرع','1 ملعقة كاكاو خام','2 ملعقة زيت جوز هند','إريثريتول'],
+  steps:['اخلط الكل جيدًا','صبّ في قوالب سيليكون صغيرة','الفريزر 20 دقيقة حتى تتماسك'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+ {id:34,e:'🥤',n:'شيك زبدة اللوز بالفانيليا',base:'whey',type:'drink',ph:'strict',
+  desc:'شيك كريمي بحليب اللوز بالفانيليا وزبدة اللوز — مشبع ولذيذ.',
+  P:29,F:13,C:3,kcal:240,
+  ing:['1 مكيال ISOTOPE فانيلا','250مل حليب لوز بالفانيليا (غير محلّى)','1 ملعقة زبدة لوز','ثلج'],
+  steps:['اخلط الكل بالخلاط حتى يرغو','قدّمه فورًا مع الثلج'],
+  store:'يُشرب <b>طازجًا</b>.'},
+ {id:35,e:'🍮',n:'شيا بودنغ بزبدة اللوز والفانيليا',base:'whey',type:'parfait',ph:'strict',
+  desc:'بودنغ شيا بحليب اللوز بالفانيليا ولمسة زبدة اللوز.',
+  P:27,F:16,C:5,kcal:290,
+  ing:['1 مكيال ISOTOPE فانيلا','3 ملاعق بذور شيا','250مل حليب لوز بالفانيليا (غير محلّى)','1 ملعقة زبدة لوز','إريثريتول'],
+  steps:['اخلط الكل جيدًا','اتركه بالثلاجة ليلة كاملة','حرّكه قبل الأكل'],
+  store:'يحفظ <b>4 أيام</b> بالثلاجة.'},
+ {id:36,e:'🌰',n:'كرات الزبدات المشكّلة',base:'whey',type:'balls',ph:'strict',
+  desc:'مزيج زبدة اللوز وحب القرع والسمسم (الطحينة) — تنوّع في النكهة والمعادن.',
+  P:25,F:20,C:3,kcal:290,
+  ing:['1 مكيال ISOTOPE فانيلا','1 ملعقة زبدة لوز','1 ملعقة زبدة حب القرع','1 ملعقة طحينة (سمسم)','إريثريتول'],
+  steps:['اخلط الكل حتى يتماسك','كوّر كرات','الفريزر 20 دقيقة'],
+  store:'يحفظ <b>أسابيع</b> بالفريزر.'},
+ {id:37,e:'🥄',n:'عجينة البروتين الفورية (Cookie Dough)',base:'whey',type:'mousse',ph:'strict',
+  desc:'أسرع حلى كيتو: تخلطه بالملعقة وتأكله فورًا — بدون فرن وبدون ثلاجة.',
+  P:28,F:16,C:3,kcal:270,
+  ing:['1 مكيال ISOTOPE فانيلا','1–2 ملعقة زبدة لوز أو حب القرع','رشة حليب لوز بالفانيليا أو قشطة','إريثريتول'],
+  steps:['ضع البروتين وزبدة المكسرات في كوب','أضف رشّة سائل تدريجيًّا وقلّب حتى يصير عجينًا كثيفًا','حلِّ حسب رغبتك وكُل بالملعقة فورًا'],
+  store:'يُؤكل <b>فورًا</b> (دقيقتان).'},
+];
+// السناكات الفورية: جاهزة خلال دقائق بلا تبريد/تجميد/خبز
+const FAST = new Set([6,7,9,10,11,12,13,14,19,22,27,32,34,37]);
+PSNACKS.forEach(s => { s.fast = FAST.has(s.id); });
+
+const BASE_LABEL = { whey:{cls:'whey',txt:'🥛 آيزوليت واي'}, beef:{cls:'beef',txt:'🥩 بيف بروتين'}, both:{cls:'whey',txt:'🥛🥩 الاثنان'} };
+const SHOP_CATS = [
+ { e:'🥤', title:'مساحيق البروتين', items:[
+   { n:'واي بروتين آيزوليت', q:'(ISOTOPE فانيلا)',
+     alt:'أي واي آيزوليت موثوق (ISO100 / Isopure / Dymatize).',
+     warn:'اختر المكتوب عليه <b>Isolate</b> وكاربه ≤٢جم وسكره ٠. تجنّب <span class="bad">«Gainer / مكتسب الوزن»</span> فهو محمّل بالسكر.' },
+   { n:'بيف بروتين آيزوليت', q:'(BEEF-XP بلاك كرنت)',
+     alt:'واي آيزوليت إن لم يتوفر، أو بروتين بيض.',
+     warn:'خالٍ من اللاكتوز ومناسب لحساسية الألبان. تأكّد أن السكر ٠.' },
+ ]},
+ { e:'🧊', title:'الجيلاتين والمثبّتات', items:[
+   { n:'جيلاتين بقري بودر — سادة', q:'(للجيلي والعلكة والموس)',
+     alt:'أي جيلاتين أبقار سادة (Great Lakes وغيره)، أو أجار-أجار للنباتيين.',
+     warn:'مهم جدًّا: اختر <b>«جيلاتين سادة بدون نكهة»</b>. تجنّب <span class="bad">علب «الجيلي/الجلي» المنكّهة</span> فهي سكر بالكامل.' },
+ ]},
+ { e:'🥛', title:'الألبان والكريمة', items:[
+   { n:'كريمة خفق / طبخ كاملة الدسم (دايري)', q:'(للموس والآيس كريم والصلصات)',
+     alt:'كريمة الطهي كاملة الدسم المراعي، أو كريمة خفق President / Anchor.',
+     warn:'نفس مشكلة القشطة: تجنّب <span class="bad">«قشطة/قيمر» المخلوطة بزيت نباتي وسكر</span>. اقرأ «كريمة/دهن الحليب».' },
+   { n:'جبن كريمي كامل الدسم', q:'(للتشيز كيك والبارك)',
+     alt:'Philadelphia / Puck كامل الدسم.',
+     warn:'تجنّب نوع <span class="bad">«Light / خفيف»</span> (فيه نشا وكارب أعلى).' },
+   { n:'زبادي يوناني كامل الدسم / لبنة', q:'(لوصفات العادي/لايف ستايل)',
+     alt:'لبنة كاملة الدسم سادة.',
+     warn:'سادة فقط، <span class="bad">بدون سكر أو فواكه أو نكهات</span>، وكامل الدسم.' },
+ ]},
+ { e:'🥥', title:'الحليب النباتي', items:[
+   { n:'حليب لوز غير محلّى', q:'(للشيك والبودنغ والمشروبات)',
+     alt:'حليب جوز هند غير محلّى (Alpro / Almond Breeze Unsweetened).',
+     warn:'الأهم: اختر <b>«غير محلّى / Unsweetened»</b>. معظم المعروض <span class="bad">محلّى بالسكر</span>.' },
+   { n:'حليب لوز بالفانيليا (غير محلّى)', q:'(للشيك وبودنغ الفانيليا)',
+     alt:'حليب لوز عادي غير محلّى + قطرة فانيلا.',
+     warn:'النكهة من الفانيلا فقط — تأكّد أنه <b>«غير محلّى»</b> وخالٍ من <span class="bad">السكر</span>.' },
+   { n:'حليب جوز هند غير محلّى', q:'(للمصاصات والبودنغ)',
+     alt:'حليب اللوز غير المحلّى.',
+     warn:'غير محلّى. تجنّب «كريمة جوز الهند المحلّاة» المخصّصة للحلويات.' },
+ ]},
+ { e:'🍃', title:'المحليات', items:[
+   { n:'إريثريتول', q:'(للخبز والكرات والآيس كريم)',
+     alt:'مونك فروت، أو خليط إريثريتول + ستيفيا.',
+     warn:'نقي فقط. تجنّب الممزوج بـ<span class="bad">مالتوديكسترين / دكستروز / سكر</span>.' },
+   { n:'ستيفيا — قطرات سائلة', q:'(للمشروبات)',
+     alt:'سكرالوز سائل.',
+     warn:'القطرات السائلة أنقى. تجنّب <span class="bad">مسحوق الستيفيا الممزوج بمالتوديكسترين</span>.' },
+ ]},
+ { e:'🌰', title:'الدقيق والمكسرات والبذور', items:[
+   { n:'دقيق اللوز', q:'(للمخبوزات والكرات)',
+     alt:'دقيق جوز الهند (يحتاج سوائل أكثر).',
+     warn:'«لوز مطحون ١٠٠٪». تجنّب <span class="bad">الممزوج بدقيق القمح</span>.' },
+   { n:'جوز هند مبشور', q:'(لكرات جوز الهند والتزيين)',
+     alt:'—',
+     warn:'<b>غير محلّى (Desiccated)</b>؛ بعض الأنواع <span class="bad">محلّاة بالسكر</span>.' },
+   { n:'بذور الشيا', q:'(للبودنغ)', alt:'بذور الكتان المطحونة.', warn:'سادة بدون إضافات.' },
+   { n:'طحينة (زبدة السمسم)', q:'(لكرات الطحينة والزبدات المشكّلة)',
+     alt:'زبدة لوز / زبدة فول سوداني بدون سكر.',
+     warn:'<b>١٠٠٪ سمسم</b>. تجنّب المضاف لها <span class="bad">زيوت أو سكر</span>.' },
+   { n:'زبدة اللوز (بدون إضافات)', q:'(للكرات والموس والشيك)',
+     alt:'زبدة فول سوداني/كاجو بدون سكر.',
+     warn:'<b>لوز ١٠٠٪</b> فقط. تجنّب المضاف لها <span class="bad">سكر أو زيت نخيل/مهدرج</span>.' },
+   { n:'زبدة حب القرع (بدون إضافات)', q:'(للكرات والفات بومب)',
+     alt:'زبدة اللوز أو الطحينة.',
+     warn:'غنية بالمغنيسيوم والزنك. اختر <b>«بدون إضافات»</b> فقط (لا سكر ولا زيوت مضافة).' },
+   { n:'مكسرات مفرومة (لوز/عين جمل)', q:'(للبارك والتزيين)', alt:'بقان أو مكاداميا.', warn:'نيئة أو محمّصة بدون سكر/عسل.' },
+ ]},
+ { e:'🍫', title:'الكاكاو والنكهات', items:[
+   { n:'كاكاو خام بدون سكر', q:'(للموس والشوكولاتة والبراوني)',
+     alt:'كاكاو داكن ١٠٠٪.',
+     warn:'الأهم: <b>«كاكاو ١٠٠٪ بدون سكر»</b>. تجنّب <span class="bad">«مشروب الكاكاو / نسكويك / أوفالتين»</span> فهي سكر.' },
+   { n:'خلاصة الفانيلا', q:'(للنكهة)',
+     alt:'استخدم بروتين بنكهة الفانيلا بدلًا منها.',
+     warn:'خلاصة فانيلا بدون سكر مضاف.' },
+   { n:'قرفة مطحونة', q:'(اختياري)', alt:'هيل / جوزة الطيب.', warn:'—' },
+ ]},
+ { e:'🧈', title:'الدهون', items:[
+   { n:'زبدة طبيعية', q:'(للمخبوزات والكرات)',
+     alt:'سمن طبيعي (Ghee).',
+     warn:'زبدة حقيقية من الحليب. تجنّب <span class="bad">«الزبدة النباتية / المارجرين»</span>.' },
+   { n:'زيت جوز الهند', q:'(للكرات والشوكولاتة)', alt:'زبدة ذائبة.', warn:'بكر (Virgin) ويفضّل بلا رائحة للحلى.' },
+ ]},
+ { e:'🥚', title:'أساسيات أخرى', items:[
+   { n:'بيض', q:'(للمخبوزات: كب كيك/براوني/بان كيك)', alt:'—', warn:'—' },
+   { n:'بيكنج بودر', q:'(للمخبوزات)', alt:'—', warn:'خالٍ من النشا المضاف إن أمكن.' },
+   { n:'ماء غازي سادة', q:'(للبيف بروتين الغازي)', alt:'ماء معدني فوّار.', warn:'<b>سادة</b> بدون <span class="bad">نكهات أو سكر</span>.' },
+   { n:'قهوة', q:'(لجيلي وبروفي القهوة)', alt:'قهوة سريعة التحضير.', warn:'بدون سكر أو كريمر محلّى.' },
+ ]},
+];
+
+const SHOP_TOOLS = ['قوالب سيليكون صغيرة (للعلكة والكرات والدونات)','قوالب مصاصات (للبوبسيكل)','صفاية/مصفاة دقيقة (لتصفية اللبنة)','خفّاقة يدوية أو كهربائية (لخفق القشطة والموس)','أكواب/برطمانات زجاجية صغيرة للحفظ'];
+// ============================================================
+// إضافات جديدة — مكوّنات إضافية
+// ============================================================
+Object.assign(ING, {
+  tuna_can:  { name: 'تونة معلبة (بالزيت)', cat: 'بروتين',        unit: 'علبة' },
+  celery:    { name: 'كرفس',               cat: 'خضار',          unit: 'جم' },
+  halloumi:  { name: 'جبن حلوم',           cat: 'ألبان وأجبان',  unit: 'جم' }
+});
+
+// ============================================================
+// وصفات تجميد جديدة (m34–m41)
+// ============================================================
+RECIPES.push(
+  {
+    id:'m34', emoji:'🍄', name:'دجاج ألفريدو بالمشروم (سكيليت)', equip:'stove',
+    desc:'مكعبات دجاج في صلصة بارميزان كريمية — الصلصة تحميه من الجفاف، ورائحته خفيفة جداً.',
+    base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف 1.5 دقيقة مع التحريك ورشة ماء', store:'علب بحصص مع الصلصة',
+    prepMin:10, cookMin:18, difficulty:'سهل', kcal:560, p:50, f:38, c:5,
+    snacks:['s04','s05'],
+    ingredients:[
+      {key:'chicken_breast',amt:180},
+      {key:'cream_cooking',amt:60},
+      {key:'parmesan',amt:20,alts:['cheddar']},
+      {key:'mushroom',amt:60,alts:['mushroom_can']},
+      {key:'butter',amt:15,alts:['ghee']},
+      {key:'garlic',amt:2},
+      {key:'italian_herbs',amt:2,alts:['oregano']},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'قطّع الدجاج مكعبات وتبّله بالملح والفلفل.',
+      'حمّره بالزبدة حتى يذهب وارفعه جانباً.',
+      'في نفس المقلاة شوّح المشروم والثوم حتى يجف ماؤه.',
+      'أضف الكريمة والأعشاب واتركها تغلي خفيفاً دقيقتين.',
+      'أضف البارميزان وقلّب حتى تتجانس، ثم أعد الدجاج.',
+      'برّد تماماً وقسّمه حصصاً وجمّد. الصلصة تحفظ طراوة الدجاج عند التسخين.'
+    ]
+  },
+  {
+    id:'m35', emoji:'🍆', name:'لازانيا الكوسا باللحم (كاسرول)', equip:'oven',
+    desc:'طبقات كوسا بدل المعكرونة مع لحم وصلصة وجبن — تُقطّع حصصاً وتتجمّد ممتاز.',
+    base:'beef_ground', diets:['normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف 2 دقيقة، أو فرن 160°م 12 دقيقة', store:'مربعات مغلّفة فردياً',
+    prepMin:20, cookMin:35, difficulty:'متوسط', kcal:540, p:38, f:38, c:8,
+    snacks:['s04','s03'],
+    ingredients:[
+      {key:'beef_ground',amt:150,alts:['chicken_ground']},
+      {key:'zucchini',amt:150},
+      {key:'tomato_paste',amt:20},
+      {key:'mozzarella',amt:40,alts:['cheddar']},
+      {key:'cream_cheese',amt:20},
+      {key:'onion',amt:20},
+      {key:'garlic',amt:2},
+      {key:'italian_herbs',amt:3,alts:['oregano']},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'قطّع الكوسا شرائح طولية رفيعة، املحها واتركها 10 دقائق ثم جففها جيداً (أهم خطوة حتى لا تتمّيع).',
+      'حمّر البصل والثوم بالزيت ثم اللحم حتى ينضج، وأضف صلصة الطماطم والأعشاب وقليل ماء.',
+      'في صينية: طبقة كوسا، طبقة لحم، نقاط جبن كريمي — وكرّر.',
+      'غطِّ الوجه بالموزاريلا واخبز على 180°م لمدة 30–35 دقيقة.',
+      'اتركها ترتاح 15 دقيقة قبل التقطيع، ثم برّد وغلّف كل حصة وجمّد.'
+    ]
+  },
+  {
+    id:'m36', emoji:'🍛', name:'دجاج تكا كريمي (سكيليت)', equip:'stove',
+    desc:'دجاج متبّل باللبنة والبهارات في صلصة كريمية — نكهته تتحسّن بعد التجميد.',
+    base:'chicken_breast', diets:['normal','lifestyle'], odor:'med',
+    freeze:'ممتاز', reheat:'مايكروويف 1.5–2 دقيقة مع التحريك', store:'علب بحصص',
+    prepMin:15, cookMin:20, difficulty:'متوسط', kcal:550, p:50, f:34, c:7,
+    snacks:['s05','s03'],
+    ingredients:[
+      {key:'chicken_breast',amt:180},
+      {key:'labneh',amt:30},
+      {key:'cream_cooking',amt:50},
+      {key:'tomato_paste',amt:15},
+      {key:'ghee',amt:12,alts:['butter']},
+      {key:'garlic',amt:2},
+      {key:'ginger',amt:5},
+      {key:'curry_powder',amt:4,alts:['baharat']},
+      {key:'paprika',amt:2},
+      {key:'salt',amt:3}
+    ],
+    steps:[
+      'تبّل مكعبات الدجاج باللبنة ونصف البهارات (ساعة بالثلاجة إن أمكن).',
+      'حمّرها بالسمن على نار عالية حتى تتلوّن.',
+      'أضف الثوم والزنجبيل وباقي البهارات وقلّب 30 ثانية.',
+      'أضف صلصة الطماطم ثم الكريمة وقليل ماء، واتركها تغلي خفيفاً 5 دقائق.',
+      'برّد وقسّم حصصاً وجمّد — مع أرز القرنبيط تصير وجبة كاملة.'
+    ]
+  },
+  {
+    id:'m37', emoji:'🍚', name:'كبسة كيتو بأرز القرنبيط والدجاج', equip:'stove',
+    desc:'نكهة الكبسة ببهاراتها مع أرز القرنبيط — أقرب بديل للوجبة السعودية الأصلية.',
+    base:'chicken_breast', diets:['normal','lifestyle'], odor:'med',
+    freeze:'جيد', reheat:'مايكروويف 2 دقيقة مع التحريك', store:'علب بحصص (يفضّل عدم كبسه)',
+    prepMin:15, cookMin:25, difficulty:'متوسط', kcal:520, p:48, f:30, c:9,
+    snacks:['s01','s04'],
+    ingredients:[
+      {key:'chicken_breast',amt:180},
+      {key:'cauliflower',amt:200},
+      {key:'onion',amt:25},
+      {key:'tomato_paste',amt:10},
+      {key:'baharat',amt:4},
+      {key:'ghee',amt:15,alts:['butter']},
+      {key:'garlic',amt:2},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'ابشر القرنبيط بالخلاط نبضات حتى يشبه الأرز.',
+      'حمّر مكعبات الدجاج بالسمن وارفعها.',
+      'في نفس القدر حمّر البصل ثم الثوم وبهارات الكبسة وصلصة الطماطم.',
+      'أضف أرز القرنبيط وقلّب 4–5 دقائق فقط (لا تطبخه كثيراً حتى لا يتميّع بعد التجميد).',
+      'أعد الدجاج وقلّب، ثم برّد وقسّم وجمّد.'
+    ]
+  },
+  {
+    id:'m38', emoji:'🌯', name:'رول الدجاج المحشي بالسبانخ والجبن', equip:'oven',
+    altMethod:'بدون فرن: حمّر الرولات بالمقلاة على نار هادئة مع غطاء 15–18 دقيقة مع التقليب.',
+    desc:'صدر مفرود وملفوف على حشوة جبن كريمي وسبانخ — يُقطّع حلقات أنيقة بعد الطبخ.',
+    base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف دقيقة، أو يؤكل بارداً شرائح', store:'حلقات مغلّفة فردياً',
+    prepMin:15, cookMin:25, difficulty:'متوسط', kcal:540, p:55, f:33, c:3,
+    snacks:['s04','s06'],
+    ingredients:[
+      {key:'chicken_breast',amt:200},
+      {key:'cream_cheese',amt:30,alts:['labneh']},
+      {key:'spinach',amt:40,alts:['frozen_spinach']},
+      {key:'mozzarella',amt:20},
+      {key:'olive_oil',amt:10},
+      {key:'garlic',amt:1},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'افتح الصدر وافرده بين ورقتي نايلون واطرقه حتى يرقّ.',
+      'اخلط الجبن الكريمي مع السبانخ المفرومة والثوم والموزاريلا.',
+      'افرد الحشوة ولفّ الصدر رولاً محكماً وثبّته بأعواد أسنان.',
+      'ادهنه بالزيت واخبزه على 190°م لمدة 22–25 دقيقة.',
+      'اتركه يرتاح ثم قطّعه حلقات، غلّفها وجمّدها — تؤكل باردة أيضاً.'
+    ]
+  },
+  {
+    id:'m39', emoji:'🟢', name:'كرات الدجاج بالفيتا والسبانخ', equip:'both',
+    altMethod:'بدون فرن: اقلِ الكرات بزيت الزيتون على نار متوسطة 10–12 دقيقة مع التحريك.',
+    desc:'كرات طرية بحشوة فيتا تذوب بالفم — رائحة خفيفة ومثالية باردة أو ساخنة.',
+    base:'chicken_ground', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف دقيقة، أو تؤكل باردة', store:'كرات مفصولة بورق زبدة',
+    prepMin:15, cookMin:20, difficulty:'سهل', kcal:460, p:40, f:30, c:4,
+    snacks:['s05','s04'],
+    ingredients:[
+      {key:'chicken_ground',amt:180},
+      {key:'feta',amt:30,alts:['mozzarella']},
+      {key:'spinach',amt:40,alts:['frozen_spinach']},
+      {key:'eggs',amt:0.5},
+      {key:'almond_flour',amt:10},
+      {key:'olive_oil',amt:10},
+      {key:'garlic',amt:2},
+      {key:'oregano',amt:2,alts:['italian_herbs']},
+      {key:'salt',amt:2},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'اعصر السبانخ من مائها وافرمها ناعماً.',
+      'اخلط الدجاج المفروم مع السبانخ والبيض ودقيق اللوز والثوم والأوريغانو.',
+      'أدخل مكعب فيتا صغيراً في قلب كل كرة وأغلقها جيداً.',
+      'اخبزها على 200°م لمدة 18–20 دقيقة حتى تذهب.',
+      'برّدها وافصلها بورق الزبدة وجمّدها.'
+    ]
+  },
+  {
+    id:'m40', emoji:'🥩', name:'ستروجانوف اللحم بالمشروم', equip:'stove',
+    desc:'لحم مفروم بصلصة المشروم والخردل الكريمية — كلاسيكية مريحة تتجمّد ممتاز.',
+    base:'beef_ground', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'مايكروويف 1.5 دقيقة مع التحريك', store:'علب بحصص',
+    prepMin:10, cookMin:20, difficulty:'سهل', kcal:560, p:36, f:42, c:6,
+    snacks:['s05','s02'],
+    ingredients:[
+      {key:'beef_ground',amt:170},
+      {key:'mushroom',amt:80,alts:['mushroom_can']},
+      {key:'cream_cooking',amt:60},
+      {key:'onion',amt:20},
+      {key:'butter',amt:10,alts:['ghee']},
+      {key:'mustard_dijon',amt:5},
+      {key:'paprika',amt:2},
+      {key:'salt',amt:3},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'حمّر اللحم المفروم بالزبدة حتى يتفتت وينضج، وارفعه.',
+      'في نفس المقلاة شوّح البصل والمشروم حتى يجف ماؤه ويتحمّر.',
+      'أضف البابريكا والخردل ثم الكريمة واتركها تغلي خفيفاً.',
+      'أعد اللحم وقلّب 3 دقائق حتى تتماسك الصلصة.',
+      'برّد وقسّم حصصاً وجمّد — يقدَّم فوق قرنبيط مهروس أو زودلز.'
+    ]
+  },
+  {
+    id:'m41', emoji:'🍿', name:'تشيكن بوبس بالبارميزان (بالفرن)', equip:'oven',
+    altMethod:'بدون فرن: اقلِها بزيت غزير نسبياً على نار متوسطة حتى تتحمّر من كل الجهات.',
+    desc:'لقيمات دجاج مقرمشة بقشرة لوز وبارميزان — تؤكل باردة في العمل بدون تسخين أصلاً.',
+    base:'chicken_breast', diets:['strict','normal','lifestyle'], odor:'low',
+    freeze:'ممتاز', reheat:'تؤكل باردة، أو مايكروويف 40 ثانية (تفقد القرمشة قليلاً)', store:'كيس مفرّغ أو علب فردية',
+    prepMin:15, cookMin:20, difficulty:'سهل', kcal:520, p:52, f:30, c:4,
+    snacks:['s05','s04'],
+    ingredients:[
+      {key:'chicken_breast',amt:180},
+      {key:'parmesan',amt:20},
+      {key:'almond_flour',amt:20},
+      {key:'eggs',amt:0.5},
+      {key:'paprika',amt:2},
+      {key:'italian_herbs',amt:2},
+      {key:'olive_oil',amt:10},
+      {key:'salt',amt:2},{key:'black_pepper',amt:1}
+    ],
+    steps:[
+      'قطّع الدجاج مكعبات لقمة واحدة وتبّلها.',
+      'اخلط دقيق اللوز مع البارميزان والبابريكا والأعشاب.',
+      'اغمس المكعبات بالبيض ثم بالخليط الجاف.',
+      'رصّها على صينية مدهونة ورشّ الزيت فوقها.',
+      'اخبز على 200°م لمدة 18–20 دقيقة مع التقليب مرة.',
+      'برّدها وجمّدها — خذها للعمل وتؤكل باردة كسناك أو وجبة.'
+    ]
+  }
+);
+
+// ============================================================
+// وصفات طبخ مباشر جديدة (تُضاف لأقسامها)
+// ============================================================
+const EXTRA_FRESH = {
+ 'البيض': [
+   { name:'أومليت المشروم والجبن', meta:['١٢ دقيقة','مقلاة'],
+     ing:['٣ بيضات','حفنة مشروم شرائح','حفنة جبن مبشور','م.ك زبدة','ملح وفلفل'],
+     steps:['شوّح المشروم بالزبدة حتى يتحمّر وارفعه.','اخفق البيض واسكبه في المقلاة على نار هادئة.','وزّع المشروم والجبن على النصف.','اطوِ الأومليت وقدّمه فوراً.'],
+     tip:'جفاف المشروم من مائه قبل إضافة البيض يمنع التمّيع.' },
+   { name:'شكشوكة كيتو', meta:['١٥ دقيقة','مقلاة'],
+     ing:['٣ بيضات','١ طماطم صغيرة مفرومة','¼ فلفل رومي','م.ك زيت زيتون','كمون وبابريكا وملح'],
+     steps:['شوّح الفلفل بالزيت ثم أضف الطماطم والبهارات حتى تتسبّك.','اعمل حفراً واكسر فيها البيض.','غطِّ المقلاة حتى ينضج البياض ويبقى الصفار طرياً.','تُقدّم بدون خبز مع جبن فيتا فوقها.'],
+     tip:'بكمية طماطم قليلة تناسب مرحلة العادي — في الصارم استبدلها بسبانخ.' },
+ ],
+ 'الدجاج': [
+   { name:'شاورما الدجاج بالمقلاة', meta:['٢٥ دقيقة + تتبيل','مقلاة'],
+     ing:['٢ صدر دجاج شرائح رفيعة','٣ م.ك لبنة أو زبادي','بهارات شاورما، ثوم، ليمون','٢ م.ك زيت زيتون','ملح'],
+     steps:['تبّل الشرائح باللبنة والبهارات والثوم والليمون (ساعة على الأقل).','سخّن المقلاة جيداً وحمّر الشرائح على دفعات بدون تكديس.','اتركها تتحمّر بدون تحريك كثير حتى تكتسب اللون.','قدّمها مع ثومية كيتو وسلطة.'],
+     tip:'التتبيل باللبنة يحافظ على طراوة الصدر تماماً.' },
+   { name:'دجاج ألفريدو مع زودلز الكوسا', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٢ صدر دجاج مكعبات','١ كوب كريمة طبخ','٣ م.ك بارميزان مبشور','٢ كوسا (زودلز)','ثوم وزبدة','ملح وفلفل'],
+     steps:['حمّر الدجاج بالزبدة وارفعه.','أضف الثوم ثم الكريمة والبارميزان حتى تتكاثف.','أعد الدجاج وأضف الزودلز وقلّب دقيقة واحدة فقط.','قدّمه فوراً قبل أن تلين الكوسا.'],
+     tip:'الزودلز تُضاف آخر دقيقة حتى تبقى مقرمشة.' },
+   { name:'أجنحة الدجاج بالفرن بزبدة الثوم', meta:['٤٥ دقيقة','فرن'],
+     ing:['٥٠٠جم أجنحة دجاج','م.ك بيكنج بودر (سر القرمشة)','٢ م.ك زبدة ذائبة','ثوم مهروس وبابريكا','ملح وفلفل'],
+     steps:['جفف الأجنحة جيداً وقلّبها بالبيكنج بودر والملح.','رصّها على شبكة فوق صينية واخبزها على ٢٢٠° لمدة ٤٠ دقيقة مع التقليب.','اخلط الزبدة الذائبة بالثوم والبابريكا.','قلّب الأجنحة الساخنة بالخليط وقدّمها.'],
+     tip:'البيكنج بودر يجعل الجلد مقرمشاً كالمقلي بدون دقيق.' },
+ ],
+ 'اللحم': [
+   { name:'ستيك بصلصة الفلفل الكريمية', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٢ شريحة ستيك','½ كوب كريمة طبخ','م.ص فلفل أسود مجروش','م.ك زبدة','ثوم وملح'],
+     steps:['اشوِ الستيك بمقلاة حامية حسب النضج المطلوب وارفعه ليرتاح.','في نفس المقلاة ذوّب الزبدة مع الثوم والفلفل المجروش.','أضف الكريمة واتركها تتكاثف دقيقتين.','اسكب الصلصة فوق الستيك المقطّع شرائح.'],
+     tip:'مرق المقلاة بعد الشوي هو أساس نكهة الصلصة — لا تغسلها.' },
+ ],
+ 'الدجاج المفروم': [
+   { name:'تاكو الدجاج بأوراق الخس', meta:['٢٠ دقيقة','مقلاة'],
+     ing:['٤٠٠جم دجاج مفروم','بابريكا وكمون وثوم بودرة','أوراق خس كبيرة','جبن شيدر مبشور','أفوكادو وقشطة حامضة (اختياري)'],
+     steps:['حمّر الدجاج المفروم حتى يتفتت وينضج.','أضف البهارات وقليل ماء واتركه يتشرّب.','وزّعه في أوراق الخس كأصداف التاكو.','أضف الجبن والأفوكادو ولفّ وكُل باليد.'],
+     tip:'ورقة الخس الباردة مع الحشوة الساخنة — قرمشة ممتعة.' },
+ ],
+ 'اللحم المفروم': [
+   { name:'ملفوف محشي كيتو بأرز القرنبيط', meta:['٥٠ دقيقة','قدر'],
+     ing:['٤٠٠جم لحم مفروم','١ كوب أرز قرنبيط','أوراق ملفوف مسلوقة','م.ك صلصة طماطم + ليمون','بهارات وملح وثوم'],
+     steps:['اخلط اللحم النيء مع أرز القرنبيط والبهارات.','احشُ أوراق الملفوف ولفّها أصابع.','رصّها في قدر مع ماء قليل وصلصة وليمون وثوم.','اتركها على نار هادئة ٣٥–٤٠ دقيقة.'],
+     tip:'نفس طعم المحشي تقريباً — بدون حبة أرز واحدة.' },
+ ],
+ 'السمك': [
+   { name:'فيليه السمك مع أرز القرنبيط بالليمون', meta:['٢٥ دقيقة','مقلاة'],
+     ing:['٢ فيليه سمك أبيض','٢ كوب أرز قرنبيط','٢ م.ك زبدة','ثوم وليمون وشبت','ملح وفلفل'],
+     steps:['حمّر الفيليه بالزبدة ٣ دقائق لكل وجه وارفعه.','في نفس المقلاة قلّب أرز القرنبيط مع الثوم ٣ دقائق.','أضف عصير الليمون والشبت وتبّل.','قدّم السمك فوق الأرز مع شرائح ليمون.'],
+     tip:'وجبة كاملة من مقلاة واحدة خلال نصف ساعة.' },
+ ],
+};
+SECTIONS.forEach(sec => { if (EXTRA_FRESH[sec.title]) sec.recipes.push(...EXTRA_FRESH[sec.title]); });
+
+// ============================================================
+// المكمّلات — سلطات، خضار جانبية، صلصات، تركيب الوجبة
+// ============================================================
+const SIDE_GROUPS = [
+ { e:'🥗', n:'سلطات ترافق أي وجبة', items:[
+   { e:'🥬', n:'سلطة خضراء بسيطة', d:'خس + خيار + جرجير، مع زيت زيتون وعصير ليمون وملح. ترافق أي وجبة.' },
+   { e:'🧀', n:'سلطة الجرجير بالبارميزان', d:'جرجير + شرائح بارميزان (أو شيدر) + زيت زيتون وليمون.' },
+   { e:'🥒', n:'سلطة الخيار بالزبادي', d:'خيار مقطّع + زبادي كامل الدسم + نعناع وثوم وملح. (للعادي/لايف ستايل)' },
+   { e:'🥑', n:'سلطة الأفوكادو', d:'أفوكادو + خيار + بقدونس، مع زيت زيتون وليمون. دسمة ومشبعة.' },
+   { e:'🥕', n:'كول سلو كيتو', d:'ملفوف مبشور + مايونيز + قليل خل وملح. تدوم في الثلاجة عدة أيام — حضّرها مع تحضيرة الأسبوع.' },
+   { e:'🫑', n:'سلطة الجبن والخضار', d:'خس + خيار + فلفل رومي + مكعّبات جبن، مع زيت زيتون.' },
+   { e:'🌿', n:'تبولة القرنبيط', d:'قرنبيط مبشور ناعم نيء + بقدونس كثير + نعناع + ليمون وزيت زيتون. بديل التبولة بلا برغل.' },
+   { e:'🫒', n:'سلطة يونانية كيتو', d:'خيار + فيتا + زيتون + قليل طماطم وبصل أحمر + أوريغانو وزيت زيتون. (للعادي/لايف ستايل)' },
+ ]},
+ { e:'🥦', n:'خضار جانبية ساخنة (بدائل الأرز والبطاطس)', items:[
+   { e:'🍚', n:'أرز القرنبيط بالزبدة', d:'بديل الأرز الأساسي — يرافق الكاري والكبسة والمفتفت.',
+     how:'ابشر القرنبيط بالخلاط نبضات، ثم قلّبه بالزبدة ٣–٤ دقائق فقط مع ملح. لا تطبخه أكثر حتى لا يتميّع.' },
+   { e:'🥔', n:'قرنبيط مهروس كالبطاطس', d:'كريمي ودسم — يرافق الستروجانوف وكرات اللحم.',
+     how:'اسلق القرنبيط حتى يطرى، صفّه جيداً، واهرسه مع زبدة وقشطة وثوم وملح.' },
+   { e:'🍝', n:'زودلز الكوسا', d:'بديل المعكرونة — يرافق الألفريدو وكرات اللحم بالصلصة.',
+     how:'ابشر الكوسا لولبياً أو شرائح رفيعة، وقلّبها بالمقلاة دقيقة واحدة فقط قبل التقديم.' },
+   { e:'🥦', n:'بروكلي سوتيه بالثوم', d:'يرافق الدجاج والسمك.',
+     how:'بخّر البروكلي ٣ دقائق ثم شوّحه بزيت الزيتون والثوم حتى تتحمّر الأطراف.' },
+   { e:'🫛', n:'فاصوليا خضراء باللوز', d:'قرمشة وشكل أنيق بجانب أي بروتين.',
+     how:'شوّح الفاصوليا بالزبدة حتى تطرى قليلاً، وأضف لوزاً محمصاً مجروشاً وملحاً وليمون.' },
+   { e:'🍄', n:'مشروم بالزبدة والزعتر', d:'يرافق الستيك والبرغر.',
+     how:'شوّح المشروم على نار عالية بدون تحريك كثير حتى يتحمّر، ثم زبدة وزعتر وملح في النهاية.' },
+   { e:'🍆', n:'باذنجان مشوي بالطحينة', d:'جانب دسم بنكهة شامية.',
+     how:'اشوِ شرائح الباذنجان بالفرن بزيت الزيتون حتى تتحمّر، واسكب فوقها صلصة الطحينة بالليمون.' },
+   { e:'🧀', n:'كوسا مشوية بالبارميزان', d:'أصابع كوسا بقشرة جبن مقرمشة.',
+     how:'قطّع الكوسا أصابع، زيت وملح وبارميزان مبشور، وفرن ٢٠٠° حتى تتحمّر (١٥–١٨ دقيقة).' },
+ ]},
+ { e:'🥣', n:'صلصات وغموس تُحضَّر مرة وتكفي الأسبوع', items:[
+   { e:'🧄', n:'ثومية كيتو', d:'للشاورما والمشاوي — تُحفظ ٥ أيام.',
+     how:'اخفق مايونيز كامل الدسم + ثوم مهروس + عصير ليمون + رشة ملح. (أو اخفق ثوماً بزيت بالخلاط تدريجياً للثومية الأصلية)' },
+   { e:'🥒', n:'تزاتزيكي اللبنة', d:'للكفتة والكباب — منعش وحامض.',
+     how:'لبنة كاملة الدسم + خيار مبشور معصور + ثوم + شبت + زيت زيتون وملح.' },
+   { e:'🌿', n:'رانش اللبنة', d:'للتشيكن بوبس والأجنحة وسلطات الخس.',
+     how:'لبنة + مايونيز بالتساوي + ثوم بودرة + شبت مجفف + ليمون وملح، وخففها بقليل ماء.' },
+   { e:'🟤', n:'طحينة بالليمون', d:'للسمك والكفتة والباذنجان.',
+     how:'طحينة + عصير ليمون + ماء بارد تدريجياً حتى تفتح وتصير كريمية + ثوم وملح وكمون.' },
+   { e:'🧈', n:'زبدة الأعشاب المركّبة', d:'قرص منها فوق الستيك أو الدجاج أو السمك الساخن = صلصة فورية.',
+     how:'اخلط زبدة طرية + ثوم + بقدونس + ليمون وملح، لفّها أسطوانة بورق زبدة وجمّدها وقطّع منها عند الحاجة.' },
+   { e:'🥑', n:'غموس الأفوكادو (غواكامولي)', d:'للتاكو والبرغر وأصابع الخضار. (للعادي/لايف ستايل)',
+     how:'اهرس أفوكادو + ليمون + كزبرة + ملح + قليل بصل مفروم ناعم.' },
+   { e:'🌶️', n:'مايو حار بالبابريكا', d:'للتشيكن بوبس وأقراص السمك.',
+     how:'مايونيز + بابريكا (أو شطة بدون سكر) + رشة ثوم بودرة وليمون.' },
+ ]},
+ { e:'🍽️', n:'كمّل وجبتك — أمثلة تجميع جاهزة', items:[
+   { e:'🧮', n:'القاعدة الذهبية لتركيب الطبق', d:'بروتين (وجبة مجمّدة أو طازجة) + خضار (سلطة أو جانب ساخن) + دهن إضافي (صلصة/زبدة/زيت زيتون) = وجبة كيتو كاملة ومشبعة.' },
+   { e:'🥙', n:'يوم العمل', d:'شاورما مجمّدة + ثومية كيتو + سلطة خضراء جاهزة من البيت = غداء عمل خلال دقيقتين.' },
+   { e:'🍛', n:'يوم الكاري', d:'دجاج بالكاري الكريمي (مجمّد) + أرز قرنبيط طازج (٥ دقائق) + خيار بالزبادي.' },
+   { e:'🍝', n:'يوم الإيطالي', d:'كرات اللحم بالصلصة (مجمّدة) + زودلز كوسا طازجة + بارميزان مبشور فوقها.' },
+   { e:'🍔', n:'يوم البرغر', d:'برغر الدجاج بالجبن (مجمّد) + كول سلو من الثلاجة + مايو حار.' },
+   { e:'🐟', n:'يوم السمك', d:'سمك بزبدة الليمون (مجمّد) + بروكلي سوتيه + طحينة بالليمون.' },
+   { e:'🍢', n:'يوم الكفتة', d:'كفتة الدجاج (مجمّدة) + تزاتزيكي + تبولة القرنبيط.' },
+ ]},
+];
+
+// ============================================================
+// سناكات خفيفة إضافية (s09–s17) — بدون بروتين بودر
+// ============================================================
+Object.assign(SNACKS, {
+  s09: { id:'s09', emoji:'🧀', name:'رقائق البارميزان المقرمشة', desc:'شيبس جبن — أكوام صغيرة بالفرن 6 دقائق حتى تتصلب، تُحفظ بعلبة محكمة أياماً', diets:['strict','normal','lifestyle'],
+         kcal:130, p:12, f:9, c:1, ingredients:[{key:'parmesan',amt:30,alts:['cheddar']}] },
+  s10: { id:'s10', emoji:'🥚', name:'بيض محشي (Deviled Eggs)', desc:'اهرس الصفار مع المايونيز والخردل وأعده للبياض — يجهّز لـ3 أيام', diets:['strict','normal','lifestyle'],
+         kcal:200, p:13, f:16, c:1, ingredients:[{key:'eggs',amt:2},{key:'mayo',amt:15},{key:'mustard_dijon',amt:3}] },
+  s11: { id:'s11', emoji:'🥒', name:'قوارب الخيار بالتونة', desc:'خيار مشقوق طولياً محشو بسلطة التونة بالمايونيز', diets:['strict','normal','lifestyle'],
+         kcal:190, p:16, f:12, c:3, ingredients:[{key:'cucumber',amt:100},{key:'tuna_can',amt:0.5},{key:'mayo',amt:15}] },
+  s12: { id:'s12', emoji:'🔥', name:'حلوم مشوي بالزعتر', desc:'شرائح حلوم على مقلاة جافة دقيقتين لكل وجه — يؤكل دافئاً', diets:['strict','normal','lifestyle'],
+         kcal:220, p:14, f:18, c:2, ingredients:[{key:'halloumi',amt:60},{key:'olive_oil',amt:5},{key:'thyme',amt:1}] },
+  s13: { id:'s13', emoji:'🫑', name:'قوارب الفلفل بالجبن الكريمي', desc:'أرباع فلفل رومي محشوة جبناً كريمياً ورشة زعتر', diets:['strict','normal','lifestyle'],
+         kcal:170, p:4, f:14, c:5, ingredients:[{key:'bell_pepper',amt:80},{key:'cream_cheese',amt:40,alts:['labneh']}] },
+  s14: { id:'s14', emoji:'🥬', name:'أعواد الكرفس بالطحينة', desc:'قرمشة منعشة مع غموس دسم', diets:['strict','normal','lifestyle'],
+         kcal:140, p:4, f:12, c:4, ingredients:[{key:'celery',amt:80,alts:['cucumber']},{key:'tahini',amt:20}] },
+  s15: { id:'s15', emoji:'🥑', name:'أفوكادو محشي بالتونة', desc:'نصف أفوكادو محشو سلطة تونة — سناك يعادل وجبة صغيرة', diets:['normal','lifestyle'],
+         kcal:230, p:15, f:17, c:3, ingredients:[{key:'avocado',amt:0.5},{key:'tuna_can',amt:0.5},{key:'lemon',amt:0.25}] },
+  s16: { id:'s16', emoji:'🫒', name:'مكعبات فيتا وزيتون متبّلة', desc:'فيتا وزيتون بزيت الزيتون والزعتر — يتبّل مقدماً ويتحسّن بالثلاجة', diets:['strict','normal','lifestyle'],
+         kcal:220, p:7, f:20, c:2, ingredients:[{key:'feta',amt:50},{key:'olives_green',amt:30},{key:'olive_oil',amt:8},{key:'thyme',amt:1}] },
+  s17: { id:'s17', emoji:'🥬', name:'لفائف الخس بالجبن والخيار', desc:'ورقة خس + جبن كريمي + أصابع خيار، تُلفّ وتؤكل', diets:['strict','normal','lifestyle'],
+         kcal:130, p:3, f:11, c:4, ingredients:[{key:'lettuce',amt:50},{key:'cream_cheese',amt:30,alts:['labneh']},{key:'cucumber',amt:50}] }
+});
+
+// ============================================================
+// محتوى الرحلة — علامات الكيتوزس، إنفلونزا الكيتو، قواعد الانتقال
+// ============================================================
+const PHASE_DUR = {
+  strict: 'المدة المتوقعة: <b>أسبوعان إلى ٣ أسابيع</b> — حتى تظهر علامات الكيتوزس بثبات.',
+  normal: 'المدة: <b>حتى الوصول للوزن المستهدف</b> — أشهر حسب الهدف، بثبات وبدون استعجال.',
+  lifestyle: 'المدة: <b>نمط حياة دائم</b> — مرونة أوسع مع الحفاظ على المكتسبات.'
+};
+const KETO_SIGNS = [
+  { e:'😮‍💨', n:'رائحة النفس', d:'رائحة أسيتونية خفيفة (شبيهة بالفواكه) — أوضح علامة على إنتاج الكيتونات.' },
+  { e:'💧', n:'نزول سريع أول أسبوع', d:'٢–٤ كجم غالباً ماء مخزون مع الجلايكوجين — طبيعي ولا يعني أن النزول سيستمر بنفس السرعة.' },
+  { e:'🍽️', n:'انخفاض الشهية', d:'تلاحظ أنك تشبع أسرع وتنسى الوجبات — الكيتونات تكبح هرمونات الجوع.' },
+  { e:'⚡', n:'طاقة مستقرة وصفاء ذهني', d:'بعد فترة التكيف (٣–٧ أيام) تختفي قطرات الطاقة بعد الأكل.' },
+  { e:'🚽', n:'تبوّل أكثر وعطش', d:'الجسم يطرح الماء والأملاح — لذلك تعويض الملح ضروري.' },
+  { e:'🧪', n:'القياس (للتأكد)', d:'شرائط البول رخيصة وتكفي للبداية. جهاز كيتونات الدم أدق: ٠٫٥–٣٫٠ mmol/L = كيتوزس غذائي.' },
+];
+const KETO_FLU = [
+  { e:'🧂', n:'الملح أولاً', d:'صداع وخمول أول أيام؟ السبب غالباً نقص الصوديوم. أضف ملحاً لطعامك وكوب ماء بملح أو مرق عظام يومياً.' },
+  { e:'🥤', n:'ماء كثير', d:'٣–٤ لتر يومياً — الكيتو يفقدك سوائل أكثر من المعتاد.' },
+  { e:'🥑', n:'بوتاسيوم ومغنيسيوم', d:'أفوكادو وورقيات وسبانخ للبوتاسيوم، ومكمل مغنيسيوم قبل النوم يمنع شد العضلات.' },
+  { e:'😴', n:'خفف الجهد مؤقتاً', d:'أول أسبوع لا تضغط نفسك بالتمارين الشديدة — بعد التكيف ترجع طاقتك أعلى.' },
+];
+const TRANSITIONS = [
+  { from:'strict', to:'normal', e:'🔴→🟡', n:'متى أنتقل من الصارم إلى العادي؟',
+    d:'بعد أسبوعين إلى ٣ أسابيع، وبشرط ظهور علامتين أو أكثر من علامات الكيتوزس بثبات (أو تأكيد بالقياس). ارفع سقف الكارب تدريجياً إلى ٣٠جم وستفتح لك وصفات الطماطم والمزيد من الخضار.' },
+  { from:'normal', to:'lifestyle', e:'🟡→🟢', n:'متى أنتقل من العادي إلى لايف ستايل؟',
+    d:'عند الوصول للوزن المستهدف والثبات عليه أسبوعين. ارفع الكارب تدريجياً (٥٠جم) وراقب وزنك أسبوعياً — إن رجع بالزيادة انزل درجة مؤقتاً.' },
+  { from:'any', to:'strict', e:'🔁', n:'خرجت من الكيتو (مناسبة/سفر)؟',
+    d:'لا تجلد نفسك — ارجع للصارم ٣–٥ أيام فقط لإعادة دخول الكيتوزس، ثم أكمل من حيث توقفت.' },
+];
+// ============================================================
+// الحالة العامة
+// ============================================================
+const HUB_KEY = 'keto_hub_v1';
+const PHASE_COLORS = {
+  strict:   ['#C85A4A','rgba(200,90,74,.16)'],
+  normal:   ['#E8A33D','rgba(232,163,61,.16)'],
+  lifestyle:['#7FA86B','rgba(127,168,107,.16)']
+};
+let state = { phase:'strict', tab:'journey', favs:[], favOnly:false };
+try { Object.assign(state, JSON.parse(localStorage.getItem(HUB_KEY) || '{}')); } catch(e){}
+const save = () => localStorage.setItem(HUB_KEY, JSON.stringify(state));
+const favSet = new Set(state.favs);
+
+// فلاتر الأقسام
+let q = '';
+let fzBase='all', fzOdorLow=false, fzEquip='all', fzPhaseOnly=false;
+let frCat='all';
+let prBase='all', prType='all', prFast=false;
+let guideStatus='all';
+
+// ============================================================
+// أدوات مساعدة
+// ============================================================
+const $ = s => document.querySelector(s);
+const FRAC = {0.25:'¼', 0.5:'½', 0.75:'¾'};
+function amtTxt(a){
+  if (FRAC[a]) return FRAC[a];
+  if (a % 1 !== 0){ const w = Math.floor(a), f = FRAC[+(a-w).toFixed(2)]; if (f) return (w?w:'')+f; }
+  return String(a);
+}
+function ingLine(ing){
+  const m = ING[ing.key]; if (!m) return '';
+  let t = `<li><b>${m.name}</b> — ${amtTxt(ing.amt)} ${m.unit}`;
+  if (ing.alts && ing.alts.length){
+    t += `<br><span class="alts">أو: ${ing.alts.map(k=>ING[k]?ING[k].name:k).join('، ')}</span>`;
+  }
+  return t + '</li>';
+}
+function macroRow(kcal,p,f,c){
+  return `<div class="macros">
+    <div class="mx kc"><b>${kcal}</b><span>سعرة</span></div>
+    <div class="mx"><b>${p}</b><span>بروتين</span></div>
+    <div class="mx"><b>${f}</b><span>دهون</span></div>
+    <div class="mx"><b>${c}</b><span>كارب صافٍ</span></div>
+  </div>`;
+}
+function favBtn(uid){
+  return `<button class="cfav ${favSet.has(uid)?'on':''}" data-fav="${uid}" title="مفضلة">${favSet.has(uid)?'⭐':'☆'}</button>`;
+}
+function dietDots(diets){
+  return diets.map(d=>PHASES[d]?PHASES[d].emoji:'').join('');
+}
+function toast(msg){
+  const el = $('#toast'); el.textContent = msg;
+  el.classList.add('show'); clearTimeout(el._t);
+  el._t = setTimeout(()=>el.classList.remove('show'), 1700);
+}
+function hit(txt){ return !q || (txt||'').includes(q); }
+function chipRow(defs, cur, attr){
+  return `<div class="chips">` + defs.map(d =>
+    `<button class="fchip ${cur===d.v?'on':''}" data-${attr}="${d.v}">${d.t}</button>`).join('') + `</div>`;
+}
+
+// ============================================================
+// المراحل (الهيدر)
+// ============================================================
+function applyPhase(){
+  const [c, g] = PHASE_COLORS[state.phase];
+  document.documentElement.style.setProperty('--acc', c);
+  document.documentElement.style.setProperty('--acc-glow', g);
+  const sw = $('#phaseSwitch');
+  sw.innerHTML = `<div class="lbl">مرحلتي الحالية:</div>` + Object.values(PHASES).map(p=>{
+    const [pc,pg] = PHASE_COLORS[p.key];
+    return `<button class="pbtn ${state.phase===p.key?'on':''}" data-phase="${p.key}" style="--pc:${pc};--pg:${pg}">
+      <span class="dot"></span> ${p.emoji} ${p.name}</button>`;
+  }).join('');
+  $('#phaseNote').innerHTML = `<b>${PHASES[state.phase].goal}:</b> ${PHASES[state.phase].note}`;
+}
+
+// ============================================================
+// التبويبات
+// ============================================================
+const TABS = [
+  { id:'journey', e:'🧭', n:'رحلتي والدليل' },
+  { id:'freezer', e:'🧊', n:'وجبات التجميد', c:()=>RECIPES.length },
+  { id:'fresh',   e:'🍳', n:'طبخ مباشر', c:()=>SECTIONS.reduce((a,s)=>a+s.recipes.length,0) },
+  { id:'sides',   e:'🥗', n:'مكمّلات الوجبة', c:()=>SIDE_GROUPS.reduce((a,g)=>a+g.items.length,0) },
+  { id:'protein', e:'🥤', n:'سناكات البروتين', c:()=>PSNACKS.length },
+  { id:'snacks',  e:'🥜', n:'سناكات خفيفة', c:()=>Object.keys(SNACKS).length },
+];
+function renderTabs(){
+  $('#tabs').innerHTML = TABS.map(t =>
+    `<button class="tab ${state.tab===t.id?'on':''}" data-tab="${t.id}">${t.e} ${t.n}${t.c?` <span class="n">${t.c()}</span>`:''}</button>`
+  ).join('');
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on', p.id==='pane-'+state.tab));
+}
+
+// ============================================================
+// 1) رحلتي والدليل
+// ============================================================
+function renderJourney(){
+  let h = `<h2 class="sec-title">🧭 خريطة الرحلة</h2>
+  <p class="sec-sub">ثلاث مراحل متدرجة: ندخل الكيتوزس بالصارم، نخسر الوزن بالعادي، ونثبّت بلايف ستايل. اضغط على المرحلة لتفعيلها — يتلوّن الدليل كله حسبها.</p>
+  <div class="jgrid">` + Object.values(PHASES).map(p=>{
+    const [pc,pg] = PHASE_COLORS[p.key];
+    return `<div class="jcard ${state.phase===p.key?'cur':''}" data-phase="${p.key}" style="--jc:${pc};--jg:${pg};cursor:pointer">
+      ${state.phase===p.key?'<span class="youare">أنت هنا</span>':''}
+      <div class="jph">${p.emoji} ${p.name}</div>
+      <span class="jgoal">${p.goal}</span>
+      <p>${p.note}</p>
+      <div class="jdur">${PHASE_DUR[p.key]}</div>
+    </div>`;
+  }).join('') + `</div>`;
+
+  h += `<h2 class="sec-title">🔁 متى أنتقل بين المراحل؟</h2><div class="signs">` +
+    TRANSITIONS.map(t=>`<div class="sign"><span class="se">${t.e}</span><div><b>${t.n}</b><span>${t.d}</span></div></div>`).join('') + `</div>`;
+
+  h += `<h2 class="sec-title">🧪 علامات دخول الكيتوزس</h2><div class="signs">` +
+    KETO_SIGNS.map(s=>`<div class="sign"><span class="se">${s.e}</span><div><b>${s.n}</b><span>${s.d}</span></div></div>`).join('') + `</div>`;
+
+  h += `<h2 class="sec-title">🤒 إنفلونزا الكيتو وعلاجها</h2><div class="signs">` +
+    KETO_FLU.map(s=>`<div class="sign"><span class="se">${s.e}</span><div><b>${s.n}</b><span>${s.d}</span></div></div>`).join('') + `</div>`;
+
+  // دليل المسموح والممنوع
+  h += `<h2 class="sec-title">📋 دليل المسموح والممنوع</h2>
+  <p class="sec-sub">الحكم الملوّن حسب مرحلتك الحالية (${PHASES[state.phase].emoji} ${PHASES[state.phase].name}). ✓ مسموح · ⚠ مشروط · ✕ ممنوع.</p>`;
+  h += chipRow([
+    {v:'all',t:'الكل'},{v:'y',t:'✓ المسموح'},{v:'c',t:'⚠ المشروط'},{v:'n',t:'✕ الممنوع'}
+  ], guideStatus, 'gstatus');
+
+  for (const [ck, cat] of Object.entries(GUIDE_CATS)){
+    const items = GUIDE_DATA.filter(it => it.cat===ck
+      && (guideStatus==='all' || it.s[state.phase]===guideStatus)
+      && (hit(it.n) || hit(it.cond)));
+    if (!items.length) continue;
+    h += `<h3 class="gcat-title">${cat.e} ${cat.n}</h3><div class="glist">` + items.map(it=>{
+      const pills = Object.keys(GUIDE_PHASES).map(k=>{
+        const m = GSMAP[it.s[k]], p = GUIDE_PHASES[k];
+        const short = p.name.replace('الكيتو ','').replace('كيتو ','');
+        return `<span class="gpill ${k===state.phase?'focus':'dim'}"><span class="pl">${short}</span> <span class="pv-${m.cls}">${m.sym}</span></span>`;
+      }).join('');
+      const pc = it.pc && it.pc[state.phase] ? `<div class="gphase">💡 ${it.pc[state.phase]}</div>` : '';
+      return `<div class="gitem"><div class="gn">${it.e} ${it.n}<span class="gpills">${pills}</span></div>
+        ${it.cond?`<div class="gcond">${it.cond}</div>`:''}${pc}</div>`;
+    }).join('') + `</div>`;
+  }
+
+  // التحويلات الذكية
+  h += `<h2 class="sec-title">🔄 التحويلات الذكية (ممنوع ← بديله الكيتوني)</h2>`;
+  let lastCat = '';
+  for (const s of SWAPS.filter(s=>hit(s.from.n)||hit(s.to.n)||hit(s.how)||hit(s.cat))){
+    if (s.cat !== lastCat){ h += `<div class="swapcat">${s.cat}</div>`; lastCat = s.cat; }
+    h += `<div class="swap" style="margin-bottom:8px">
+      <div class="sfrom">${s.from.e} ${s.from.n}</div><div class="sarrow">←</div>
+      <div class="sto">${s.to.e} ${s.to.n}</div>
+      <div class="show-">${s.how}</div>
+    </div>`;
+  }
+  $('#pane-journey').innerHTML = h;
+}
+
+// ============================================================
+// 2) وجبات التجميد
+// ============================================================
+function freezerCard(r){
+  const uid = 'fz:'+r.id;
+  const odor = r.odor==='low'
+    ? `<span class="chip ok">🌬️ رائحة خفيفة — آمنة للعمل</span>`
+    : `<span class="chip warn">🌬️ رائحة متوسطة</span>`;
+  const eq = EQUIP[r.equip] || EQUIP.both;
+  const pair = (r.snacks||[]).map(id=>SNACKS[id]).filter(Boolean)
+    .map(s=>`${s.emoji} ${s.name}`).join(' · ');
+  return `<div class="card" data-card>
+    <div class="chead"><span class="cemoji">${r.emoji}</span>
+      <div><div class="cname">${r.name}</div><div class="cdesc">${r.desc}</div></div>
+      ${favBtn(uid)}</div>
+    <div class="cbadges">
+      <span class="chip acc">${dietDots(r.diets)}</span>
+      ${odor}
+      <span class="chip">${eq.emoji} ${eq.short}</span>
+      <span class="chip">⏱️ ${r.prepMin+r.cookMin} دقيقة</span>
+      <span class="chip">${r.difficulty}</span>
+      <span class="chip ok">🧊 تجميده ${r.freeze}</span>
+    </div>
+    ${macroRow(r.kcal,r.p,r.f,r.c)}
+    <div class="cbody">
+      <h4>🧺 المكوّنات (لحصة واحدة)</h4><ul>${r.ingredients.map(ingLine).join('')}</ul>
+      <h4>👨‍🍳 الطريقة</h4><ol>${r.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+      ${r.altMethod?`<div class="notebox">🔁 <b>طريقة بديلة:</b> ${r.altMethod}</div>`:''}
+      <div class="notebox">♨️ <b>التسخين:</b> ${r.reheat}<br>📦 <b>التخزين:</b> ${r.store}</div>
+      ${pair?`<div class="pairrow">🥜 <b>يناسبها سناك:</b> ${pair}</div>`:''}
+    </div>
+  </div>`;
+}
+function renderFreezer(){
+  let h = `<h2 class="sec-title">🧊 وجبات التحضير والتجميد</h2>
+  <p class="sec-sub">تطبخ دفعة في يوم التحضير، تقسّمها حصصاً وتجمّدها — وجبة جاهزة للعمل أو البيت خلال دقيقتين بالمايكروويف. الوصفات المعلّمة "رائحة خفيفة" لن تزعج زملاءك في المكتب.</p>`;
+  h += chipRow([{v:'all',t:'كل البروتينات'}, ...Object.entries(BASES).map(([k,b])=>({v:k,t:`${b.emoji} ${b.name}`}))], fzBase, 'fzbase');
+  h += `<div class="chips">
+    <button class="fchip ${fzPhaseOnly?'on':''}" data-fztog="phase">${PHASES[state.phase].emoji} مرحلتي فقط</button>
+    <button class="fchip ${fzOdorLow?'on':''}" data-fztog="odor">🌬️ رائحة خفيفة فقط (للعمل)</button>
+    <button class="fchip ${fzEquip==='stove'?'on':''}" data-fztog="stove">🍳 بدون فرن</button>
+    <button class="fchip ${fzEquip==='oven'?'on':''}" data-fztog="oven">🔥 بالفرن</button>
+  </div>`;
+  const list = RECIPES.filter(r =>
+    (fzBase==='all' || r.base===fzBase) &&
+    (!fzPhaseOnly || r.diets.includes(state.phase)) &&
+    (!fzOdorLow || r.odor==='low') &&
+    (fzEquip==='all' || r.equip===fzEquip || r.equip==='both') &&
+    (!state.favOnly || favSet.has('fz:'+r.id)) &&
+    (hit(r.name) || hit(r.desc) || r.ingredients.some(i=>ING[i.key]&&hit(ING[i.key].name)))
+  );
+  h += list.length ? `<div class="grid">${list.map(freezerCard).join('')}</div>`
+                   : `<div class="empty">لا توجد نتائج بهذه الفلاتر 🤷</div>`;
+  $('#pane-freezer').innerHTML = h;
+}
+
+// ============================================================
+// 3) طبخ مباشر
+// ============================================================
+function freshCard(sec, r){
+  const uid = `fr:${sec.title}:${r.name}`;
+  return `<div class="card" data-card>
+    <div class="chead"><span class="cemoji">${sec.e}</span>
+      <div><div class="cname">${r.name}</div></div>
+      ${favBtn(uid)}</div>
+    <div class="cbadges">
+      <span class="chip acc">${sec.title}</span>
+      ${r.meta.map(m=>`<span class="chip">${m}</span>`).join('')}
+    </div>
+    <div class="cbody">
+      <h4>🧺 المكوّنات</h4><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul>
+      <h4>👨‍🍳 الطريقة</h4><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol>
+      ${r.tip?`<div class="notebox">💡 ${r.tip}</div>`:''}
+    </div>
+    <div style="height:13px"></div>
+  </div>`;
+}
+function renderFresh(){
+  let h = `<h2 class="sec-title">🍳 الطبخ المباشر (يُطهى ويُؤكل)</h2>
+  <p class="sec-sub">وصفات تُحضّر وتُقدَّم في نفس الوقت — للعشاء في البيت أو نهاية الأسبوع. كمّلها بسلطة أو جانب من تبويب «مكمّلات الوجبة».</p>`;
+  h += chipRow([{v:'all',t:'الكل'}, ...SECTIONS.map(s=>({v:s.title,t:`${s.e} ${s.title}`}))], frCat, 'frcat');
+  let cards = [];
+  for (const sec of SECTIONS){
+    if (frCat!=='all' && sec.title!==frCat) continue;
+    for (const r of sec.recipes){
+      if (state.favOnly && !favSet.has(`fr:${sec.title}:${r.name}`)) continue;
+      if (!(hit(r.name) || r.ing.some(hit))) continue;
+      cards.push(freshCard(sec, r));
+    }
+  }
+  h += cards.length ? `<div class="grid">${cards.join('')}</div>` : `<div class="empty">لا توجد نتائج 🤷</div>`;
+  $('#pane-fresh').innerHTML = h;
+}
+
+// ============================================================
+// 4) مكمّلات الوجبة
+// ============================================================
+function renderSides(){
+  let h = `<h2 class="sec-title">🥗 مكمّلات الوجبة</h2>
+  <p class="sec-sub">سلطات وخضار جانبية وصلصات تحوّل أي بروتين إلى وجبة كاملة — أغلبها يُحضَّر مرة ويكفي عدة أيام.</p>`;
+  for (const g of SIDE_GROUPS){
+    const items = g.items.filter(it =>
+      (hit(it.n) || hit(it.d) || hit(it.how)) &&
+      (!state.favOnly || favSet.has(`sd:${g.n}:${it.n}`)));
+    if (!items.length) continue;
+    h += `<h3 class="sgroup-title">${g.e} ${g.n}</h3><div class="sgrid">` + items.map(it=>{
+      const uid = `sd:${g.n}:${it.n}`;
+      return `<div class="scard"><div class="sn">${it.e} ${it.n} ${favBtn(uid)}</div>
+        <div class="sd">${it.d}</div>
+        ${it.how?`<div class="show"><b>الطريقة:</b> ${it.how}</div>`:''}</div>`;
+    }).join('') + `</div>`;
+  }
+  $('#pane-sides').innerHTML = h;
+}
+
+// ============================================================
+// 5) سناكات البروتين (بودر)
+// ============================================================
+function proteinCard(s){
+  const uid = 'pr:'+s.id;
+  const b = BASE_LABEL[s.base];
+  return `<div class="card" data-card>
+    <div class="chead"><span class="cemoji">${s.e}</span>
+      <div><div class="cname">${s.n}</div><div class="cdesc">${s.desc}</div></div>
+      ${favBtn(uid)}</div>
+    <div class="cbadges">
+      <span class="chip ${b.cls}">${b.txt}</span>
+      <span class="chip">${TYPES[s.type]}</span>
+      ${s.fast?'<span class="chip ok">⚡ فوري (دقائق)</span>':''}
+      <span class="chip">${PH[s.ph]}</span>
+    </div>
+    ${macroRow(s.kcal,s.P,s.F,s.C)}
+    <div class="cbody">
+      <h4>🧺 المكوّنات</h4><ul>${s.ing.map(x=>`<li>${x}</li>`).join('')}</ul>
+      <h4>👨‍🍳 الطريقة</h4><ol>${s.steps.map(x=>`<li>${x}</li>`).join('')}</ol>
+      <div class="notebox">📦 ${s.store}</div>
+    </div>
+  </div>`;
+}
+function renderProtein(){
+  let h = `<h2 class="sec-title">🥤 سناكات البروتين بودر</h2>
+  <p class="sec-sub">وصفات مبنية على نوعَي البروتين عندي: <b>آيزوليت واي (فانيلا)</b> و<b>بيف بروتين آيزوليت (بلاك كرنت)</b> — جيلي، موس، مشروبات، مثلجات، مخبوزات وكرات.</p>`;
+  h += chipRow([{v:'all',t:'الكل'},{v:'whey',t:'🥛 آيزوليت واي'},{v:'beef',t:'🥩 بيف بروتين'}], prBase, 'prbase');
+  h += chipRow([{v:'all',t:'كل الأنواع'}, ...Object.entries(TYPES).map(([k,t])=>({v:k,t}))], prType, 'prtype');
+  h += `<div class="chips"><button class="fchip ${prFast?'on':''}" data-prfast="1">⚡ الفورية فقط</button></div>`;
+  const list = PSNACKS.filter(s =>
+    (prBase==='all' || s.base===prBase || s.base==='both') &&
+    (prType==='all' || s.type===prType) &&
+    (!prFast || s.fast) &&
+    (!state.favOnly || favSet.has('pr:'+s.id)) &&
+    (hit(s.n) || hit(s.desc) || s.ing.some(hit))
+  );
+  h += list.length ? `<div class="grid">${list.map(proteinCard).join('')}</div>`
+                   : `<div class="empty">لا توجد نتائج 🤷</div>`;
+
+  h += `<div class="shopwrap"><h2 class="sec-title">🛒 قائمة تسوق ركن السناكات</h2>
+  <p class="sec-sub">المخزون الذي يغطي كل الوصفات أعلاه — مع تحذيرات الشراء المهمة (السكر المخفي).</p>`;
+  h += SHOP_CATS.map(c=>`<details class="shop"><summary>${c.e} ${c.title} <span class="n" style="color:var(--txt3);font-size:11px">(${c.items.length})</span></summary>` +
+    c.items.map(i=>`<div class="shopitem"><div class="in">${i.n} <span class="iq">${i.q}</span></div>
+      ${i.alt&&i.alt!=='—'?`<div class="ia">🔁 البديل: ${i.alt}</div>`:''}
+      ${i.warn&&i.warn!=='—'?`<div class="iw">⚠️ ${i.warn}</div>`:''}</div>`).join('') + `</details>`).join('');
+  h += `<h3 class="gcat-title">🧰 أدوات تسهّل التحضير</h3><div class="tools">` +
+    SHOP_TOOLS.map(t=>`<span class="tool">${t}</span>`).join('') + `</div></div>`;
+  $('#pane-protein').innerHTML = h;
+}
+
+// ============================================================
+// 6) سناكات خفيفة
+// ============================================================
+function snackCard(s){
+  const uid = 'sn:'+s.id;
+  return `<div class="card" data-card>
+    <div class="chead"><span class="cemoji">${s.emoji}</span>
+      <div><div class="cname">${s.name}</div><div class="cdesc">${s.desc}</div></div>
+      ${favBtn(uid)}</div>
+    <div class="cbadges"><span class="chip acc">${dietDots(s.diets)}</span></div>
+    ${macroRow(s.kcal,s.p,s.f,s.c)}
+    <div class="cbody">
+      <h4>🧺 المكوّنات</h4><ul>${s.ingredients.map(ingLine).join('')}</ul>
+    </div>
+  </div>`;
+}
+function renderSnacks(){
+  let h = `<h2 class="sec-title">🥜 سناكات خفيفة بين الوجبات</h2>
+  <p class="sec-sub">سناكات سريعة بدون بروتين بودر — تسد الجوع بين الوجبات وتُحضَّر بدقائق. الرموز تبيّن المراحل المناسبة (🔴 صارم · 🟡 عادي · 🟢 لايف ستايل).</p>`;
+  const list = Object.values(SNACKS).filter(s =>
+    (!state.favOnly || favSet.has('sn:'+s.id)) &&
+    (hit(s.name) || hit(s.desc) || s.ingredients.some(i=>ING[i.key]&&hit(ING[i.key].name)))
+  );
+  h += list.length ? `<div class="grid">${list.map(snackCard).join('')}</div>` : `<div class="empty">لا توجد نتائج 🤷</div>`;
+  $('#pane-snacks').innerHTML = h;
+}
+
+// ============================================================
+// التحديث والأحداث
+// ============================================================
+const RENDER = { journey:renderJourney, freezer:renderFreezer, fresh:renderFresh, sides:renderSides, protein:renderProtein, snacks:renderSnacks };
+function renderActive(){ renderTabs(); RENDER[state.tab](); }
+function renderAll(){ applyPhase(); renderActive(); }
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-phase],[data-tab],[data-fav],[data-card] .chead,[data-card] .cbadges,[data-card] .macros,[data-fzbase],[data-fztog],[data-frcat],[data-prbase],[data-prtype],[data-prfast],[data-gstatus]');
+  if (!t) return;
+
+  if (t.dataset.fav){
+    const uid = t.dataset.fav;
+    if (favSet.has(uid)){ favSet.delete(uid); toast('أُزيلت من المفضلة'); }
+    else { favSet.add(uid); toast('أُضيفت للمفضلة ⭐'); }
+    state.favs = [...favSet]; save();
+    t.classList.toggle('on'); t.textContent = favSet.has(uid)?'⭐':'☆';
+    return;
+  }
+  if (t.dataset.phase){ state.phase = t.dataset.phase; save(); renderAll(); return; }
+  if (t.dataset.tab){ state.tab = t.dataset.tab; save(); renderActive(); window.scrollTo({top:0}); return; }
+  if (t.dataset.gstatus){ guideStatus = t.dataset.gstatus; renderJourney(); return; }
+  if (t.dataset.fzbase){ fzBase = t.dataset.fzbase; renderFreezer(); return; }
+  if (t.dataset.fztog){
+    const k = t.dataset.fztog;
+    if (k==='phase') fzPhaseOnly = !fzPhaseOnly;
+    if (k==='odor') fzOdorLow = !fzOdorLow;
+    if (k==='stove') fzEquip = fzEquip==='stove' ? 'all' : 'stove';
+    if (k==='oven') fzEquip = fzEquip==='oven' ? 'all' : 'oven';
+    renderFreezer(); return;
+  }
+  if (t.dataset.frcat){ frCat = t.dataset.frcat; renderFresh(); return; }
+  if (t.dataset.prbase){ prBase = t.dataset.prbase; renderProtein(); return; }
+  if (t.dataset.prtype){ prType = t.dataset.prtype; renderProtein(); return; }
+  if (t.dataset.prfast){ prFast = !prFast; renderProtein(); return; }
+
+  const card = t.closest('[data-card]');
+  if (card) card.classList.toggle('open');
+});
+
+$('#q').addEventListener('input', e => { q = e.target.value.trim(); RENDER[state.tab](); });
+$('#favOnly').addEventListener('click', () => {
+  state.favOnly = !state.favOnly; save();
+  $('#favOnly').classList.toggle('on', state.favOnly);
+  RENDER[state.tab]();
+});
+$('#favOnly').classList.toggle('on', state.favOnly);
+
+const topbtn = $('#topbtn');
+window.addEventListener('scroll', () => topbtn.classList.toggle('show', window.scrollY > 600), {passive:true});
+topbtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+renderAll();
+</script>
+</body>
+</html>
