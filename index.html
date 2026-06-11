@@ -223,15 +223,58 @@ footer a{color:var(--txt2)}
 .shopcat .sct{padding:9px 14px;font-weight:700;font-size:13.5px;background:var(--bg2);border-bottom:1px solid var(--line)}
 .havehint{font-size:12px;color:var(--txt3);margin:6px 0 10px}
 .plansum{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+/* ===== مستند الطباعة الاحترافي ===== */
+#printdoc{display:none}
 @media print{
-  body.pp{--bg:#fff;--bg2:#f6f3ed;--card:#fff;--card2:#fff;--line:#c9c2b5;--line2:#b5ad9e;--txt:#1a1713;--txt2:#3d382f;--txt3:#6e675a;background:#fff;color:#1a1713}
+  @page{size:A4;margin:11mm 12mm}
+  body.pp{background:#fff!important;color:#15120e}
   body.pp::before{display:none}
-  body.pp header,body.pp .navbar,body.pp footer,body.pp .topbtn,body.pp .toast,body.pp .noprint{display:none!important}
-  body.pp .pane{display:none!important}
-  body.pp #pane-plan{display:block!important}
-  body.pp .sec-title{font-size:17px;margin-top:16px}
-  body.pp .prep-block,body.pp .shopcat{border:1px solid #c9c2b5}
-  body.pp .mx b{color:#1a1713}.pp .mx.kc b{color:#8a5a00}
+  body.pp .wrap,body.pp .topbtn,body.pp .toast{display:none!important}
+  body.pp #printdoc{display:block;font-family:'Cairo',sans-serif;font-size:12px;line-height:1.6;color:#15120e}
+  #printdoc *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .pd-head{text-align:center;border-bottom:3px double var(--pacc);padding-bottom:10px;margin-bottom:12px}
+  .pd-logo{font-family:'Reem Kufi';font-size:11px;font-weight:600;color:#8a8174;letter-spacing:2px}
+  .pd-head h1{font-family:'Reem Kufi';font-size:25px;margin:2px 0 4px;color:#15120e}
+  .pd-meta{font-size:11px;color:#5d564b;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .pd-meta b{color:var(--pacc)}
+  table.pd-toc{width:100%;border-collapse:collapse;font-size:11px;margin:8px 0 2px}
+  .pd-toc th{background:#f3efe7;font-family:'Reem Kufi';font-weight:700;padding:5px 8px;border:1px solid #d8d2c6;color:#3d382f}
+  .pd-toc td{padding:4.5px 8px;border:1px solid #e0dbd0}
+  .pd-toc td.c{text-align:center;font-family:'JetBrains Mono';font-size:10.5px}
+  h2.pd-sec{font-family:'Reem Kufi';font-size:16px;margin:16px 0 9px;display:flex;align-items:center;gap:9px;color:#15120e}
+  h2.pd-sec::after{content:'';flex:1;height:2px;background:linear-gradient(270deg,transparent,var(--pacc))}
+  .pd-break{break-before:page}
+  .pd-recipe{border:1.5px solid #d8d2c6;border-radius:10px;margin-bottom:11px;break-inside:avoid;overflow:hidden}
+  .pd-rhead{display:flex;align-items:center;gap:10px;padding:8px 13px;background:#f6f3ec;border-bottom:1px solid #d8d2c6}
+  .pd-num{width:24px;height:24px;border-radius:50%;background:var(--pacc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
+  .pd-rname{font-family:'Reem Kufi';font-weight:700;font-size:14.5px}
+  .pd-serv{margin-inline-start:auto;border:1.5px solid var(--pacc);color:var(--pacc);border-radius:99px;padding:1px 11px;font-weight:700;font-size:10.5px;white-space:nowrap}
+  .pd-rmeta{padding:5px 13px;font-size:10.5px;color:#5d564b;border-bottom:1px dashed #ddd;display:flex;gap:13px;flex-wrap:wrap}
+  .pd-rmeta b{color:#3d382f}
+  .pd-cols{display:grid;grid-template-columns:37% 1fr}
+  .pd-ing{padding:9px 13px;border-inline-end:1px dashed #d8d2c6}
+  .pd-ing h4,.pd-steps h4{font-family:'Reem Kufi';font-size:10.5px;color:var(--pacc);margin:0 0 5px;font-weight:700}
+  .pd-ing ul{list-style:none;padding:0;margin:0;font-size:11px}
+  .pd-ing li{padding:2.5px 0;border-bottom:1px dotted #e3ded4;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+  .pd-ing li:last-child{border-bottom:none}
+  .pd-ing .ia{font-family:'JetBrains Mono';font-size:10px;color:#3d382f;white-space:nowrap}
+  .pd-steps{padding:9px 13px}
+  .pd-steps ol{padding-inline-start:16px;margin:0;font-size:11px;display:grid;gap:2.5px;color:#28241d}
+  .pd-steps ol li::marker{color:var(--pacc);font-weight:700}
+  .pd-note{margin:0 13px 9px;background:#f6f3ec;border-radius:7px;padding:5px 10px;font-size:10.5px;color:#3d382f;border-inline-start:3px solid var(--pacc)}
+  .pd-shopintro{font-size:11px;color:#5d564b;margin-bottom:8px}
+  .pd-shopwrap{column-count:2;column-gap:14px}
+  .pd-cat{break-inside:avoid;border:1.5px solid #d8d2c6;border-radius:9px;margin-bottom:9px;overflow:hidden}
+  .pd-cat h3{background:#f3efe7;padding:4px 11px;margin:0;font-family:'Reem Kufi';font-size:11.5px;font-weight:700;border-bottom:1px solid #d8d2c6;color:#3d382f}
+  .pd-line{display:flex;align-items:center;gap:8px;padding:4px 11px;border-bottom:1px dotted #e3ded4;font-size:11px}
+  .pd-line:last-child{border-bottom:none}
+  .pd-box{width:12px;height:12px;border:1.5px solid #9a9183;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff}
+  .pd-line.have{color:#a39a8b;text-decoration:line-through}
+  .pd-line.have .pd-box{background:#a39a8b;border-color:#a39a8b}
+  .pd-amt{margin-inline-start:auto;font-family:'JetBrains Mono';font-size:10px;color:#3d382f;white-space:nowrap}
+  .pd-line.have .pd-amt{color:#a39a8b}
+  .pd-lnote{font-size:9.5px;color:#8a8174}
+  .pd-foot{margin-top:13px;border-top:2px solid var(--pacc);padding-top:5px;display:flex;justify-content:space-between;font-size:9.5px;color:#8a8174}
 }
 </style>
 </head>
@@ -272,6 +315,7 @@ footer a{color:var(--txt2)}
 
 </div>
 <button class="topbtn" id="topbtn" title="للأعلى">↑</button>
+<div id="printdoc"></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -3029,6 +3073,111 @@ function prepBlock(uid, n){
   if (r.t==='pr' && o.store) h += `<div class="notebox">📦 ${o.store}</div>`;
   return h + `</div>`;
 }
+// مستند الطباعة الاحترافي (مستقل عن تصميم الويب)
+function buildPrintDoc(){
+  const uids = Object.keys(state.plan);
+  const items = uids.map(uid=>({uid, n:state.plan[uid], r:resolve(uid)})).filter(x=>x.r);
+  const totServ = items.reduce((a,x)=>a+x.n,0);
+  const totKcal = items.reduce((a,x)=>a+(x.r.o.kcal||0)*x.n,0);
+  const ph = PHASES[state.phase];
+  const dateStr = new Date().toLocaleDateString('ar-SA', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+
+  let h = `<div class="pd-head">
+    <div class="pd-logo">🥑 كيتو — دليلي الشامل</div>
+    <h1>خطة التحضير الأسبوعية</h1>
+    <div class="pd-meta"><span>📅 ${dateStr}</span><span>المرحلة: <b>${ph.emoji} ${ph.name}</b></span><span>${items.length} وصفات · ${totServ} حصة · ≈${totKcal.toLocaleString('en')} سعرة إجمالاً</span></div>
+  </div>`;
+
+  // جدول ملخص الخطة
+  h += `<table class="pd-toc"><tr><th>#</th><th>الوصفة</th><th>القسم</th><th>الحصص</th><th>سعرات/حصة</th><th>بروتين/حصة</th></tr>`;
+  items.forEach((x,i)=>{
+    const o = x.r.o;
+    h += `<tr><td class="c">${i+1}</td><td>${x.r.e} ${x.r.n}</td><td class="c">${x.r.lbl}</td><td class="c">×${x.n}</td><td class="c">${o.kcal||'—'}</td><td class="c">${o.p||o.P||'—'}</td></tr>`;
+  });
+  h += `</table>`;
+
+  // أوراق التحضير
+  h += `<h2 class="pd-sec">📖 أوراق التحضير</h2>`;
+  items.forEach((x,i)=>{
+    const o = x.r.o, n = x.n;
+    let meta = [`<b>${x.r.lbl}</b>`];
+    if (o.prepMin) meta.push(`⏱️ ${o.prepMin+o.cookMin} دقيقة`);
+    if (o.meta) meta.push(o.meta.join(' · '));
+    if (o.kcal) meta.push(`للحصة: <b>${o.kcal}</b> سعرة · <b>${o.p||o.P}</b> بروتين · <b>${o.f||o.F}</b> دهون · <b>${o.c||o.C}</b> كارب`);
+    if (o.difficulty) meta.push(o.difficulty);
+
+    let ingHtml = '';
+    if (x.r.struct){
+      ingHtml = o.ingredients.map(ing=>{
+        const m = ING[ing.key]; if (!m) return '';
+        return `<li><span>${m.name}</span><span class="ia">${fmtTotal(ing.amt*n, m.unit)}</span></li>`;
+      }).join('');
+    } else if (o.ing){
+      ingHtml = o.ing.map(t=>`<li><span>${t}</span></li>`).join('');
+    } else if (o.d){
+      ingHtml = `<li><span>${o.d}</span></li>`;
+    }
+    const ingTitle = x.r.struct ? `🧺 المكوّنات (مضروبة ×${n})` : `🧺 المكوّنات — للمرة الواحدة (حضّر ×${n})`;
+    const steps = o.steps ? o.steps : (o.how ? [o.how] : (o.desc ? [o.desc] : []));
+    const cols = steps.length
+      ? `<div class="pd-cols">
+          <div class="pd-ing"><h4>${ingTitle}</h4><ul>${ingHtml}</ul></div>
+          <div class="pd-steps"><h4>👨‍🍳 طريقة التحضير</h4><ol>${steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+        </div>`
+      : `<div class="pd-ing" style="border:none"><h4>${ingTitle}</h4><ul>${ingHtml}</ul></div>`;
+
+    h += `<article class="pd-recipe">
+      <div class="pd-rhead"><span class="pd-num">${i+1}</span><span>${x.r.e}</span><span class="pd-rname">${x.r.n}</span><span class="pd-serv">×${n} ${n>2?'حصص':'حصة'}</span></div>
+      <div class="pd-rmeta">${meta.map(m=>`<span>${m}</span>`).join('')}</div>
+      ${cols}
+      ${o.altMethod?`<div class="pd-note">🔁 <b>طريقة بديلة:</b> ${o.altMethod}</div>`:''}
+      ${x.r.t==='fz'?`<div class="pd-note">♨️ <b>التسخين:</b> ${o.reheat} &nbsp;·&nbsp; 📦 <b>التخزين:</b> ${o.store}</div>`:''}
+      ${x.r.t==='pr'&&o.store?`<div class="pd-note">📦 ${o.store}</div>`:''}
+    </article>`;
+  });
+
+  // قائمة التسوق
+  h += `<h2 class="pd-sec pd-break">🛒 قائمة التسوق</h2>
+  <div class="pd-shopintro">الكميات محسوبة بالضبط لمجموع الحصص أعلاه — الأصناف المشطوبة متوفرة في المنزل ولا تُشترى.</div>
+  <div class="pd-shopwrap">`;
+  const agg = {};
+  items.forEach(x=>{
+    if (!x.r.struct) return;
+    x.r.o.ingredients.forEach(ing=>{
+      const m = ING[ing.key]; if (!m) return;
+      if (!agg[ing.key]) agg[ing.key] = { m, total:0 };
+      agg[ing.key].total += ing.amt * x.n;
+    });
+  });
+  const CATS = ['بروتين','ألبان وأجبان','دهون','خضار','مكسرات','بهارات وصلصات'];
+  for (const cat of CATS){
+    const list = Object.entries(agg).filter(([k,v])=>v.m.cat===cat);
+    if (!list.length) continue;
+    h += `<div class="pd-cat"><h3>${cat}</h3>` + list.map(([k,v])=>{
+      const hv = haveSet.has('g:'+k);
+      return `<div class="pd-line ${hv?'have':''}"><span class="pd-box">${hv?'✓':''}</span><span>${v.m.name}</span><span class="pd-amt">${fmtTotal(v.total, v.m.unit)}</span></div>`;
+    }).join('') + `</div>`;
+  }
+  const textOnes = items.filter(x=>!x.r.struct);
+  if (textOnes.length){
+    h += `<div class="pd-cat"><h3>حسب الوصفة</h3>`;
+    for (const x of textOnes){
+      const lines = x.r.o.ing || (x.r.o.d ? [x.r.o.d] : []);
+      for (const line of lines){
+        const key = 't:'+x.r.n+':'+line;
+        const hv = haveSet.has(key);
+        h += `<div class="pd-line ${hv?'have':''}"><span class="pd-box">${hv?'✓':''}</span><span>${line} <span class="pd-lnote">(${x.r.n} ×${x.n})</span></span></div>`;
+      }
+    }
+    h += `</div>`;
+  }
+  h += `</div><div class="pd-foot"><span>أُعدّت بواسطة «كيتو — دليلي الشامل» · musa85.github.io/keto</span><span>${dateStr}</span></div>`;
+
+  const doc = $('#printdoc');
+  doc.style.setProperty('--pacc', PHASE_COLORS[state.phase][0]);
+  doc.innerHTML = h;
+}
+
 function renderPlan(){
   const uids = Object.keys(state.plan);
   let h = `<h2 class="sec-title">🖨️ خطة التحضير</h2>`;
@@ -3125,8 +3274,9 @@ document.addEventListener('click', e => {
     state.have = [...haveSet]; save(); renderPlan(); return;
   }
   if (t.dataset.print){
+    buildPrintDoc();
     document.body.classList.add('pp');
-    setTimeout(()=>{ window.print(); document.body.classList.remove('pp'); }, 60);
+    setTimeout(()=>{ window.print(); document.body.classList.remove('pp'); }, 80);
     return;
   }
   if (t.dataset.clearplan){
