@@ -193,6 +193,46 @@ footer a{color:var(--txt2)}
   .pane{display:block!important}
   .card,.cbody{display:block!important;border-color:#ccc}
 }
+/* ===== خطة التحضير ===== */
+.addp{font-size:11px;font-weight:700;padding:2.5px 10px;border-radius:99px;border:1px solid var(--acc);color:var(--acc);background:transparent;transition:.2s}
+.addp.in{background:var(--acc);color:var(--bg)}
+.abtn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:12px;border:1px solid var(--acc);background:linear-gradient(0deg,var(--acc-glow),var(--acc-glow)),var(--card);color:var(--txt);font-size:13.5px;font-weight:700;transition:.2s}
+.abtn:hover{box-shadow:0 0 14px var(--acc-glow)}
+.abtn.ghost{border-color:var(--line2);background:var(--card);color:var(--txt2)}
+.planrow{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px}
+.planrow .pn{font-weight:700;font-size:13.5px;flex:1}
+.planrow .pt{font-size:10.5px;color:var(--txt3)}
+.pstep{display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--line);border-radius:99px;padding:3px 6px}
+.pstep button{width:24px;height:24px;border-radius:50%;background:var(--card2);color:var(--acc);font-weight:700;font-size:15px;line-height:1}
+.pstep b{font-family:'JetBrains Mono',monospace;min-width:20px;text-align:center}
+.prem{color:var(--bad);font-size:15px;padding:2px 6px}
+.prep-block{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:12px;break-inside:avoid}
+.prep-block h3{display:flex;align-items:center;gap:9px;font-size:16px}
+.prep-block .pmeta{font-size:12px;color:var(--txt2);margin:4px 0 10px}
+.prep-block h4{font-size:12.5px;color:var(--acc);margin:10px 0 5px}
+.prep-block ul,.prep-block ol{padding-inline-start:20px;font-size:13px;color:var(--txt2);display:grid;gap:3px}
+.prep-block ol li::marker{color:var(--acc);font-weight:700}
+.shopline{display:flex;align-items:flex-start;gap:9px;padding:7px 12px;border-bottom:1px dashed var(--line);font-size:13.5px;cursor:pointer}
+.shopline:last-child{border-bottom:none}
+.shopline .box{width:17px;height:17px;border:2px solid var(--line2);border-radius:5px;flex-shrink:0;margin-top:3px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--bg)}
+.shopline.have .box{background:var(--ok);border-color:var(--ok)}
+.shopline.have .st{text-decoration:line-through;color:var(--txt3)}
+.shopline .samt{margin-inline-start:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--acc);white-space:nowrap}
+.shopline.have .samt{color:var(--txt3);text-decoration:line-through}
+.shopcat{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.shopcat .sct{padding:9px 14px;font-weight:700;font-size:13.5px;background:var(--bg2);border-bottom:1px solid var(--line)}
+.havehint{font-size:12px;color:var(--txt3);margin:6px 0 10px}
+.plansum{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+@media print{
+  body.pp{--bg:#fff;--bg2:#f6f3ed;--card:#fff;--card2:#fff;--line:#c9c2b5;--line2:#b5ad9e;--txt:#1a1713;--txt2:#3d382f;--txt3:#6e675a;background:#fff;color:#1a1713}
+  body.pp::before{display:none}
+  body.pp header,body.pp .navbar,body.pp footer,body.pp .topbtn,body.pp .toast,body.pp .noprint{display:none!important}
+  body.pp .pane{display:none!important}
+  body.pp #pane-plan{display:block!important}
+  body.pp .sec-title{font-size:17px;margin-top:16px}
+  body.pp .prep-block,body.pp .shopcat{border:1px solid #c9c2b5}
+  body.pp .mx b{color:#1a1713}.pp .mx.kc b{color:#8a5a00}
+}
 </style>
 </head>
 <body>
@@ -222,6 +262,7 @@ footer a{color:var(--txt2)}
   <section class="pane" id="pane-sides"></section>
   <section class="pane" id="pane-protein"></section>
   <section class="pane" id="pane-snacks"></section>
+  <section class="pane" id="pane-plan"></section>
 </main>
 
 <footer>
@@ -2238,10 +2279,12 @@ const PHASE_COLORS = {
   normal:   ['#E8A33D','rgba(232,163,61,.16)'],
   lifestyle:['#7FA86B','rgba(127,168,107,.16)']
 };
-let state = { phase:'strict', tab:'journey', favs:[], favOnly:false };
+let state = { phase:'strict', tab:'journey', favs:[], favOnly:false, plan:{}, have:[] };
 try { Object.assign(state, JSON.parse(localStorage.getItem(HUB_KEY) || '{}')); } catch(e){}
+if (!state.plan) state.plan = {}; if (!state.have) state.have = [];
 const save = () => localStorage.setItem(HUB_KEY, JSON.stringify(state));
 const favSet = new Set(state.favs);
+const haveSet = new Set(state.have);
 
 // فلاتر الأقسام
 let q = '';
@@ -2278,6 +2321,29 @@ function macroRow(kcal,p,f,c){
 }
 function favBtn(uid){
   return `<button class="cfav ${favSet.has(uid)?'on':''}" data-fav="${uid}" title="مفضلة">${favSet.has(uid)?'⭐':'☆'}</button>`;
+}
+function planBtn(uid){
+  const n = state.plan[uid];
+  return `<button class="addp ${n?'in':''}" data-plan="${uid}">${n?`🛒 في الخطة ×${n}`:'🛒 + للخطة'}</button>`;
+}
+// تحويل uid إلى العنصر الأصلي
+function resolve(uid){
+  const [t, ...rest] = uid.split(':'); const id = rest.join(':');
+  if (t==='fz'){ const r = RECIPES.find(r=>r.id===id); return r && {t, o:r, e:r.emoji, n:r.name, lbl:'🧊 تجميد', struct:1}; }
+  if (t==='sn'){ const s = SNACKS[id]; return s && {t, o:s, e:s.emoji, n:s.name, lbl:'🥜 سناك', struct:1}; }
+  if (t==='pr'){ const s = PSNACKS.find(s=>String(s.id)===id); return s && {t, o:s, e:s.e, n:s.n, lbl:'🥤 بروتين', struct:0}; }
+  if (t==='fr'){ const [sec, name] = [id.slice(0, id.indexOf(':')), id.slice(id.indexOf(':')+1)];
+    const S = SECTIONS.find(x=>x.title===sec); const r = S && S.recipes.find(r=>r.name===name);
+    return r && {t, o:r, e:S.e, n:r.name, lbl:'🍳 مباشر', struct:0}; }
+  if (t==='sd'){ const [g, name] = [id.slice(0, id.indexOf(':')), id.slice(id.indexOf(':')+1)];
+    const G = SIDE_GROUPS.find(x=>x.n===g); const it = G && G.items.find(i=>i.n===name);
+    return it && {t, o:it, e:it.e, n:it.n, lbl:'🥗 مكمّل', struct:0}; }
+  return null;
+}
+function fmtTotal(total, unit){
+  if ((unit==='جم'||unit==='مل') && total>=1000)
+    return (total/1000).toFixed(2).replace(/\.?0+$/,'') + ' ' + (unit==='جم'?'كجم':'لتر');
+  return (+total.toFixed(2)) + ' ' + unit;
 }
 function dietDots(diets){
   return diets.map(d=>PHASES[d]?PHASES[d].emoji:'').join('');
@@ -2319,6 +2385,7 @@ const TABS = [
   { id:'sides',   e:'🥗', n:'مكمّلات الوجبة', c:()=>SIDE_GROUPS.reduce((a,g)=>a+g.items.length,0) },
   { id:'protein', e:'🥤', n:'سناكات البروتين', c:()=>PSNACKS.length },
   { id:'snacks',  e:'🥜', n:'سناكات خفيفة', c:()=>Object.keys(SNACKS).length },
+  { id:'plan',    e:'🖨️', n:'خطة التحضير', c:()=>Object.keys(state.plan).length },
 ];
 function renderTabs(){
   $('#tabs').innerHTML = TABS.map(t =>
@@ -2413,6 +2480,7 @@ function freezerCard(r){
       <span class="chip">⏱️ ${r.prepMin+r.cookMin} دقيقة</span>
       <span class="chip">${r.difficulty}</span>
       <span class="chip ok">🧊 تجميده ${r.freeze}</span>
+      ${planBtn(uid)}
     </div>
     ${macroRow(r.kcal,r.p,r.f,r.c)}
     <div class="cbody">
@@ -2459,6 +2527,7 @@ function freshCard(sec, r){
     <div class="cbadges">
       <span class="chip acc">${sec.title}</span>
       ${r.meta.map(m=>`<span class="chip">${m}</span>`).join('')}
+      ${planBtn(uid)}
     </div>
     <div class="cbody">
       <h4>🧺 المكوّنات</h4><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul>
@@ -2498,7 +2567,7 @@ function renderSides(){
     if (!items.length) continue;
     h += `<h3 class="sgroup-title">${g.e} ${g.n}</h3><div class="sgrid">` + items.map(it=>{
       const uid = `sd:${g.n}:${it.n}`;
-      return `<div class="scard"><div class="sn">${it.e} ${it.n} ${favBtn(uid)}</div>
+      return `<div class="scard"><div class="sn">${it.e} ${it.n} ${planBtn(uid)} ${favBtn(uid)}</div>
         <div class="sd">${it.d}</div>
         ${it.how?`<div class="show"><b>الطريقة:</b> ${it.how}</div>`:''}</div>`;
     }).join('') + `</div>`;
@@ -2521,6 +2590,7 @@ function proteinCard(s){
       <span class="chip">${TYPES[s.type]}</span>
       ${s.fast?'<span class="chip ok">⚡ فوري (دقائق)</span>':''}
       <span class="chip">${PH[s.ph]}</span>
+      ${planBtn(uid)}
     </div>
     ${macroRow(s.kcal,s.P,s.F,s.C)}
     <div class="cbody">
@@ -2566,7 +2636,7 @@ function snackCard(s){
     <div class="chead"><span class="cemoji">${s.emoji}</span>
       <div><div class="cname">${s.name}</div><div class="cdesc">${s.desc}</div></div>
       ${favBtn(uid)}</div>
-    <div class="cbadges"><span class="chip acc">${dietDots(s.diets)}</span></div>
+    <div class="cbadges"><span class="chip acc">${dietDots(s.diets)}</span>${planBtn(uid)}</div>
     ${macroRow(s.kcal,s.p,s.f,s.c)}
     <div class="cbody">
       <h4>🧺 المكوّنات</h4><ul>${s.ingredients.map(ingLine).join('')}</ul>
@@ -2585,15 +2655,142 @@ function renderSnacks(){
 }
 
 // ============================================================
+// 7) خطة التحضير (اختيار → طباعة منظمة + قائمة تسوق دقيقة)
+// ============================================================
+function scaledIngs(o, n){
+  return o.ingredients.map(ing=>{
+    const m = ING[ing.key]; if (!m) return '';
+    return `<li><b>${m.name}</b> — ${fmtTotal(ing.amt*n, m.unit)}${ing.alts&&ing.alts.length?` <span class="alts">(أو: ${ing.alts.map(k=>ING[k]?ING[k].name:k).join('، ')})</span>`:''}</li>`;
+  }).join('');
+}
+function prepBlock(uid, n){
+  const r = resolve(uid); if (!r) return '';
+  const o = r.o;
+  let h = `<div class="prep-block"><h3>${r.e} ${r.n} <span class="chip acc">×${n} ${n>2?'حصص':'حصة'}</span></h3>`;
+  if (r.t==='fz') h += `<div class="pmeta">${r.lbl} · ⏱️ ${o.prepMin+o.cookMin} دقيقة · لكل حصة: ${o.kcal} سعرة / ${o.p} بروتين / ${o.c} كارب</div>`;
+  else if (r.t==='sn') h += `<div class="pmeta">${r.lbl} · لكل حصة: ${o.kcal} سعرة / ${o.p} بروتين / ${o.c} كارب</div>`;
+  else if (r.t==='pr') h += `<div class="pmeta">${r.lbl} · لكل حصة: ${o.kcal} سعرة / ${o.P} بروتين / ${o.C} كارب</div>`;
+  else if (r.t==='fr') h += `<div class="pmeta">${r.lbl} · ${o.meta.join(' · ')}</div>`;
+  else h += `<div class="pmeta">${r.lbl}</div>`;
+
+  if (r.struct){
+    h += `<h4>🧺 المكوّنات (مضروبة ×${n})</h4><ul>${scaledIngs(o, n)}</ul>`;
+  } else if (o.ing){
+    h += `<h4>🧺 المكوّنات — للوصفة الواحدة (حضّر ×${n})</h4><ul>${o.ing.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  } else if (o.d){
+    h += `<div style="font-size:13px;color:var(--txt2)">${o.d}</div>`;
+  }
+  const steps = o.steps;
+  if (steps) h += `<h4>👨‍🍳 الطريقة</h4><ol>${steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;
+  else if (o.how) h += `<h4>👨‍🍳 الطريقة</h4><div style="font-size:13px;color:var(--txt2)">${o.how}</div>`;
+  if (r.t==='fz') h += `<div class="notebox">♨️ <b>التسخين:</b> ${o.reheat} · 📦 <b>التخزين:</b> ${o.store}</div>`;
+  if (r.t==='pr' && o.store) h += `<div class="notebox">📦 ${o.store}</div>`;
+  return h + `</div>`;
+}
+function renderPlan(){
+  const uids = Object.keys(state.plan);
+  let h = `<h2 class="sec-title">🖨️ خطة التحضير</h2>`;
+  if (!uids.length){
+    h += `<p class="sec-sub">اختر وصفاتك من بقية التبويبات بزر <b style="color:var(--acc)">🛒 + للخطة</b> — مثلاً: وصفتا تجميد ×5 حصص لأسبوع العمل + سناكات + سلطة. ثم ارجع هنا لتجد أوراق التحضير بالكميات المضروبة وقائمة تسوق مجمّعة، تشطب منها المتوفر عندك بالبيت وتطبع الباقي.</p>
+    <div class="empty">الخطة فارغة — ابدأ بإضافة وصفات 🛒</div>`;
+    $('#pane-plan').innerHTML = h; return;
+  }
+
+  // ما اخترته (تفاعلي، لا يُطبع)
+  h += `<div class="noprint"><p class="sec-sub">عدّل الحصص (مثلاً 5 = وجبة يومياً لأسبوع عمل)، اشطب المتوفر بالبيت من قائمة التسوق، ثم اطبع.</p>`;
+  h += uids.map(uid=>{
+    const r = resolve(uid); if (!r) return '';
+    return `<div class="planrow"><span>${r.e}</span>
+      <div class="pn">${r.n}<div class="pt">${r.lbl}</div></div>
+      <div class="pstep"><button data-pdec="${uid}">−</button><b>${state.plan[uid]}</b><button data-pinc="${uid}">+</button></div>
+      <button class="prem" data-prem="${uid}" title="إزالة">✕</button></div>`;
+  }).join('');
+  h += `<div class="plansum">
+    <button class="abtn" data-print="1">🖨️ اطبع الخطة</button>
+    <button class="abtn ghost" data-clearplan="1">🧹 مسح الخطة</button>
+  </div></div>`;
+
+  // إجمالي الماكروز اليومية التقريبية؟ (مجموع الحصص الكلي)
+  let tk=0;
+  uids.forEach(uid=>{ const r=resolve(uid); if(r&&(r.o.kcal)) tk += (r.o.kcal)*state.plan[uid]; });
+
+  // أوراق التحضير
+  h += `<h2 class="sec-title">📖 أوراق التحضير</h2>`;
+  h += uids.map(uid=>prepBlock(uid, state.plan[uid])).join('');
+
+  // قائمة التسوق المجمّعة
+  h += `<h2 class="sec-title">🛒 قائمة التسوق</h2>
+  <div class="havehint noprint">اضغط على أي صنف <b>متوفر عندك بالبيت</b> ليُشطب — تشتري الباقي فقط بالكميات المحسوبة بالضبط، بلا هدر.</div>`;
+  const agg = {};
+  uids.forEach(uid=>{
+    const r = resolve(uid); if (!r || !r.struct) return;
+    r.o.ingredients.forEach(ing=>{
+      const m = ING[ing.key]; if (!m) return;
+      if (!agg[ing.key]) agg[ing.key] = { m, total:0 };
+      agg[ing.key].total += ing.amt * state.plan[uid];
+    });
+  });
+  const CAT_ORDER = ['بروتين','ألبان وأجبان','دهون','خضار','مكسرات','بهارات وصلصات'];
+  for (const cat of CAT_ORDER){
+    const items = Object.entries(agg).filter(([k,v])=>v.m.cat===cat);
+    if (!items.length) continue;
+    h += `<div class="shopcat"><div class="sct">${cat}</div>` + items.map(([k,v])=>{
+      const hv = haveSet.has('g:'+k);
+      return `<div class="shopline ${hv?'have':''}" data-have="g:${k}"><span class="box">${hv?'✓':''}</span><span class="st">${v.m.name}</span><span class="samt">${fmtTotal(v.total, v.m.unit)}</span></div>`;
+    }).join('') + `</div>`;
+  }
+  // مكوّنات الوصفات النصية (مباشر/بروتين/مكمّلات)
+  const textOnes = uids.map(uid=>({uid, r:resolve(uid)})).filter(x=>x.r && !x.r.struct);
+  if (textOnes.length){
+    h += `<div class="shopcat"><div class="sct">حسب الوصفة (راجع الكميات في أوراق التحضير)</div>`;
+    for (const {uid, r} of textOnes){
+      const lines = r.o.ing || (r.o.d ? [r.o.d] : []);
+      for (const line of lines){
+        const key = 't:'+r.n+':'+line;
+        const hv = haveSet.has(key);
+        h += `<div class="shopline ${hv?'have':''}" data-have="${key}"><span class="box">${hv?'✓':''}</span><span class="st">${line} <span class="alts">(${r.n} ×${state.plan[uid]})</span></span></div>`;
+      }
+    }
+    h += `</div>`;
+  }
+  h += `<div class="havehint" style="margin-top:14px">📅 خطة بتاريخ: ${new Date().toLocaleDateString('ar-SA')} · إجمالي حصص الخطة ≈ ${tk.toLocaleString('en')} سعرة</div>`;
+  $('#pane-plan').innerHTML = h;
+}
+
+// ============================================================
 // التحديث والأحداث
 // ============================================================
-const RENDER = { journey:renderJourney, freezer:renderFreezer, fresh:renderFresh, sides:renderSides, protein:renderProtein, snacks:renderSnacks };
+const RENDER = { journey:renderJourney, freezer:renderFreezer, fresh:renderFresh, sides:renderSides, protein:renderProtein, snacks:renderSnacks, plan:renderPlan };
 function renderActive(){ renderTabs(); RENDER[state.tab](); }
 function renderAll(){ applyPhase(); renderActive(); }
 
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-phase],[data-tab],[data-fav],[data-card] .chead,[data-card] .cbadges,[data-card] .macros,[data-fzbase],[data-fztog],[data-frcat],[data-prbase],[data-prtype],[data-prfast],[data-gstatus]');
+  const t = e.target.closest('[data-phase],[data-tab],[data-fav],[data-plan],[data-pinc],[data-pdec],[data-prem],[data-have],[data-print],[data-clearplan],[data-card] .chead,[data-card] .cbadges,[data-card] .macros,[data-fzbase],[data-fztog],[data-frcat],[data-prbase],[data-prtype],[data-prfast],[data-gstatus]');
   if (!t) return;
+
+  if (t.dataset.plan){
+    const uid = t.dataset.plan;
+    if (state.plan[uid]){ delete state.plan[uid]; toast('أُزيلت من الخطة'); }
+    else { state.plan[uid] = 1; toast('أُضيفت للخطة 🛒 — عدّل الحصص من تبويب خطة التحضير'); }
+    save(); renderActive(); return;
+  }
+  if (t.dataset.pinc){ state.plan[t.dataset.pinc]++; save(); renderPlan(); renderTabs(); return; }
+  if (t.dataset.pdec){ const u=t.dataset.pdec; state.plan[u] = Math.max(1, state.plan[u]-1); save(); renderPlan(); return; }
+  if (t.dataset.prem){ delete state.plan[t.dataset.prem]; save(); renderPlan(); renderTabs(); return; }
+  if (t.dataset.have){
+    const k = t.dataset.have;
+    haveSet.has(k) ? haveSet.delete(k) : haveSet.add(k);
+    state.have = [...haveSet]; save(); renderPlan(); return;
+  }
+  if (t.dataset.print){
+    document.body.classList.add('pp');
+    setTimeout(()=>{ window.print(); document.body.classList.remove('pp'); }, 60);
+    return;
+  }
+  if (t.dataset.clearplan){
+    state.plan = {}; haveSet.clear(); state.have = [];
+    save(); renderPlan(); renderTabs(); toast('تم مسح الخطة'); return;
+  }
 
   if (t.dataset.fav){
     const uid = t.dataset.fav;
