@@ -146,6 +146,19 @@ header{padding:34px 0 10px;text-align:center}
 .swap .sk{color:var(--acc);font-weight:700}
 .swapcat{font-size:13.5px;color:var(--txt2);margin:18px 0 8px;font-weight:700}
 
+/* ===== أقسام قابلة للطي (رحلتي) ===== */
+.jsec{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.jsec .jsum{width:100%;display:flex;align-items:center;gap:10px;padding:14px 17px;font-family:'Reem Kufi',sans-serif;font-size:16px;font-weight:700;color:var(--txt);text-align:start;cursor:pointer;transition:.2s}
+.jsec .jsum:hover{background:var(--card2)}
+.jsec.open .jsum{color:var(--acc)}
+.jcount{font-size:10.5px;color:var(--txt3);background:var(--bg2);border:1px solid var(--line);padding:1px 9px;border-radius:99px;font-family:'Cairo',sans-serif;font-weight:600}
+.jarr{margin-inline-start:auto;color:var(--txt3);transition:transform .25s;font-size:15px}
+.jsec.open .jarr{transform:rotate(180deg)}
+.jsec .jbody{display:none;padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.jsec.open .jbody{display:block;animation:fadein .25s}
+.jsec .jbody .sec-sub{margin-top:10px}
+.jsec .jbody .signs,.jsec .jbody .jgrid,.jsec .jbody .glist{margin-top:10px}
+
 /* ===== Sides ===== */
 .sgroup-title{display:flex;align-items:center;gap:9px;font-size:16px;margin:24px 0 10px}
 .scard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
@@ -2724,6 +2737,45 @@ const HACKS = [
    steps:['رشة قرفة + قطرة فانيلا + ستيفيا في قهوتك (مع رشة كريمة ثقيلة للقوام).','نفس المزيج على الزبادي اليوناني أو الموس.','جرّب الهيل وجوزة الطيب بنفس المنطق — مكتبة «توابل الحلا» كلها مفتوحة لك.'],
    tip:'اصنع برطمان «خلطة الكراميل» جاهزاً: قرفة + فانيلا بودرة + إريثريتول.' },
 ];
+
+// ============================================================
+// 🦐 شرمب دوريا اليابانية (エビドリア) — نسخة كيتو
+// ============================================================
+RECIPES.push({
+  id:'m52', emoji:'🇯🇵', name:'شرمب دوريا يابانية (جراتان الروبيان)', equip:'oven',
+  desc:'الطبق الياباني المعشوق بنسخة كيتو: أرز قرنبيط بالزبدة تحت صلصة بيضاء حريرية بالروبيان والمشروم، ووجه موزاريلا متحمّر.',
+  base:'shrimp', diets:['strict','normal','lifestyle'], odor:'med',
+  freeze:'جيد جداً', reheat:'مايكروويف 2 دقيقة بقوة متوسطة (لا تزد — الروبيان يقسى)، أو فرن 170°م 10 دقائق ليرجع الوجه مقرمشاً', store:'حصص بعلب تتحمل الفرن والمايكروويف',
+  prepMin:15, cookMin:25, difficulty:'متوسط', kcal:520, p:38, f:36, c:8,
+  snacks:['s05','s16'],
+  ingredients:[
+    {key:'shrimp',amt:150},
+    {key:'cauliflower',amt:180},
+    {key:'butter',amt:18},
+    {key:'cream_cooking',amt:80},
+    {key:'cream_cheese',amt:20},
+    {key:'mozzarella',amt:35,alts:['cheddar','parmesan']},
+    {key:'mushroom',amt:40,alts:['mushroom_can']},
+    {key:'onion',amt:20},
+    {key:'garlic',amt:1},
+    {key:'salt',amt:3},{key:'black_pepper',amt:1}
+  ],
+  steps:[
+    'ابشر القرنبيط «أرزاً» وقلّبه بنصف الزبدة 4 دقائق مع ملح — افرده طبقة أولى في صحن الجراتان.',
+    'الصلصة البيضاء (بدون دقيق): شوّح البصل والمشروم بباقي الزبدة حتى يجف، أضف الثوم.',
+    'أضف الكريمة والجبن الكريمي على نار هادئة وحرّك حتى تصير صلصة حريرية متماسكة (رشة جوزة الطيب إن وجدت — سر النكهة اليابانية).',
+    'أضف الروبيان المجفف للصلصة دقيقتين فقط حتى يتورّد.',
+    'اسكب الصلصة بالروبيان فوق طبقة الأرز، غطِّ الوجه بالموزاريلا.',
+    'فرن 200°م (شواية بالنهاية) 10–12 دقيقة حتى يتحمّر الوجه ذهبياً.',
+    'برّدها وقسّمها حصصاً وجمّد — أنجح وجبة «مطعم» في الفريزر.'
+  ]
+});
+SECTIONS.find(s=>s.title==='الروبيان').recipes.push({
+  name:'شرمب دوريا يابانية (جراتان طازج)', meta:['٣٥ دقيقة','فرن'],
+  ing:['٢٥٠جم روبيان مقشّر مجفف','٣ أكواب أرز قرنبيط','٣ م.ك زبدة','كوب كريمة طبخ + ٢ م.ك جبن كريمي','حفنة مشروم شرائح وبصل مفروم قليل','كوب موزاريلا مبشورة','ثوم، ملح، فلفل أبيض، رشة جوزة الطيب (اختياري)'],
+  steps:['قلّب أرز القرنبيط بالزبدة ٤ دقائق وافرده في صحن فرن.','شوّح البصل والمشروم بالزبدة، ثم الكريمة والجبن الكريمي حتى تتماسك الصلصة (هذه البشاميل الكيتوية).','أضف الروبيان دقيقتين حتى يتورّد وتبّل بجوزة الطيب.','اسكب فوق الأرز وغطِّ بالموزاريلا.','فرن ٢٠٠ درجة ١٠–١٢ دقيقة حتى يتحمّر الوجه — قدّمها تغلي بصحنها مثل المطاعم اليابانية.'],
+  tip:'السر الياباني: صلصة بيضاء ناعمة جداً + وجه متحمّر + تقديمها بصحن الفرن نفسه وهي تغلي.'
+});
 // ============================================================
 // الحالة العامة
 // ============================================================
@@ -2852,9 +2904,16 @@ function renderTabs(){
 // ============================================================
 // 1) رحلتي والدليل
 // ============================================================
+let journeyOpen = new Set(['map']);
+function jsec(id, title, count, body){
+  const open = journeyOpen.has(id) || !!q;
+  return `<div class="jsec ${open?'open':''}">
+    <button class="jsum" data-jsec="${id}">${title}${count?` <span class="jcount">${count}</span>`:''}<span class="jarr">⌄</span></button>
+    <div class="jbody">${body}</div></div>`;
+}
 function renderJourney(){
-  let h = `<h2 class="sec-title">🧭 خريطة الرحلة</h2>
-  <p class="sec-sub">ثلاث مراحل متدرجة: ندخل الكيتوزس بالصارم، نخسر الوزن بالعادي، ونثبّت بلايف ستايل. اضغط على المرحلة لتفعيلها — يتلوّن الدليل كله حسبها.</p>
+  // 1) خريطة الرحلة
+  let mapB = `<p class="sec-sub">ثلاث مراحل متدرجة: ندخل الكيتوزس بالصارم، نخسر الوزن بالعادي، ونثبّت بلايف ستايل. اضغط على المرحلة لتفعيلها — يتلوّن الدليل كله حسبها.</p>
   <div class="jgrid">` + Object.values(PHASES).map(p=>{
     const [pc,pg] = PHASE_COLORS[p.key];
     return `<div class="jcard ${state.phase===p.key?'cur':''}" data-phase="${p.key}" style="--jc:${pc};--jg:${pg};cursor:pointer">
@@ -2866,28 +2925,29 @@ function renderJourney(){
     </div>`;
   }).join('') + `</div>`;
 
-  h += `<h2 class="sec-title">🔁 متى أنتقل بين المراحل؟</h2><div class="signs">` +
+  // 2) الانتقال بين المراحل
+  const transB = `<div class="signs">` +
     TRANSITIONS.map(t=>`<div class="sign"><span class="se">${t.e}</span><div><b>${t.n}</b><span>${t.d}</span></div></div>`).join('') + `</div>`;
 
-  h += `<h2 class="sec-title">🧪 علامات دخول الكيتوزس</h2><div class="signs">` +
+  // 3) علامات الكيتوزس
+  const signsB = `<div class="signs">` +
     KETO_SIGNS.map(s=>`<div class="sign"><span class="se">${s.e}</span><div><b>${s.n}</b><span>${s.d}</span></div></div>`).join('') + `</div>`;
 
-  h += `<h2 class="sec-title">🤒 إنفلونزا الكيتو وعلاجها</h2><div class="signs">` +
+  // 4) إنفلونزا الكيتو
+  const fluB = `<div class="signs">` +
     KETO_FLU.map(s=>`<div class="sign"><span class="se">${s.e}</span><div><b>${s.n}</b><span>${s.d}</span></div></div>`).join('') + `</div>`;
 
-  // دليل المسموح والممنوع
-  h += `<h2 class="sec-title">📋 دليل المسموح والممنوع</h2>
-  <p class="sec-sub">الحكم الملوّن حسب مرحلتك الحالية (${PHASES[state.phase].emoji} ${PHASES[state.phase].name}). ✓ مسموح · ⚠ مشروط · ✕ ممنوع.</p>`;
-  h += chipRow([
+  // 5) دليل المسموح والممنوع
+  let guideB = `<p class="sec-sub">الحكم الملوّن حسب مرحلتك الحالية (${PHASES[state.phase].emoji} ${PHASES[state.phase].name}). ✓ مسموح · ⚠ مشروط · ✕ ممنوع.</p>`;
+  guideB += chipRow([
     {v:'all',t:'الكل'},{v:'y',t:'✓ المسموح'},{v:'c',t:'⚠ المشروط'},{v:'n',t:'✕ الممنوع'}
   ], guideStatus, 'gstatus');
-
   for (const [ck, cat] of Object.entries(GUIDE_CATS)){
     const items = GUIDE_DATA.filter(it => it.cat===ck
       && (guideStatus==='all' || it.s[state.phase]===guideStatus)
       && (hit(it.n) || hit(it.cond)));
     if (!items.length) continue;
-    h += `<h3 class="gcat-title">${cat.e} ${cat.n}</h3><div class="glist">` + items.map(it=>{
+    guideB += `<h3 class="gcat-title">${cat.e} ${cat.n}</h3><div class="glist">` + items.map(it=>{
       const pills = Object.keys(GUIDE_PHASES).map(k=>{
         const m = GSMAP[it.s[k]], p = GUIDE_PHASES[k];
         const short = p.name.replace('الكيتو ','').replace('كيتو ','');
@@ -2899,17 +2959,23 @@ function renderJourney(){
     }).join('') + `</div>`;
   }
 
-  // التحويلات الذكية
-  h += `<h2 class="sec-title">🔄 التحويلات الذكية (ممنوع ← بديله الكيتوني)</h2>`;
-  let lastCat = '';
+  // 6) التحويلات الذكية
+  let swapsB = '', lastCat = '';
   for (const s of SWAPS.filter(s=>hit(s.from.n)||hit(s.to.n)||hit(s.how)||hit(s.cat))){
-    if (s.cat !== lastCat){ h += `<div class="swapcat">${s.cat}</div>`; lastCat = s.cat; }
-    h += `<div class="swap" style="margin-bottom:8px">
+    if (s.cat !== lastCat){ swapsB += `<div class="swapcat">${s.cat}</div>`; lastCat = s.cat; }
+    swapsB += `<div class="swap" style="margin-bottom:8px">
       <div class="sfrom">${s.from.e} ${s.from.n}</div><div class="sarrow">←</div>
       <div class="sto">${s.to.e} ${s.to.n}</div>
       <div class="show-">${s.how}</div>
     </div>`;
   }
+
+  const h = jsec('map','🧭 خريطة الرحلة', '', mapB)
+    + jsec('trans','🔁 متى أنتقل بين المراحل؟', TRANSITIONS.length, transB)
+    + jsec('signs','🧪 علامات دخول الكيتوزس', KETO_SIGNS.length, signsB)
+    + jsec('flu','🤒 إنفلونزا الكيتو وعلاجها', KETO_FLU.length, fluB)
+    + jsec('guide','📋 دليل المسموح والممنوع', GUIDE_DATA.length, guideB)
+    + jsec('swaps','🔄 التحويلات الذكية (ممنوع ← بديله)', SWAPS.length, swapsB);
   $('#pane-journey').innerHTML = h;
 }
 
@@ -3356,8 +3422,14 @@ function renderActive(){ renderTabs(); RENDER[state.tab](); }
 function renderAll(){ applyPhase(); renderActive(); }
 
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-phase],[data-tab],[data-fav],[data-plan],[data-pinc],[data-pdec],[data-prem],[data-have],[data-print],[data-clearplan],[data-card] .chead,[data-card] .cbadges,[data-card] .macros,[data-fzbase],[data-fztog],[data-frcat],[data-prbase],[data-prtype],[data-prfast],[data-gstatus]');
+  const t = e.target.closest('[data-phase],[data-tab],[data-fav],[data-plan],[data-pinc],[data-pdec],[data-prem],[data-have],[data-print],[data-clearplan],[data-jsec],[data-card] .chead,[data-card] .cbadges,[data-card] .macros,[data-fzbase],[data-fztog],[data-frcat],[data-prbase],[data-prtype],[data-prfast],[data-gstatus]');
   if (!t) return;
+
+  if (t.dataset.jsec){
+    const id = t.dataset.jsec;
+    journeyOpen.has(id) ? journeyOpen.delete(id) : journeyOpen.add(id);
+    renderJourney(); return;
+  }
 
   if (t.dataset.plan){
     const uid = t.dataset.plan;
