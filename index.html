@@ -178,6 +178,14 @@ footer{margin-top:60px;text-align:center;color:var(--txt3);font-size:12.5px;bord
 footer a{color:var(--txt2)}
 .topbtn{position:fixed;bottom:22px;inset-inline-end:18px;width:42px;height:42px;border-radius:50%;background:var(--card2);border:1px solid var(--line2);color:var(--txt2);font-size:18px;z-index:60;opacity:0;transition:.3s;pointer-events:none}
 .topbtn.show{opacity:1;pointer-events:auto}
+@media(max-width:768px){
+  .navbar{transition:transform .25s ease}
+  .navbar.navhide{transform:translateY(-115%)}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{padding:8px 12px;font-size:12.5px}
+  .searchrow{margin-top:7px}
+}
 @media(max-width:560px){
   .grid{grid-template-columns:1fr}
   .card.open{grid-row:auto}
@@ -3415,7 +3423,16 @@ $('#favOnly').addEventListener('click', () => {
 $('#favOnly').classList.toggle('on', state.favOnly);
 
 const topbtn = $('#topbtn');
-window.addEventListener('scroll', () => topbtn.classList.toggle('show', window.scrollY > 600), {passive:true});
+const navbar = $('.navbar');
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  topbtn.classList.toggle('show', y > 600);
+  // في الجوال: إخفاء الشريط عند النزول وإظهاره عند السحب لأعلى (الـ CSS يفعّله ≤768px فقط)
+  if (y > lastY + 6 && y > 250) navbar.classList.add('navhide');
+  else if (y < lastY - 6 || y <= 250) navbar.classList.remove('navhide');
+  lastY = y;
+}, {passive:true});
 topbtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
 renderAll();
