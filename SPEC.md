@@ -68,7 +68,7 @@ google-chrome --headless --no-sandbox --virtual-time-budget=4000 --dump-dom "fil
 | `freezer` | 🧊 وجبات التجميد | RECIPES (70، m01–m70) | فلاتر: البروتين، مرحلتي فقط، رائحة خفيفة، بدون فرن/فرن/مايكروويف مباشرة |
 | `fresh` | 🍳 طبخ مباشر | SECTIONS (7 أقسام، 74 وصفة) | أقسام: بيض، دجاج، لحم، دجاج مفروم، لحم مفروم، سمك، روبيان. **كل وصفة لها `mac` (ماكروز/حصة) + أوزان في `ing`** |
 | `sides` | 🥗 مكمّلات الوجبة | SIDE_GROUPS (3 مجموعات، 26) | سلطات (لها `how` بكميات)، جوانب ساخنة، أمثلة «كمّل وجبتك». (مجموعة الصلصات نُقلت لتبويب الصوصات) |
-| `sauces` | 🥣 الصوصات | SAUCES (30) | **قسم جديد**. فلتر بالتصنيف (`SAUCE_CATS`: للأكل/للسلطة/حلو) عبر `scCat`/`data-sccat`. كل صوص له كمية الدفعة `yield` + الحصة `serv` + ماكروز/حصة + نوع التخزين `store` (`SAUCE_STORE`: fresh/fridge/pantry) + `keep`. قابل للإضافة للخطة (`sc:`) |
+| `sauces` | 🥣 الصوصات | SAUCES (46) | فلتر بالتصنيف (`SAUCE_CATS`: للأكل/للسلطة/حلو/غموسات/آسيوية) عبر `scCat`/`data-sccat`. كل صوص له كمية الدفعة `yield` + الحصة `serv` + ماكروز/حصة + نوع التخزين `store` (`SAUCE_STORE`: fresh/fridge/pantry) + `keep`. قابل للإضافة للخطة (`sc:`). إضافة تصنيف جديد = مفتاح في `SAUCE_CATS` فقط (الفلتر يلتقطه آلياً) |
 | `protein` | 🥤 سناكات البروتين | PSNACKS (37) + SHOP_CATS | فلاتر: واي/بيف، النوع، الفورية |
 | `snacks` | 🥜 سناكات خفيفة | SNACKS (50، كائن s01–s50) | بدون بروتين بودر. **كل سناك له `steps` + `store` + `prepTxt` + `cat`**. فلتر بالتصنيف (`SNACK_CATS`: حلو/مالح/مكسرات/خضار/بروتيني) عبر `snCat`/`data-sncat`. منها **24 حلو** |
 | `plan` | 🖨️ خطة التحضير | state.plan | انظر §6 |
@@ -132,7 +132,7 @@ google-chrome --headless --no-sandbox --virtual-time-budget=4000 --dump-dom "fil
 1. وصفة تجميد: أضف كائناً لـ RECIPES في `06_extra_data.js` (id تسلسلي `m71+`)، وأي مكوّن جديد إلى ING. حدّد `odor` بصدق و`reheat` عملياً. (المكوّنات الجديدة الأخيرة مُعرّفة في `Object.assign(ING,…)` قرب نهاية الملف: حليب جوز الهند، ملفوف، شطة، محلٍّ، جوز هند مبشور، زبدة فول سوداني، شيا، شوكولاتة داكنة، بذور يقطين، صلصة حارة، قرفة، خل.)
 2. وصفة مباشرة: أدرجها في `EXTRA_FRESH`/`EXTRA_FRESH2`/`EXTRA_FRESH3` أو `SECTIONS.find/​push` (مع `e` إيموجي) — **أضف `mac:{serves,kcal,p,f,c}` وأوزاناً في `ing`**.
 3. سناك: `Object.assign(SNACKS, { s36: {...} })` — مع `steps` و`store` و`prepTxt` و`cat`.
-3.5. صوص: أضف كائناً لمصفوفة `SAUCES` (id تسلسلي `sc31+`) في `06_extra_data.js` — مع `cat` و`store` و`keep` و`yield` و`serv` وماكروز الحصة و`ing` نصية بأوزان و`steps`.
+3.5. صوص: أضف كائناً لمصفوفة `SAUCES` (id تسلسلي `sc47+`) في `06_extra_data.js` — مع `cat` (savory/salad/sweet/dip/asian) و`store` و`keep` و`yield` و`serv` وماكروز الحصة و`ing` نصية بأوزان و`steps`. لتصنيف جديد: أضف مفتاحاً لـ `SAUCE_CATS` فقط.
 4. التزم بالعربية الفصحى الميسّرة، صيغة المذكّر، أرقام مكوّنات واقعية، وماكروز منطقية (سعرات ≈ 4ب + 4ك + 9د تقريباً).
 5. بعد أي تعديل: جمّع، `node --check`، اختبر headless، ثم commit + push (بحلقة المحاولات) وتحقق من Pages بعد دقيقة.
 
